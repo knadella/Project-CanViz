@@ -81,13 +81,19 @@ def fetch_statcan_data(product_id: str, language: str = "en") -> str:
         raise
 
 
-def save_inflation_data(output_dir: Path = Path("data")):
+def save_inflation_data(output_dir: Path = None):
     """
     Fetch inflation (CPI) data from Statistics Canada and save to CSV file.
     
     Args:
-        output_dir: Directory to save the CSV file
+        output_dir: Directory to save the CSV file (defaults to project root/data/)
     """
+    # Default to project root/data/ directory
+    if output_dir is None:
+        # Get project root (parent of src/)
+        project_root = Path(__file__).parent.parent
+        output_dir = project_root / "data"
+    
     # Create output directory if it doesn't exist
     output_dir.mkdir(exist_ok=True)
     
