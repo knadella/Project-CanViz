@@ -1,4 +1,4 @@
-# D3 Data Visualization Project - Canada
+# Project CanViz
 
 A collaborative project for building interactive web data visualizations using D3.js and publicly available Canadian data.
 
