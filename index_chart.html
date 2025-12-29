@@ -14,7 +14,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background-color: white;
             padding: 30px;
@@ -165,14 +165,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Canada Consumer Price Index (CPI)</h1>
-        <div class="subtitle">10 Years of Monthly Data - Indexed to Base Period (Base = 100)</div>
+        <h1>Canada Consumer Price Index (CPI) - Multi-Series</h1>
+        <div class="subtitle">10 Years of Monthly Data - 6 Main Categories</div>
         <div class="chart-container">
             <div class="loading">Loading data...</div>
             <svg id="chart"></svg>
         </div>
         <div class="legend">
-            <p><strong>Note:</strong> Hover over the chart to dynamically re-index the data. The baseline (100) updates to the hovered date, showing how all other dates compare relative to that point.</p>
+            <p><strong>Note:</strong> Hover over the chart to dynamically re-index all series. Each series shows relative changes compared to the hovered date (baseline = 1×).</p>
         </div>
     </div>
     
@@ -180,24 +180,23 @@
     
     <script>
         // Load data
-        d3.json("data/inflation_index_data.json")
+        d3.json("data/inflation_multi_series.json")
             .then(data => {
                 document.querySelector(".loading").style.display = "none";
                 
                 // Parse dates and prepare data - convert to Date objects and extract values
                 // Use UTC parsing to match scaleUtc
                 const parseDate = d3.utcParse("%Y-%m");
-                const inflationData = data.data.map(d => ({
-                    Date: parseDate(d.date),
-                    Value: d.value
-                })).filter(d => d.Date !== null); // Filter out any invalid dates
                 
-                // Create a single "series" for CPI (similar to stocks grouped by Symbol)
-                // Since we have one series, we'll create a structure like: [{key: "CPI", values: [...]}]
-                const series = [{
-                    key: "CPI",
-                    values: inflationData.map(({Date, Value}) => ({Date, value: Value}))
-                }];
+                // Transform data structure to match Observable pattern
+                // Each series has: {key: "Category", values: [{Date, value}]}
+                const series = data.series.map(({category, data: seriesData}) => ({
+                    key: category,
+                    values: seriesData.map(d => ({
+                        Date: parseDate(d.date),
+                        value: d.value
+                    })).filter(d => d.Date !== null) // Filter out any invalid dates
+                }));
                 
                 // Normalize the series with respect to the value on the first date
                 const normalizedSeries = series.map(({key, values}) => {
@@ -205,17 +204,20 @@
                     return {key, values: values.map(({Date, value}) => ({Date, value: value / v}))};
                 });
                 
+                // Get all dates from all series for domain calculation
+                const allDates = normalizedSeries.flatMap(s => s.values.map(d => d.Date));
+                
                 // Specify the chart's dimensions.
                 const width = 928;
                 const height = 600;
                 const marginTop = 20;
-                const marginRight = 40;
+                const marginRight = 120;  // Increased to accommodate labels
                 const marginBottom = 30;
                 const marginLeft = 40;
                 
                 // Create the horizontal time scale.
                 const x = d3.scaleUtc()
-                    .domain(d3.extent(inflationData, d => d.Date))
+                    .domain(d3.extent(allDates))
                     .range([marginLeft, width - marginRight])
                     .clamp(true);
                 
@@ -229,17 +231,28 @@
                     .rangeRound([height - marginBottom, marginTop]);
                 
                 // Create a color scale to identify series.
-                const z = d3.scaleOrdinal(d3.schemeCategory10).domain(normalizedSeries.map(d => d.key));
+                // Use a custom color scheme for better distinction
+                const colors = {
+                    "Overall": "#1f77b4",    // Blue
+                    "Food": "#ff7f0e",        // Orange
+                    "Housing": "#2ca02c",     // Green
+                    "Transport": "#d62728",   // Red
+                    "Health Care": "#9467bd", // Purple
+                    "Services": "#8c564b"     // Brown
+                };
+                const z = (key) => colors[key] || "#000000";
                 
                 // For each given series, the update function needs to identify the date—closest to the current
                 // date—that actually contains a value. To do this efficiently, it uses a bisector:
                 const bisect = d3.bisector(d => d.Date).left;
                 
                 // Create the SVG container.
+                // Add extra width for labels (labels are positioned at width - marginRight + 3, need ~80px for text)
+                const svgWidth = width + 80;  // Extra space for labels
                 const svg = d3.select("#chart")
-                    .attr("width", width)
+                    .attr("width", svgWidth)
                     .attr("height", height)
-                    .attr("viewBox", [0, 0, width, height])
+                    .attr("viewBox", [0, 0, svgWidth, height])
                     .attr("style", "max-width: 100%; height: auto; -webkit-tap-highlight-color: transparent;");
                 
                 // Create the axes and central rule.
@@ -276,7 +289,7 @@
                 
                 serie.append("path")
                     .attr("fill", "none")
-                    .attr("stroke-width", 1.5)
+                    .attr("stroke-width", 2)
                     .attr("stroke-linejoin", "round")
                     .attr("stroke-linecap", "round")
                     .attr("stroke", d => z(d.key))
@@ -291,6 +304,7 @@
                     .attr("x", x.range()[1] + 3)
                     .attr("y", d => y(d.value))
                     .attr("dy", "0.35em")
+                    .style("font-size", "11px")
                     .text(d => d.key);
                 
                 // Define the update function, that translates each of the series vertically depending on the
@@ -332,7 +346,7 @@
             })
             .catch(error => {
                 console.error("Error loading data:", error);
-                document.querySelector(".loading").textContent = "Error loading data. Please check that inflation_index_data.json exists.";
+                document.querySelector(".loading").textContent = "Error loading data. Please check that inflation_multi_series.json exists.";
             });
     </script>
 </body>
