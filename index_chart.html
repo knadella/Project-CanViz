@@ -1,107 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- 
+        HTML HEAD SECTION
+        This section sets up the basic structure and metadata for the webpage.
+        It includes the page title, character encoding, and links to external libraries.
+    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canada CPI Index Chart - 10 Years</title>
+    
+    <!-- 
+        D3.js LIBRARY
+        This loads the D3.js library from a CDN (Content Delivery Network).
+        D3.js is a JavaScript library for creating data visualizations.
+        Version 7 is used here, which provides all the functions we need for charts.
+    -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- 
+        CSS STYLING SECTION
+        This section defines how the webpage looks - colors, fonts, spacing, etc.
+        Think of it as the "design rules" for the page.
+    -->
     <style>
+        /* 
+            BODY STYLING
+            Sets the overall page appearance - background color, font, spacing.
+            The font-family uses system fonts (the default fonts on your computer)
+            for a clean, native look.
+        */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            margin: 0;              /* Remove default browser margins */
+            padding: 20px;          /* Add 20px of space around the page */
+            background-color: #f5f5f5;  /* Light gray background */
         }
         
+        /* 
+            CONTAINER STYLING
+            This is the white box that contains the chart.
+            It's centered on the page with a maximum width of 1400px.
+            The box-shadow creates a subtle shadow effect to make it stand out.
+        */
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 1400px;      /* Maximum width - prevents chart from being too wide on large screens */
+            margin: 0 auto;         /* Centers the container horizontally */
+            background-color: white; /* White background for the chart area */
+            padding: 30px;           /* Space inside the container */
+            border-radius: 8px;     /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Subtle shadow for depth */
         }
         
+        /* 
+            HEADING STYLING
+            Styles for the main title at the top of the page.
+        */
         h1 {
-            margin-top: 0;
-            color: #333;
-            font-size: 28px;
+            margin-top: 0;          /* Remove top margin */
+            color: #333;            /* Dark gray text color */
+            font-size: 28px;        /* Large font size for the title */
         }
         
+        /* 
+            SUBTITLE STYLING
+            Styles for the descriptive text below the title.
+        */
         .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
+            color: #666;            /* Medium gray text */
+            margin-bottom: 30px;    /* Space below the subtitle */
+            font-size: 14px;        /* Smaller font than the title */
         }
         
+        /* 
+            CHART CONTAINER
+            This is the area where the actual chart will be drawn.
+            overflow: visible ensures labels aren't cut off.
+        */
         .chart-container {
-            position: relative;
-            width: 100%;
-            overflow: visible;
+            position: relative;      /* Allows positioning of child elements */
+            width: 100%;            /* Takes up full width of parent */
+            overflow: visible;       /* Don't hide content that extends beyond bounds */
         }
         
+        /* 
+            SVG CHART ELEMENT
+            SVG (Scalable Vector Graphics) is the canvas where D3 draws the chart.
+            This styling centers it and makes it responsive.
+        */
         #chart {
-            display: block;
-            margin: 0 auto;
+            display: block;         /* Display as a block element */
+            margin: 0 auto;         /* Center horizontally */
         }
         
+        /* 
+            AXIS STYLING
+            Styles for the chart axes (the lines with numbers on the sides).
+        */
         .axis {
-            font-size: 12px;
-            color: #666;
+            font-size: 12px;        /* Small font for axis labels */
+            color: #666;            /* Gray color for axis text */
         }
         
+        /* 
+            AXIS LABEL STYLING
+            Styles for labels on the axes (like "Year" or "Index").
+        */
         .axis-label {
-            font-size: 14px;
-            fill: #333;
+            font-size: 14px;        /* Slightly larger than axis tick labels */
+            fill: #333;             /* Dark gray color */
         }
         
+        /* 
+            LINE STYLING
+            These styles are for the data lines on the chart.
+            Note: These are defined but not all are used in the current implementation.
+        */
         .line {
-            fill: none;
-            stroke: #1f77b4;
-            stroke-width: 2.5px;
+            fill: none;             /* Don't fill the area under the line */
+            stroke: #1f77b4;        /* Blue color for the line */
+            stroke-width: 2.5px;    /* Line thickness */
         }
         
         .area {
-            fill: #1f77b4;
-            opacity: 0.1;
+            fill: #1f77b4;          /* Fill color (not used in current chart) */
+            opacity: 0.1;            /* Very transparent */
         }
         
         .grid-line {
-            stroke: #e0e0e0;
-            stroke-width: 1;
-            stroke-dasharray: 3,3;
+            stroke: #e0e0e0;        /* Light gray for grid lines */
+            stroke-width: 1;        /* Thin lines */
+            stroke-dasharray: 3,3;  /* Dashed line pattern */
         }
         
         .baseline {
-            stroke: #999;
-            stroke-width: 1.5;
-            stroke-dasharray: 5,5;
+            stroke: #999;           /* Medium gray for baseline */
+            stroke-width: 1.5;      /* Slightly thicker */
+            stroke-dasharray: 5,5;  /* Dashed pattern */
         }
         
+        /* 
+            DOT STYLING
+            Styles for interactive dots on the chart (not currently used).
+        */
         .dot {
-            fill: #1f77b4;
-            stroke: white;
-            stroke-width: 2;
-            r: 4;
+            fill: #1f77b4;          /* Blue fill */
+            stroke: white;          /* White border */
+            stroke-width: 2;        /* Border thickness */
+            r: 4;                   /* Radius (size) of the dot */
         }
         
         .dot:hover {
-            r: 6;
-            cursor: pointer;
+            r: 6;                   /* Larger when mouse hovers */
+            cursor: pointer;        /* Show pointer cursor */
         }
         
+        /* 
+            FOCUS LINE STYLING
+            The vertical line that appears when you hover over the chart.
+            It starts invisible (opacity: 0) and becomes visible on hover.
+        */
         .focus-line {
-            stroke: #333;
-            stroke-width: 1.5;
-            stroke-dasharray: 3,3;
-            opacity: 0;
-            pointer-events: none;
+            stroke: #333;           /* Dark gray/black color */
+            stroke-width: 1.5;      /* Medium thickness */
+            stroke-dasharray: 3,3;  /* Dashed line */
+            opacity: 0;              /* Initially invisible */
+            pointer-events: none;    /* Don't interfere with mouse events */
         }
         
         .focus-line.visible {
-            opacity: 1;
+            opacity: 1;             /* Fully visible when class "visible" is added */
         }
         
+        /* 
+            FOCUS DOT STYLING
+            A dot that appears at the intersection of the focus line and data.
+            Not currently used in this implementation.
+        */
         .focus-dot {
             fill: #1f77b4;
             stroke: white;
@@ -115,235 +190,431 @@
             opacity: 1;
         }
         
+        /* 
+            TOOLTIP STYLING
+            The popup box that shows information when you hover over the chart.
+            It's positioned absolutely so it can appear anywhere on the page.
+        */
         .tooltip {
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 12px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            min-width: 180px;
+            position: absolute;      /* Position relative to the page, not parent */
+            background-color: rgba(0, 0, 0, 0.85);  /* Semi-transparent black */
+            color: white;            /* White text */
+            padding: 10px 14px;     /* Space inside the tooltip */
+            border-radius: 6px;     /* Rounded corners */
+            font-size: 12px;        /* Small font */
+            pointer-events: none;    /* Don't block mouse events */
+            opacity: 0;              /* Initially invisible */
+            transition: opacity 0.2s;  /* Smooth fade in/out */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);  /* Shadow for depth */
+            min-width: 180px;       /* Minimum width so it doesn't look too narrow */
         }
         
         .tooltip.visible {
-            opacity: 1;
+            opacity: 1;             /* Fully visible when class "visible" is added */
         }
         
+        /* 
+            TOOLTIP CONTENT STYLING
+            Styles for the text inside the tooltip.
+        */
         .tooltip strong {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 13px;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 4px;
+            display: block;         /* Each strong element on its own line */
+            margin-bottom: 6px;      /* Space below */
+            font-size: 13px;        /* Slightly larger font */
+            border-bottom: 1px solid rgba(255,255,255,0.3);  /* Subtle line separator */
+            padding-bottom: 4px;    /* Space above the line */
         }
         
         .tooltip .value-row {
-            margin: 4px 0;
+            margin: 4px 0;          /* Vertical spacing between rows */
         }
         
         .tooltip .change {
-            color: #a0d8ff;
-            font-size: 11px;
+            color: #a0d8ff;         /* Light blue for change values */
+            font-size: 11px;        /* Smaller font */
         }
         
+        /* 
+            LEGEND STYLING
+            The note/explanation text below the chart.
+        */
         .legend {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #666;
+            margin-top: 20px;       /* Space above the legend */
+            font-size: 12px;        /* Small font */
+            color: #666;            /* Gray text */
         }
         
+        /* 
+            LOADING MESSAGE STYLING
+            Shown while the data is being loaded from the JSON file.
+        */
         .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
+            text-align: center;     /* Center the text */
+            padding: 40px;          /* Space around the message */
+            color: #666;            /* Gray text */
         }
     </style>
 </head>
 <body>
+    <!-- 
+        HTML BODY SECTION
+        This is the visible content of the webpage.
+        It contains the title, chart area, and legend.
+    -->
     <div class="container">
+        <!-- Main title of the visualization -->
         <h1>Canada Consumer Price Index (CPI) - Multi-Series</h1>
+        
+        <!-- Subtitle explaining what the chart shows -->
         <div class="subtitle">10 Years of Monthly Data - 6 Main Categories</div>
+        
+        <!-- 
+            CHART CONTAINER
+            This div holds the SVG element where the chart will be drawn.
+            The "loading" message is shown initially, then hidden when data loads.
+        -->
         <div class="chart-container">
             <div class="loading">Loading data...</div>
+            <!-- 
+                SVG ELEMENT
+                This is where D3.js will draw the chart.
+                It starts empty - D3 will add all the chart elements via JavaScript.
+            -->
             <svg id="chart"></svg>
         </div>
+        
+        <!-- 
+            LEGEND/EXPLANATION
+            Instructions for how to use the interactive chart.
+        -->
         <div class="legend">
             <p><strong>Note:</strong> Hover over the chart to dynamically re-index all series. Each series shows relative changes compared to the hovered date (baseline = 1×).</p>
         </div>
     </div>
     
+    <!-- 
+        TOOLTIP ELEMENT
+        This is a hidden div that will be shown when hovering over the chart.
+        It's positioned absolutely so it can appear anywhere on the page.
+    -->
     <div class="tooltip" id="tooltip"></div>
     
+    <!-- 
+        JAVASCRIPT SECTION
+        This is where all the chart logic lives.
+        D3.js uses this code to load data, create scales, draw lines, and handle interactions.
+    -->
     <script>
-        // Load data
+        // ============================================================================
+        // DATA LOADING SECTION
+        // ============================================================================
+        // This section loads the inflation data from a JSON file and prepares it
+        // for visualization. The data contains 6 categories of CPI data over 10 years.
+        
+        // Load the JSON file containing our inflation data
+        // d3.json() is a D3 function that fetches and parses JSON data
         d3.json("data/inflation_multi_series.json")
             .then(data => {
+                // Once the data is loaded, hide the "Loading data..." message
                 document.querySelector(".loading").style.display = "none";
                 
-                // Parse dates and prepare data - convert to Date objects and extract values
-                // Use UTC parsing to match scaleUtc
+                // ====================================================================
+                // DATA PREPARATION SECTION
+                // ====================================================================
+                // Convert the raw data into a format that D3 can work with.
+                // We need to parse dates and organize the data by category.
+                
+                // Create a function to parse dates from strings like "2015-01" into Date objects
+                // d3.utcParse() creates a parser that understands UTC (Coordinated Universal Time) dates
+                // "%Y-%m" means "Year-Month" format (e.g., "2015-01")
                 const parseDate = d3.utcParse("%Y-%m");
                 
-                // Transform data structure to match Observable pattern
-                // Each series has: {key: "Category", values: [{Date, value}]}
+                // Transform the data structure to match the pattern used in Observable examples
+                // Our JSON has: {series: [{category: "Food", data: [{date: "2015-01", value: 125.4}]}]}
+                // We need: [{key: "Food", values: [{Date: DateObject, value: 125.4}]}]
                 const series = data.series.map(({category, data: seriesData}) => ({
-                    key: category,
+                    key: category,  // The category name (e.g., "Food", "Housing")
+                    // Convert each data point: parse the date string into a Date object
                     values: seriesData.map(d => ({
-                        Date: parseDate(d.date),
-                        value: d.value
-                    })).filter(d => d.Date !== null) // Filter out any invalid dates
+                        Date: parseDate(d.date),  // Convert "2015-01" to a Date object
+                        value: d.value            // Keep the CPI value as-is
+                    })).filter(d => d.Date !== null)  // Remove any entries with invalid dates
                 }));
                 
-                // Normalize the series with respect to the value on the first date
+                // ====================================================================
+                // DATA NORMALIZATION SECTION
+                // ====================================================================
+                // Normalize each series so that the first value equals 1.0.
+                // This allows us to compare relative changes across categories.
+                // For example, if Food starts at 100 and goes to 120, and Housing starts
+                // at 150 and goes to 180, after normalization both show the same 20% increase.
+                
+                // For each series, divide all values by the first value
+                // This makes the first value = 1.0, and all other values are relative to it
                 const normalizedSeries = series.map(({key, values}) => {
-                    const v = values[0].value;
+                    const v = values[0].value;  // Get the first value in the series
+                    // Divide every value by the first value to normalize
                     return {key, values: values.map(({Date, value}) => ({Date, value: value / v}))};
                 });
                 
-                // Get all dates from all series for domain calculation
+                // Collect all dates from all series to determine the time range of the chart
+                // flatMap() flattens the array of arrays into a single array
                 const allDates = normalizedSeries.flatMap(s => s.values.map(d => d.Date));
                 
-                // Specify the chart's dimensions.
-                const width = 928;
-                const height = 600;
-                const marginTop = 20;
-                const marginRight = 120;  // Increased to accommodate labels
-                const marginBottom = 30;
-                const marginLeft = 40;
+                // ====================================================================
+                // CHART DIMENSIONS SECTION
+                // ====================================================================
+                // Define the size of the chart and spacing around it.
+                // These values control how much space the chart takes up and where
+                // elements like axes and labels are positioned.
                 
-                // Create the horizontal time scale.
+                const width = 928;        // Width of the main chart area (in pixels)
+                const height = 600;       // Height of the main chart area (in pixels)
+                const marginTop = 20;     // Space at the top (for labels)
+                const marginRight = 120;  // Space on the right (for category labels)
+                const marginBottom = 30;  // Space at the bottom (for x-axis)
+                const marginLeft = 40;    // Space on the left (for y-axis)
+                
+                // ====================================================================
+                // SCALE CREATION SECTION
+                // ====================================================================
+                // Scales are functions that convert data values (like dates and numbers)
+                // into pixel positions on the screen. Think of them as translators between
+                // "data space" and "screen space".
+                
+                // X-SCALE (Horizontal/Time Scale)
+                // Converts dates into horizontal positions on the chart
                 const x = d3.scaleUtc()
-                    .domain(d3.extent(allDates))
-                    .range([marginLeft, width - marginRight])
-                    .clamp(true);
+                    .domain(d3.extent(allDates))  // Domain: the range of dates (earliest to latest)
+                    .range([marginLeft, width - marginRight])  // Range: pixel positions (left to right)
+                    .clamp(true);  // Don't allow values outside the domain
                 
-                // Create the vertical scale. For each series, compute the ratio *s* between its maximum and
-                // minimum values; the path is going to move between [1 / s, 1] when the reference date
-                // corresponds to its maximum and [1, s] when it corresponds to its minimum. To have enough
-                // room, the scale is based on the series that has the maximum ratio *k*.
-                const k = d3.max(normalizedSeries, ({values}) => d3.max(values, d => d.value) / d3.min(values, d => d.value));
+                // Y-SCALE (Vertical/Value Scale)
+                // This is more complex - it uses a logarithmic scale, which is perfect for
+                // showing relative changes. A logarithmic scale means equal distances on
+                // the chart represent equal percentage changes, not equal dollar changes.
+                // 
+                // First, we calculate 'k' - the maximum ratio between min and max values
+                // across all series. This tells us how much variation we need to show.
+                const k = d3.max(normalizedSeries, ({values}) => 
+                    d3.max(values, d => d.value) / d3.min(values, d => d.value)
+                );
+                
+                // Create a logarithmic scale
+                // Domain: [1/k, k] means we can show values from 1/k times to k times the baseline
+                // Range: [height - marginBottom, marginTop] means bottom to top in pixels
                 const y = d3.scaleLog()
                     .domain([1 / k, k])
                     .rangeRound([height - marginBottom, marginTop]);
                 
-                // Create a color scale to identify series.
-                // Use a custom color scheme for better distinction
+                // ====================================================================
+                // COLOR SCHEME SECTION
+                // ====================================================================
+                // Assign a unique color to each category so users can distinguish them.
+                // Each category gets a distinct, easily distinguishable color.
+                
                 const colors = {
-                    "Overall": "#1f77b4",    // Blue
-                    "Food": "#ff7f0e",        // Orange
-                    "Housing": "#2ca02c",     // Green
-                    "Transport": "#d62728",   // Red
-                    "Health Care": "#9467bd", // Purple
-                    "Services": "#8c564b"     // Brown
+                    "Overall": "#1f77b4",    // Blue - for the overall CPI
+                    "Food": "#ff7f0e",        // Orange - for food prices
+                    "Housing": "#2ca02c",     // Green - for housing costs
+                    "Transport": "#d62728",   // Red - for transportation
+                    "Health Care": "#9467bd", // Purple - for health care
+                    "Services": "#8c564b"     // Brown - for services
                 };
+                
+                // Function to get the color for a category
                 const z = (key) => colors[key] || "#000000";
                 
-                // For each given series, the update function needs to identify the date—closest to the current
-                // date—that actually contains a value. To do this efficiently, it uses a bisector:
+                // ====================================================================
+                // BISECTOR SETUP
+                // ====================================================================
+                // A bisector is a tool for quickly finding the closest data point to
+                // a given date. When you hover over the chart, we need to find which
+                // month's data is closest to your mouse position.
+                // 
+                // Think of it like a phone book - if you want to find "Smith", you
+                // don't start at "A", you jump to the middle and work from there.
                 const bisect = d3.bisector(d => d.Date).left;
                 
-                // Create the SVG container.
-                // Add extra width for labels (labels are positioned at width - marginRight + 3, need ~80px for text)
-                const svgWidth = width + 80;  // Extra space for labels
+                // ====================================================================
+                // SVG CONTAINER CREATION
+                // ====================================================================
+                // Create the SVG (Scalable Vector Graphics) element where we'll draw the chart.
+                // SVG is like a canvas that can be scaled without losing quality.
+                
+                // Add extra width to accommodate the category labels on the right side
+                const svgWidth = width + 80;  // Extra 80 pixels for labels
+                
+                // Select the SVG element and set its dimensions
                 const svg = d3.select("#chart")
-                    .attr("width", svgWidth)
-                    .attr("height", height)
-                    .attr("viewBox", [0, 0, svgWidth, height])
+                    .attr("width", svgWidth)   // Total width including label space
+                    .attr("height", height)   // Height of the chart
+                    .attr("viewBox", [0, 0, svgWidth, height])  // Makes it scalable/responsive
                     .attr("style", "max-width: 100%; height: auto; -webkit-tap-highlight-color: transparent;");
                 
-                // Create the axes and central rule.
-                svg.append("g")
-                    .attr("transform", `translate(0,${height - marginBottom})`)
-                    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
-                    .call(g => g.select(".domain").remove());
+                // ====================================================================
+                // AXES CREATION SECTION
+                // ====================================================================
+                // Draw the axes (the lines with numbers) on the chart.
+                // The x-axis shows time (years), the y-axis shows relative values (1×, 2×, etc.)
                 
-                svg.append("g")
-                    .attr("transform", `translate(${marginLeft},0)`)
+                // X-AXIS (Bottom axis - shows time/years)
+                svg.append("g")  // Create a group element to hold the axis
+                    .attr("transform", `translate(0,${height - marginBottom})`)  // Position at bottom
+                    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))  // Create axis with ticks
+                    .call(g => g.select(".domain").remove());  // Remove the axis line (we only want ticks)
+                
+                // Y-AXIS (Left axis - shows relative values)
+                svg.append("g")  // Create a group element
+                    .attr("transform", `translate(${marginLeft},0)`)  // Position on the left
                     .call(d3.axisLeft(y)
-                        .ticks(null, x => +x.toFixed(6) + "×"))
+                        .ticks(null, x => +x.toFixed(6) + "×"))  // Format as "1.5×" meaning 1.5 times
+                    // Create grid lines (horizontal lines across the chart)
                     .call(g => g.selectAll(".tick line").clone()
-                        .attr("stroke-opacity", d => d === 1 ? null : 0.2)
-                        .attr("x2", width - marginLeft - marginRight))
-                    .call(g => g.select(".domain").remove());
+                        .attr("stroke-opacity", d => d === 1 ? null : 0.2)  // Make grid lines semi-transparent
+                        .attr("x2", width - marginLeft - marginRight))  // Extend across the chart
+                    .call(g => g.select(".domain").remove());  // Remove the axis line
                 
+                // ====================================================================
+                // VERTICAL RULE LINE
+                // ====================================================================
+                // This is the black vertical line that appears when you hover over the chart.
+                // It shows which date you're currently looking at.
                 const rule = svg.append("g")
                     .append("line")
-                    .attr("y1", height)
-                    .attr("y2", 0)
-                    .attr("stroke", "black");
+                    .attr("y1", height)  // Starts at the bottom
+                    .attr("y2", 0)        // Goes to the top
+                    .attr("stroke", "black");  // Black color
                 
-                // Create a line and a label for each series.
+                // ====================================================================
+                // DATA LINES CREATION SECTION
+                // ====================================================================
+                // Draw a line for each category (Food, Housing, Transport, etc.)
+                // Each line shows how that category's prices changed over time.
+                
+                // Create a group for each series (category)
                 const serie = svg.append("g")
-                    .style("font", "bold 10px sans-serif")
-                    .selectAll("g")
-                    .data(normalizedSeries)
-                    .join("g");
+                    .style("font", "bold 10px sans-serif")  // Font for labels
+                    .selectAll("g")  // Select all groups (initially none exist)
+                    .data(normalizedSeries)  // Bind data - one group per category
+                    .join("g");  // Create a group for each data item
                 
+                // Create a line generator function
+                // This function takes data points and converts them into a path (line) shape
                 const line = d3.line()
-                    .x(d => x(d.Date))
-                    .y(d => y(d.value));
+                    .x(d => x(d.Date))    // X position = date converted to pixel position
+                    .y(d => y(d.value));  // Y position = value converted to pixel position
                 
+                // Draw the actual line for each series
                 serie.append("path")
-                    .attr("fill", "none")
-                    .attr("stroke-width", 2)
-                    .attr("stroke-linejoin", "round")
-                    .attr("stroke-linecap", "round")
-                    .attr("stroke", d => z(d.key))
-                    .attr("d", d => line(d.values));
+                    .attr("fill", "none")  // Don't fill the area under the line
+                    .attr("stroke-width", 2)  // Line thickness
+                    .attr("stroke-linejoin", "round")  // Rounded corners where lines meet
+                    .attr("stroke-linecap", "round")   // Rounded line ends
+                    .attr("stroke", d => z(d.key))  // Color based on category
+                    .attr("d", d => line(d.values));  // Draw the line using the line generator
+                
+                // ====================================================================
+                // CATEGORY LABELS SECTION
+                // ====================================================================
+                // Add text labels on the right side of the chart showing each category name.
+                // The label is positioned at the end of each line.
                 
                 serie.append("text")
-                    .datum(d => ({key: d.key, value: d.values[d.values.length - 1].value}))
-                    .attr("fill", d => z(d.key))
-                    .attr("paint-order", "stroke")
-                    .attr("stroke", "white")
-                    .attr("stroke-width", 3)
-                    .attr("x", x.range()[1] + 3)
-                    .attr("y", d => y(d.value))
-                    .attr("dy", "0.35em")
-                    .style("font-size", "11px")
-                    .text(d => d.key);
+                    .datum(d => ({key: d.key, value: d.values[d.values.length - 1].value}))  // Use last data point
+                    .attr("fill", d => z(d.key))  // Color matches the line
+                    .attr("paint-order", "stroke")  // Draw stroke (outline) before fill
+                    .attr("stroke", "white")  // White outline for readability
+                    .attr("stroke-width", 3)  // Thick outline
+                    .attr("x", x.range()[1] + 3)  // Position at right edge of chart + 3px
+                    .attr("y", d => y(d.value))  // Vertical position matches line end
+                    .attr("dy", "0.35em")  // Slight vertical adjustment for alignment
+                    .style("font-size", "11px")  // Font size
+                    .text(d => d.key);  // Display the category name
                 
-                // Define the update function, that translates each of the series vertically depending on the
-                // ratio between its value at the current date and the value at date 0. Thanks to the log
-                // scale, this gives the same result as a normalization by the value at the current date.
+                // ====================================================================
+                // UPDATE FUNCTION
+                // ====================================================================
+                // This is the core interactive function. When you hover over the chart,
+                // it re-indexes all the data to show relative changes from that date.
+                // 
+                // The magic: Because we're using a logarithmic scale, we can simply
+                // move the lines up and down (translate them) instead of recalculating
+                // all the values. This is much faster and creates smooth animations.
+                
                 function update(date) {
-                    // Round to nearest month (since we have monthly data)
+                    // Round the date to the nearest month (since we have monthly data)
                     date = d3.utcMonth.round(date);
+                    
+                    // Move the vertical rule line to the hovered date
                     rule.attr("transform", `translate(${x(date) + 0.5},0)`);
+                    
+                    // For each series, calculate how much to move it vertically
+                    // The movement depends on the ratio between the value at the hovered
+                    // date and the value at the first date (the baseline)
                     serie.attr("transform", ({values}) => {
+                        // Find the data point closest to the hovered date
                         const i = bisect(values, date, 0, values.length - 1);
-                        // Clamp i to valid range
+                        // Make sure the index is valid (not out of bounds)
                         const idx = Math.max(0, Math.min(i, values.length - 1));
+                        
+                        // Calculate the vertical translation
+                        // y(1) is the position of 1.0 on the scale (the baseline)
+                        // y(values[idx].value / values[0].value) is where the current value should be
+                        // The difference tells us how much to move the line
                         return `translate(0,${y(1) - y(values[idx].value / values[0].value)})`;
                     });
-                    svg.property("value", date).dispatch("input"); // for viewof compatibility
+                    
+                    // Store the current date (for potential future use)
+                    svg.property("value", date).dispatch("input");
                 }
                 
-                // Create the introductory animation. It repeatedly calls the update function for dates ranging
-                // from the last to the first date of the x scale.
+                // ====================================================================
+                // INTRODUCTORY ANIMATION
+                // ====================================================================
+                // When the page first loads, animate the chart by moving through all dates
+                // from the most recent back to the oldest. This gives users a preview
+                // of how the interaction works.
+                
                 d3.transition()
-                    .ease(d3.easeCubicOut)
-                    .duration(1500)
+                    .ease(d3.easeCubicOut)  // Smooth easing (starts fast, ends slow)
+                    .duration(1500)          // Animation takes 1.5 seconds
                     .tween("date", () => {
+                        // Create an interpolator that smoothly moves from latest to earliest date
                         const i = d3.interpolateDate(x.domain()[1], x.domain()[0]);
+                        // For each frame of the animation, update the chart
                         return t => update(i(t));
                     });
                 
-                // When the user mouses over the chart, update it according to the date that is
-                // referenced by the horizontal position of the pointer.
+                // ====================================================================
+                // MOUSE INTERACTION SECTION
+                // ====================================================================
+                // When the user moves their mouse over the chart, update it to show
+                // the data relative to the date under the cursor.
+                
                 svg.on("mousemove touchmove", function(event) {
-                    update(x.invert(d3.pointer(event, this)[0]));
+                    // Get the mouse position relative to the SVG
+                    const [mouseX] = d3.pointer(event, this);
+                    // Convert the pixel position back to a date
+                    const date = x.invert(mouseX);
+                    // Update the chart for that date
+                    update(date);
+                    // Prevent default touch behavior on mobile
                     if (event.preventDefault) event.preventDefault();
                 });
                 
-                // Sets the date to the start of the x axis. This is redundant with the transition above;
-                // uncomment if you want to remove the transition.
+                // ====================================================================
+                // INITIAL STATE (OPTIONAL)
+                // ====================================================================
+                // Uncomment the line below if you want to start at the first date
+                // instead of running the animation. Currently, the animation handles this.
                 // update(x.domain()[0]);
             })
+            // ========================================================================
+            // ERROR HANDLING
+            // ========================================================================
+            // If the data file can't be loaded (wrong path, network error, etc.),
+            // show an error message to the user.
             .catch(error => {
                 console.error("Error loading data:", error);
                 document.querySelector(".loading").textContent = "Error loading data. Please check that inflation_multi_series.json exists.";
@@ -351,4 +622,3 @@
     </script>
 </body>
 </html>
-
