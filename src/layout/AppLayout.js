@@ -15,7 +15,7 @@ export function AppLayout() {
   footer.innerHTML = `
     <div class="container">
       <small>
-        Built by collaborators. Data sources are public Canadian sources, including Statistics Canada.
+        Helping Canadians understand their country.
       </small>
     </div>
   `;
