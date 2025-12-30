@@ -1,10 +1,4 @@
-const topics = [
-  {
-    title: "Consumer Price Index",
-    description: "Inflation and price changes over time.",
-    href: "#/topics/consumer-price-index",
-  },
-];
+import { topics } from "../data/topics.js";
 
 export function TopicsIndexPage() {
   return {

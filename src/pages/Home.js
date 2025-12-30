@@ -1,9 +1,31 @@
+import { topics } from "../data/topics.js";
+
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 export function HomePage() {
   return {
     title: "Home",
     render: (outlet) => {
       const page = document.createElement("div");
       page.className = "page";
+
+      const topicCards = topics
+        .map((topic) => {
+          return `
+            <a class="card span6" href="${topic.href}">
+              <h3>${escapeHtml(topic.title)}</h3>
+              <p>${escapeHtml(topic.description)}</p>
+            </a>
+          `;
+        })
+        .join("");
 
       page.innerHTML = `
         <h1>Canada, made easier to understand</h1>
@@ -12,14 +34,7 @@ export function HomePage() {
           We focus on public Canadian datasets and explain what the numbers mean.
         </p>
         <div class="cardGrid">
-          <a class="card span6" href="#/topics">
-            <h3>Explore topics</h3>
-            <p>Browse curated pages with charts and plain language explanations.</p>
-          </a>
-          <a class="card span6" href="#/topics/consumer-price-index">
-            <h3>Consumer Price Index</h3>
-            <p>See how prices change over time and learn how the index is measured.</p>
-          </a>
+          ${topicCards}
         </div>
       `;
 

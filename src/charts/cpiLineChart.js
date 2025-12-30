@@ -67,15 +67,15 @@ export function renderCpiLineChart({ container, dataUrl, width, height }) {
         .attr("transform", `translate(0,${innerH})`)
         .call(d3.axisBottom(x).ticks(6))
         .call((axisG) => {
-          axisG.selectAll("text").attr("fill", "rgba(232,238,252,0.75)");
-          axisG.selectAll("path,line").attr("stroke", "rgba(232,238,252,0.2)");
+          axisG.selectAll("text").attr("fill", "#6c757d").attr("font-size", "13px");
+          axisG.selectAll("path,line").attr("stroke", "#e0e0e0");
         });
 
       g.append("g")
         .call(d3.axisLeft(y).ticks(6))
         .call((axisG) => {
-          axisG.selectAll("text").attr("fill", "rgba(232,238,252,0.75)");
-          axisG.selectAll("path,line").attr("stroke", "rgba(232,238,252,0.2)");
+          axisG.selectAll("text").attr("fill", "#6c757d").attr("font-size", "13px");
+          axisG.selectAll("path,line").attr("stroke", "#e0e0e0");
         });
 
       const line = d3
@@ -86,16 +86,18 @@ export function renderCpiLineChart({ container, dataUrl, width, height }) {
       g.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "#9bd0ff")
-        .attr("stroke-width", 2.25)
+        .attr("stroke", "#0066cc")
+        .attr("stroke-width", 2.5)
         .attr("d", line);
 
       const last = data[data.length - 1];
       g.append("circle")
         .attr("cx", x(last.date))
         .attr("cy", y(last.value))
-        .attr("r", 3.5)
-        .attr("fill", "#ffce5c");
+        .attr("r", 4)
+        .attr("fill", "#ff6b35")
+        .attr("stroke", "#ffffff")
+        .attr("stroke-width", 2);
     })
     .catch((err) => {
       if (isDestroyed) return;
