@@ -8,7 +8,7 @@
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canada CPI Index Chart - 10 Years</title>
+    <title>Canada Consumer Price Index (CPI)</title>
     
     <!-- 
         D3.js LIBRARY
@@ -263,10 +263,10 @@
     -->
     <div class="container">
         <!-- Main title of the visualization -->
-        <h1>Canada Consumer Price Index (CPI) - Multi-Series</h1>
+        <h1>Canada Consumer Price Index (CPI)</h1>
         
-        <!-- Subtitle explaining what the chart shows -->
-        <div class="subtitle">10 Years of Monthly Data - 6 Main Categories</div>
+        <!-- Subtitle explaining what the chart shows - will be updated dynamically -->
+        <div class="subtitle" id="subtitle">10 Years of Monthly Data - 6 Main Categories</div>
         
         <!-- 
             CHART CONTAINER
@@ -313,7 +313,8 @@
         
         // Load the JSON file containing our inflation data
         // d3.json() is a D3 function that fetches and parses JSON data
-        d3.json("data/inflation_multi_series.json")
+        // Note: Since this HTML file is in src/, we need to go up one directory (..) to access data/
+        d3.json("../data/inflation_multi_series.json")
             .then(data => {
                 // Once the data is loaded, hide the "Loading data..." message
                 document.querySelector(".loading").style.display = "none";
@@ -333,7 +334,7 @@
                 // Our JSON has: {series: [{category: "Food", data: [{date: "2015-01", value: 125.4}]}]}
                 // We need: [{key: "Food", values: [{Date: DateObject, value: 125.4}]}]
                 const series = data.series.map(({category, data: seriesData}) => ({
-                    key: category,  // The category name (e.g., "Food", "Housing")
+                    key: category,  // The category name (e.g., "Food", "Shelter")
                     // Convert each data point: parse the date string into a Date object
                     values: seriesData.map(d => ({
                         Date: parseDate(d.date),  // Convert "2015-01" to a Date object
@@ -416,10 +417,10 @@
                 const colors = {
                     "Overall": "#1f77b4",    // Blue - for the overall CPI
                     "Food": "#ff7f0e",        // Orange - for food prices
-                    "Housing": "#2ca02c",     // Green - for housing costs
+                    "Shelter": "#2ca02c",     // Green - for shelter/housing costs
                     "Transport": "#d62728",   // Red - for transportation
-                    "Health Care": "#9467bd", // Purple - for health care
-                    "Services": "#8c564b"     // Brown - for services
+                    "Goods": "#9467bd",       // Purple - for household goods
+                    "Services": "#8c564b"     // Brown - for recreation, education and reading
                 };
                 
                 // Function to get the color for a category
@@ -489,7 +490,7 @@
                 // ====================================================================
                 // DATA LINES CREATION SECTION
                 // ====================================================================
-                // Draw a line for each category (Food, Housing, Transport, etc.)
+                // Draw a line for each category (Food, Shelter, Transport, etc.)
                 // Each line shows how that category's prices changed over time.
                 
                 // Create a group for each series (category)
@@ -545,6 +546,17 @@
                 function update(date) {
                     // Round the date to the nearest month (since we have monthly data)
                     date = d3.utcMonth.round(date);
+                    
+                    // Update the subtitle to show the current date
+                    // Format as "Month Year" (e.g., "January 2015")
+                    const subtitleElement = document.querySelector("#subtitle");
+                    if (subtitleElement) {
+                        subtitleElement.textContent = date.toLocaleString("en", {
+                            timeZone: "UTC",
+                            month: "long",
+                            year: "numeric"
+                        });
+                    }
                     
                     // Move the vertical rule line to the hovered date
                     rule.attr("transform", `translate(${x(date) + 0.5},0)`);
@@ -603,12 +615,26 @@
                     if (event.preventDefault) event.preventDefault();
                 });
                 
+                // When the mouse leaves the chart, reset to the initial date
+                svg.on("mouseleave", function() {
+                    const initialDate = x.domain()[0];
+                    update(initialDate);
+                });
+                
                 // ====================================================================
-                // INITIAL STATE (OPTIONAL)
+                // INITIAL STATE
                 // ====================================================================
-                // Uncomment the line below if you want to start at the first date
-                // instead of running the animation. Currently, the animation handles this.
-                // update(x.domain()[0]);
+                // Set the initial subtitle to show the first date
+                // The animation will update it as it runs
+                const initialDate = x.domain()[0];
+                const subtitleElement = document.querySelector("#subtitle");
+                if (subtitleElement) {
+                    subtitleElement.textContent = initialDate.toLocaleString("en", {
+                        timeZone: "UTC",
+                        month: "long",
+                        year: "numeric"
+                    });
+                }
             })
             // ========================================================================
             // ERROR HANDLING
@@ -617,7 +643,7 @@
             // show an error message to the user.
             .catch(error => {
                 console.error("Error loading data:", error);
-                document.querySelector(".loading").textContent = "Error loading data. Please check that inflation_multi_series.json exists.";
+                document.querySelector(".loading").textContent = "Error loading data. Please check that ../data/inflation_multi_series.json exists.";
             });
     </script>
 </body>

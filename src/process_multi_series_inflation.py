@@ -12,10 +12,10 @@ import json
 CATEGORIES = [
     ("All-items", "Overall"),
     ("Food", "Food"),
-    ("Shelter", "Housing"),
+    ("Shelter", "Shelter"),
     ("Transportation", "Transport"),
-    ("Health care", "Health Care"),
-    ("Services", "Services")
+    ("Household operations, furnishings and equipment", "Goods"),
+    ("Recreation, education and reading", "Services")
 ]
 
 def process_multi_series_inflation_data(csv_path: Path, output_path: Path = None, years: int = 10):
