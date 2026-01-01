@@ -8,7 +8,7 @@
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canada Consumer Price Index (CPI)</title>
+    <title>Consumer Price Index (CPI)</title>
     
     <!-- 
         D3.js LIBRARY
@@ -253,6 +253,29 @@
             padding: 40px;          /* Space around the message */
             color: #666;            /* Gray text */
         }
+        
+        /* 
+            ANNOTATION STYLING
+            Styles for the inflation increase annotation.
+        */
+        .annotation-group {
+            pointer-events: none;   /* Don't interfere with mouse events */
+        }
+        
+        .annotation-bg {
+            fill: rgba(255, 255, 255, 0.95);  /* Semi-transparent white background */
+            stroke: #333;           /* Dark border */
+            stroke-width: 1.5;
+            rx: 6;                  /* Rounded corners */
+            ry: 6;
+        }
+        
+        .annotation-text {
+            font-family: Helvetica, Arial, sans-serif;  /* Helvetica font */
+            font-size: 12px;        /* Font size for annotation */
+            fill: #333;             /* Dark text */
+            font-weight: 500;       /* Medium weight */
+        }
     </style>
 </head>
 <body>
@@ -263,7 +286,7 @@
     -->
     <div class="container">
         <!-- Main title of the visualization -->
-        <h1>Canada Consumer Price Index (CPI)</h1>
+        <h1>Consumer Price Index (CPI)</h1>
         
         <!-- Subtitle explaining what the chart shows - will be updated dynamically -->
         <div class="subtitle" id="subtitle">10 Years of Monthly Data - 6 Main Categories</div>
@@ -357,6 +380,10 @@
                     // Divide every value by the first value to normalize
                     return {key, values: values.map(({Date, value}) => ({Date, value: value / v}))};
                 });
+                
+                // Store reference to the original Overall series for inflation calculations
+                // We need the actual CPI values (not normalized) to calculate percentage increases
+                const overallSeries = series.find(s => s.key === "Overall");
                 
                 // Collect all dates from all series to determine the time range of the chart
                 // flatMap() flattens the array of arrays into a single array
@@ -488,6 +515,22 @@
                     .attr("stroke", "black");  // Black color
                 
                 // ====================================================================
+                // ANNOTATION GROUP
+                // ====================================================================
+                // Create a group for the inflation increase annotation
+                const annotationGroup = svg.append("g")
+                    .attr("class", "annotation-group");
+                
+                // Create background rectangle for the annotation
+                const annotationBg = annotationGroup.append("rect")
+                    .attr("class", "annotation-bg");
+                
+                // Create text element for the annotation
+                const annotationText = annotationGroup.append("text")
+                    .attr("class", "annotation-text")
+                    .style("text-anchor", "start");
+                
+                // ====================================================================
                 // DATA LINES CREATION SECTION
                 // ====================================================================
                 // Draw a line for each category (Food, Shelter, Transport, etc.)
@@ -576,6 +619,85 @@
                         // The difference tells us how much to move the line
                         return `translate(0,${y(1) - y(values[idx].value / values[0].value)})`;
                     });
+                    
+                    // ====================================================================
+                    // CALCULATE AND UPDATE INFLATION ANNOTATION
+                    // ====================================================================
+                    if (overallSeries) {
+                        // Find the data point at the hovered date
+                        const hoverIndex = bisect(overallSeries.values, date, 0, overallSeries.values.length - 1);
+                        const hoverIdx = Math.max(0, Math.min(hoverIndex, overallSeries.values.length - 1));
+                        const hoverValue = overallSeries.values[hoverIdx].value;
+                        const hoverDate = overallSeries.values[hoverIdx].Date;
+                        
+                        // Get the most recent value (last value in the series)
+                        const latestValue = overallSeries.values[overallSeries.values.length - 1].value;
+                        const latestDate = overallSeries.values[overallSeries.values.length - 1].Date;
+                        
+                        // Calculate percentage increase
+                        const percentIncrease = ((latestValue - hoverValue) / hoverValue) * 100;
+                        
+                        // Calculate number of years between dates
+                        // Using UTC months to be consistent with the data
+                        const monthsDiff = d3.utcMonth.count(hoverDate, latestDate);
+                        const yearsDiff = monthsDiff / 12;
+                        
+                        // Only show annotation if there's a meaningful time difference
+                        let annotationStr = "";
+                        if (yearsDiff > 0.01) { // At least ~4 days difference
+                            // Calculate annual average rate (compound annual growth rate)
+                            // Formula: ((latest / hovered) ^ (1/years)) - 1
+                            const annualAvgRate = (Math.pow(latestValue / hoverValue, 1 / yearsDiff) - 1) * 100;
+                            
+                            // Format the date for display (e.g., "Jan '15")
+                            const monthStr = hoverDate.toLocaleString("en", {
+                                timeZone: "UTC",
+                                month: "short"
+                            });
+                            const yearStr = hoverDate.toLocaleString("en", {
+                                timeZone: "UTC",
+                                year: "2-digit"
+                            });
+                            const dateStr = `${monthStr} '${yearStr}`;
+                            
+                            // Create the annotation text
+                            annotationStr = `Overall CPI has increased by ${percentIncrease.toFixed(1)}% since ${dateStr}, which represents an annual average of ${annualAvgRate.toFixed(1)}%`;
+                        } else {
+                            // If hovering at or very close to the latest date, show a different message
+                            annotationStr = "Hover over earlier dates to see inflation increase";
+                        }
+                        
+                        // Update annotation text and position (only if text exists)
+                        if (annotationStr) {
+                            // Set the text first so we can measure it
+                            annotationText.text(annotationStr);
+                            
+                            const textNode = annotationText.node();
+                            const bbox = textNode.getBBox();
+                            const padding = 10;
+                            
+                            // Position annotation on the left side of the chart
+                            // X: Position it in the left margin area (to the left of y-axis at x=40)
+                            // Use a small offset from the left edge to stay within the margin
+                            const annotationX = 10; // Position in the left margin area
+                            // Y: Position it in the upper portion of the chart area
+                            const annotationY = marginTop + 30;
+                            
+                            // Position the background rectangle
+                            // The background should surround the text with padding
+                            annotationBg
+                                .attr("x", annotationX - padding)
+                                .attr("y", annotationY - bbox.height - padding)
+                                .attr("width", bbox.width + (padding * 2))
+                                .attr("height", bbox.height + (padding * 2));
+                            
+                            // Position the text element
+                            // Note: SVG text y-coordinate is the baseline, not the top
+                            annotationText
+                                .attr("x", annotationX)
+                                .attr("y", annotationY);
+                        }
+                    }
                     
                     // Store the current date (for potential future use)
                     svg.property("value", date).dispatch("input");
