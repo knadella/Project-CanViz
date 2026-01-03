@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Inflation Contribution Analysis</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin-top: 0;
+            color: #333;
+            font-size: 28px;
+        }
+        
+        .controls {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .control-group label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .control-group input,
+        .control-group select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: #1f77b4;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #1f77b4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        button:hover {
+            background-color: #1565a0;
+        }
+        
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+            min-height: 1200px;
+        }
+        
+        #chart {
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .summary {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e8f4f8;
+            border-radius: 6px;
+            border-left: 4px solid #1f77b4;
+        }
+        
+        .summary h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .stat-value.positive {
+            color: #d62728;
+        }
+        
+        .stat-value.negative {
+            color: #2ca02c;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .error {
+            padding: 15px;
+            background-color: #fee;
+            border: 1px solid #fcc;
+            border-radius: 6px;
+            color: #c33;
+            margin: 20px 0;
+        }
+        
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        
+        .tooltip.visible {
+            opacity: 1;
+        }
+        
+        .tooltip strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 4px;
+        }
+        
+        .tooltip .value-row {
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Food Inflation Contribution Analysis</h1>
+        <p class="subtitle">Decompose Food inflation into percentage point contributions from each subcategory</p>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label>Start Date</label>
+                <input type="month" id="startDate" value="2024-11">
+            </div>
+            <div class="control-group">
+                <label>End Date</label>
+                <input type="month" id="endDate" value="2025-11">
+            </div>
+            <div class="control-group">
+                <label>Weight Type</label>
+                <select id="weightType">
+                    <option value="link_month">Link Month Prices</option>
+                    <option value="reference">Reference Period Prices</option>
+                </select>
+            </div>
+            <div class="control-group" style="justify-content: flex-end;">
+                <button id="calculateBtn">Calculate Contributions</button>
+            </div>
+        </div>
+        
+        <div class="loading" id="loading" style="display: none;">Loading data...</div>
+        <div class="error" id="error" style="display: none;"></div>
+        
+        <div class="summary" id="summary" style="display: none;">
+            <h3>Summary</h3>
+            <div class="summary-stats">
+                <div class="stat">
+                    <div class="stat-label">Total Food Inflation</div>
+                    <div class="stat-value" id="totalInflation">-</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Total Contribution</div>
+                    <div class="stat-value" id="totalContribution">-</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Period</div>
+                    <div class="stat-value" id="period" style="font-size: 16px;">-</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <svg id="chart"></svg>
+        </div>
+    </div>
+    
+    <div class="tooltip" id="tooltip"></div>
+    
+    <script>
+        // Load data
+        let foodData = null;
+        let weightsData = null;
+        
+        // Show loading initially
+        document.getElementById("loading").style.display = "block";
+        
+        Promise.all([
+            d3.json("../data/food_subcategories.json"),
+            d3.json("../data/basket_weights.json")
+        ]).then(([food, weights]) => {
+            foodData = food;
+            weightsData = weights;
+            document.getElementById("loading").style.display = "none";
+            
+            // Set default dates to last year (use 2024-11 to 2025-11 as default)
+            // This matches the available data range
+            document.getElementById("endDate").value = "2025-11";
+            document.getElementById("startDate").value = "2024-11";
+            
+            // Calculate on load
+            calculateContributions();
+        }).catch(error => {
+            console.error("Error loading data:", error);
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("error").style.display = "block";
+            document.getElementById("error").textContent = `Error loading data: ${error.message}. Check browser console for details.`;
+        });
+        
+        // Calculate contributions
+        function calculateContributions() {
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+            const weightType = document.getElementById("weightType").value;
+            const useLinkMonth = weightType === "link_month";
+            
+            if (!foodData || !weightsData) {
+                return;
+            }
+            
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("error").style.display = "none";
+            
+            try {
+                console.log("Calculating with:", { startDate, endDate, useLinkMonth, hasFoodData: !!foodData, hasWeightsData: !!weightsData });
+                const results = calculateFoodContributions(startDate, endDate, useLinkMonth);
+                console.log("Calculation results:", results);
+                
+                if (!results || !results.contributions || results.contributions.length === 0) {
+                    throw new Error("No contributions calculated. Results: " + JSON.stringify(results));
+                }
+                
+                displayResults(results);
+                drawIcicleChart(results);
+                document.getElementById("loading").style.display = "none";
+            } catch (error) {
+                console.error("Calculation error:", error);
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("error").style.display = "block";
+                document.getElementById("error").textContent = `Error: ${error.message}. Check browser console for details.`;
+            }
+        }
+        
+        function calculateFoodContributions(startDate, endDate, useLinkMonth) {
+            const weightsKey = useLinkMonth ? 'link_month_weights' : 'reference_period_weights';
+            const weights = weightsData[weightsKey];
+            
+            if (!weights) {
+                throw new Error(`Weights not found for key: ${weightsKey}`);
+            }
+            
+            // Find Food category for overall inflation
+            const foodSeries = foodData.series.find(s => s.category === 'Food');
+            if (!foodSeries) {
+                throw new Error("Food series not found in data");
+            }
+            
+            const foodStart = getCpiValue(foodSeries.data, startDate);
+            const foodEnd = getCpiValue(foodSeries.data, endDate);
+            
+            if (!foodStart || !foodEnd) {
+                throw new Error(`Missing Food CPI data for ${startDate} or ${endDate}`);
+            }
+            
+            const totalFoodInflation = ((foodEnd / foodStart - 1) * 100);
+            
+            // Calculate contributions for each subcategory
+            const contributions = [];
+            let totalContribution = 0;
+            
+            for (const series of foodData.series) {
+                if (series.category === 'Food') continue;
+                
+                const weight = weights[series.category];
+                if (!weight) {
+                    console.warn(`No weight found for category: ${series.category}`);
+                    continue;
+                }
+                
+                const startValue = getCpiValue(series.data, startDate);
+                const endValue = getCpiValue(series.data, endDate);
+                
+                if (!startValue || !endValue) {
+                    console.warn(`Missing data for ${series.category} at ${startDate} or ${endDate}`);
+                    continue;
+                }
+                
+                const pctChange = ((endValue / startValue - 1) * 100);
+                const contribution = weight * pctChange;
+                totalContribution += contribution;
+                
+                contributions.push({
+                    name: series.category,
+                    weight: weight,
+                    startValue: startValue,
+                    endValue: endValue,
+                    percentageChange: pctChange,
+                    contribution: contribution
+                });
+            }
+            
+            if (contributions.length === 0) {
+                throw new Error("No contributions calculated. Check date range and data availability.");
+            }
+            
+            // Sort by absolute contribution
+            contributions.sort((a, b) => Math.abs(b.contribution) - Math.abs(a.contribution));
+            
+            return {
+                startDate,
+                endDate,
+                totalFoodInflation,
+                totalContribution,
+                contributions
+            };
+        }
+        
+        function getCpiValue(data, date) {
+            const point = data.find(d => d.date === date);
+            return point ? point.value : null;
+        }
+        
+        function displayResults(results) {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("summary").style.display = "block";
+            
+            const inflationEl = document.getElementById("totalInflation");
+            inflationEl.textContent = `${results.totalFoodInflation.toFixed(2)}%`;
+            inflationEl.className = `stat-value ${results.totalFoodInflation >= 0 ? 'positive' : 'negative'}`;
+            
+            const contributionEl = document.getElementById("totalContribution");
+            contributionEl.textContent = `${results.totalContribution.toFixed(2)} pp`;
+            contributionEl.className = `stat-value ${results.totalContribution >= 0 ? 'positive' : 'negative'}`;
+            
+            document.getElementById("period").textContent = 
+                `${results.startDate} to ${results.endDate}`;
+        }
+        
+        function drawIcicleChart(results) {
+            // Specify the chart's dimensions.
+            const width = 928;
+            const height = 1200;
+            
+            // Create hierarchical data structure
+            const data = {
+                name: "Food",
+                value: Math.abs(results.totalContribution),
+                contribution: results.totalContribution,
+                children: results.contributions.map(c => ({
+                    name: c.name,
+                    value: Math.abs(c.contribution),
+                    contribution: c.contribution,
+                    weight: c.weight,
+                    percentageChange: c.percentageChange
+                }))
+            };
+            
+            // Create the color scale.
+            const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+            
+            // Compute the layout.
+            const hierarchy = d3.hierarchy(data)
+                .sum(d => d.value)
+                .sort((a, b) => b.height - a.height || b.value - a.value);
+            
+            const root = d3.partition()
+                .size([height, (hierarchy.height + 1) * width / 3])
+                (hierarchy);
+            
+            // Clear existing chart
+            const svg = d3.select("#chart")
+                .attr("viewBox", [0, 0, width, height])
+                .attr("width", width)
+                .attr("height", height)
+                .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;");
+            
+            svg.selectAll("*").remove();
+            
+            // Append cells.
+            const cell = svg
+                .selectAll("g")
+                .data(root.descendants())
+                .join("g")
+                .attr("transform", d => `translate(${d.y0},${d.x0})`);
+            
+            const rect = cell.append("rect")
+                .attr("width", d => d.y1 - d.y0 - 1)
+                .attr("height", d => rectHeight(d))
+                .attr("fill-opacity", 0.6)
+                .attr("fill", d => {
+                    if (!d.depth) return "#ccc";
+                    while (d.depth > 1) d = d.parent;
+                    return color(d.data.name);
+                })
+                .style("cursor", "pointer")
+                .on("click", clicked)
+                .on("mouseover", function(event, d) {
+                    showTooltip(event, d);
+                })
+                .on("mousemove", function(event) {
+                    moveTooltip(event);
+                })
+                .on("mouseout", function() {
+                    hideTooltip();
+                });
+            
+            const text = cell.append("text")
+                .style("user-select", "none")
+                .attr("pointer-events", "none")
+                .attr("x", 4)
+                .attr("y", 13)
+                .attr("fill-opacity", d => +labelVisible(d));
+            
+            text.append("tspan")
+                .text(d => d.data.name);
+            
+            const format = d3.format(".2f");
+            const tspan = text.append("tspan")
+                .attr("fill-opacity", d => labelVisible(d) * 0.7)
+                .text(d => {
+                    if (d.data.contribution !== undefined) {
+                        const sign = d.data.contribution >= 0 ? '+' : '';
+                        return ` ${sign}${format(d.data.contribution)} pp`;
+                    }
+                    return ` ${format(d.value)}`;
+                });
+            
+            cell.append("title")
+                .text(d => {
+                    const path = d.ancestors().map(d => d.data.name).reverse().join("/");
+                    if (d.data.contribution !== undefined) {
+                        const sign = d.data.contribution >= 0 ? '+' : '';
+                        return `${path}\n${sign}${format(d.data.contribution)} pp`;
+                    }
+                    return `${path}\n${format(d.value)}`;
+                });
+            
+            // On click, change the focus and transitions it into view.
+            let focus = root;
+            function clicked(event, p) {
+                focus = focus === p ? p = p.parent : p;
+                
+                root.each(d => d.target = {
+                    x0: (d.x0 - p.x0) / (p.x1 - p.x0) * height,
+                    x1: (d.x1 - p.x0) / (p.x1 - p.x0) * height,
+                    y0: d.y0 - p.y0,
+                    y1: d.y1 - p.y0
+                });
+                
+                const t = cell.transition().duration(750)
+                    .attr("transform", d => `translate(${d.target.y0},${d.target.x0})`);
+                
+                rect.transition(t).attr("height", d => rectHeight(d.target));
+                text.transition(t).attr("fill-opacity", d => +labelVisible(d.target));
+                tspan.transition(t).attr("fill-opacity", d => labelVisible(d.target) * 0.7);
+            }
+            
+            function rectHeight(d) {
+                return d.x1 - d.x0 - Math.min(1, (d.x1 - d.x0) / 2);
+            }
+            
+            function labelVisible(d) {
+                return d.y1 <= width && d.y0 >= 0 && d.x1 - d.x0 > 16;
+            }
+            
+            // Tooltip functions
+            const tooltip = d3.select("#tooltip");
+            
+            function showTooltip(event, d) {
+                const data = d.data;
+                let html = `<strong>${data.name}</strong>`;
+                
+                if (data.contribution !== undefined) {
+                    const sign = data.contribution >= 0 ? '+' : '';
+                    html += `<div class="value-row">Contribution: ${sign}${data.contribution.toFixed(2)} pp</div>`;
+                }
+                
+                if (data.weight !== undefined) {
+                    html += `<div class="value-row">Weight: ${(data.weight * 100).toFixed(1)}%</div>`;
+                }
+                
+                if (data.percentageChange !== undefined) {
+                    const sign = data.percentageChange >= 0 ? '+' : '';
+                    html += `<div class="value-row">% Change: ${sign}${data.percentageChange.toFixed(2)}%</div>`;
+                }
+                
+                tooltip.html(html);
+                tooltip.classed("visible", true);
+            }
+            
+            function moveTooltip(event) {
+                tooltip
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 10) + "px");
+            }
+            
+            function hideTooltip() {
+                tooltip.classed("visible", false);
+            }
+        }
+        
+        // Event listeners
+        document.getElementById("calculateBtn").addEventListener("click", calculateContributions);
+        document.getElementById("startDate").addEventListener("change", calculateContributions);
+        document.getElementById("endDate").addEventListener("change", calculateContributions);
+        document.getElementById("weightType").addEventListener("change", calculateContributions);
+    </script>
+</body>
+</html>
+

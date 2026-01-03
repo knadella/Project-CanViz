@@ -1,0 +1,17 @@
+{
+  "reference_period_weights": {
+    "Food from Stores": 0.647,
+    "Fast Food & Take-out": 0.209,
+    "Table-Service Restaurants": 0.120,
+    "Cafeterias & Other": 0.024
+  },
+  "link_month_weights": {
+    "Food from Stores": 0.647,
+    "Fast Food & Take-out": 0.209,
+    "Table-Service Restaurants": 0.120,
+    "Cafeterias & Other": 0.024
+  },
+  "last_updated": "2024-06",
+  "note": "Weights are normalized to sum to 1.0 within Food category. Based on 2024 basket: Food from Stores (64.7%), Fast Food (20.9%), Table-Service (12.0%), Cafeterias (2.4%). These are leaf categories to avoid double-counting."
+}
+
