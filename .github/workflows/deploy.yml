@@ -2,13 +2,13 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["production"]
+    branches: ["production", "zoomable_icicle_kn", "main"]
   workflow_dispatch:
     inputs:
       ref:
-        description: "Branch, tag, or SHA to deploy (default: production)"
+        description: "Branch, tag, or SHA to deploy"
         required: false
-        default: "production"
+        default: "zoomable_icicle_kn"
 
 permissions:
   contents: read
@@ -58,6 +58,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-
-
