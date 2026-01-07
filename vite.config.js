@@ -1,9 +1,6 @@
 import { defineConfig } from "vite";
 
-export default defineConfig(({ command }) => {
-  return {
-    // Use "/" for root deployment or "/repo-name/" for project sites
-    // Set to "/" for deploying to root of GitHub Pages
-    base: "/",
-  };
+export default defineConfig({
+  // For GitHub Pages project sites: username.github.io/repo-name/
+  base: "/Project-CanViz/",
 });
