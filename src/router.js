@@ -1,6 +1,7 @@
 import { HomePage } from "./pages/Home.js";
 import { TopicsIndexPage } from "./pages/TopicsIndex.js";
 import { ConsumerPriceIndexPage } from "./pages/topics/ConsumerPriceIndex.js";
+import { InflationStoryPage } from "./pages/topics/InflationStory.js";
 
 function normalisePath(path) {
   const trimmed = (path || "").trim();
@@ -10,7 +11,6 @@ function normalisePath(path) {
 }
 
 function getHashPath() {
-  // location.hash includes the leading #, example: "#/topics"
   const raw = window.location.hash.replace(/^#/, "");
   return normalisePath(raw);
 }
@@ -18,13 +18,13 @@ function getHashPath() {
 export function createRouter({ outlet, setTitle }) {
   if (!outlet) throw new Error("Router requires an outlet element");
 
-  /** @type {{ destroy?: () => void } | null} */
   let current = null;
 
   const routes = {
     "/": HomePage,
     "/topics": TopicsIndexPage,
     "/topics/consumer-price-index": ConsumerPriceIndexPage,
+    "/topics/inflation-story": InflationStoryPage,
   };
 
   function renderNotFound(path) {
@@ -32,7 +32,7 @@ export function createRouter({ outlet, setTitle }) {
     outlet.innerHTML = "";
 
     const wrap = document.createElement("div");
-    wrap.className = "page";
+    wrap.className = "page container";
     wrap.innerHTML = `
       <h1>Page not found</h1>
       <p>We could not find <code>${escapeHtml(path)}</code>.</p>
@@ -79,6 +79,3 @@ function escapeHtml(str) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
-
-
-
