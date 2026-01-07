@@ -1,0 +1,293 @@
+:root {
+  --bg: #f8f9fa;
+  --panel: #ffffff;
+  --text: #1a1a1a;
+  --muted: #6c757d;
+  --link: #0066cc;
+  --linkHover: #0052a3;
+  --border: #e0e0e0;
+  --accent: #ff6b35;
+  --accentLight: #fff4f0;
+  --maxWidth: 1200px;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadowHover: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--linkHover);
+  text-decoration: underline;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+.appHeader {
+  position: sticky;
+  top: 0;
+  background: rgba(248, 249, 250, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .navBar {
+    padding: 20px 40px;
+  }
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  transition: opacity 0.2s ease;
+}
+
+.brand:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.navContainer {
+  position: relative;
+}
+
+.topicsButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-weight: 500;
+  font-size: 15px;
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.topicsButton:hover {
+  border-color: var(--link);
+  background: rgba(0, 102, 204, 0.05);
+  color: var(--link);
+}
+
+.topicsButton[aria-expanded="true"] {
+  border-color: var(--link);
+  background: rgba(0, 102, 204, 0.08);
+  color: var(--link);
+}
+
+.topicsDropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadowHover);
+  min-width: 220px;
+  z-index: 100;
+  padding: 8px 0;
+}
+
+.topicsDropdown[hidden] {
+  display: none;
+}
+
+.dropdownLink {
+  display: block;
+  padding: 12px 20px;
+  color: var(--text);
+  font-size: 15px;
+  transition: background 0.15s ease;
+  text-decoration: none;
+}
+
+.dropdownLink:hover {
+  background: rgba(0, 102, 204, 0.08);
+  color: var(--link);
+  text-decoration: none;
+}
+
+.appMain {
+  padding: 48px 0 64px;
+  min-height: calc(100vh - 200px);
+}
+
+.appFooter {
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  background: #ffffff;
+  margin-top: 64px;
+}
+
+.appFooter small {
+  font-size: 14px;
+}
+
+.page h1 {
+  margin: 0 0 16px;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.page h2 {
+  margin: 40px 0 16px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  color: var(--text);
+}
+
+.page p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.page p:last-child {
+  margin-bottom: 0;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.card {
+  grid-column: span 12;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadowHover);
+  border-color: var(--link);
+  text-decoration: none;
+}
+
+.card h3 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (min-width: 820px) {
+  .card.span6 {
+    grid-column: span 6;
+  }
+}
+
+.chartPanel {
+  margin-top: 32px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.chartTitleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.chartTitleRow h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.chartTitleRow small {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+
+
