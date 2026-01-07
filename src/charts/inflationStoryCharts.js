@@ -138,7 +138,7 @@ const WEIGHT_MAP = {
 export function initCpiChart() {
   const d3 = window.d3;
   
-  d3.json("/data/inflation_multi_series.json")
+  d3.json(import.meta.env.BASE_URL + "data/inflation_multi_series.json")
     .then(data => {
       document.getElementById("cpi-loading").style.display = "none";
       
@@ -356,8 +356,8 @@ export function initIcicleChart() {
   const d3 = window.d3;
   
   Promise.all([
-    d3.json("/data/all_subcategories.json"),
-    d3.json("/data/basket_weights.json")
+    d3.json(import.meta.env.BASE_URL + "data/all_subcategories.json"),
+    d3.json(import.meta.env.BASE_URL + "data/basket_weights.json")
   ]).then(([subcats, weights]) => {
     allSubcatData = subcats;
     weightsData = weights;
