@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Inflation Story | A Visual Journey</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0f1a;
+            --bg-card: #111827;
+            --accent-coral: #ff6b6b;
+            --accent-teal: #4ecdc4;
+            --accent-gold: #f9c74f;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-subtle: rgba(255,255,255,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(78, 205, 196, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 107, 107, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(249, 199, 79, 0.08) 0%, transparent 60%),
+                var(--bg-dark);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold) 50%, var(--accent-coral) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-teal);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: var(--accent-teal);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-number::after {
+            content: '';
+            height: 1px;
+            width: 60px;
+            background: linear-gradient(90deg, var(--accent-teal), transparent);
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .section .lead {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* Chart Container */
+        .chart-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
+        }
+
+        .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .chart-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            overflow: visible;
+        }
+
+        #cpi-chart, #food-chart {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .chart-note {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: rgba(78, 205, 196, 0.08);
+            border-left: 3px solid var(--accent-teal);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .chart-note strong {
+            color: var(--accent-teal);
+        }
+
+        /* Transition Section */
+        .transition-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(255, 107, 107, 0.1) 0%, transparent 60%);
+        }
+
+        .big-stat {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-coral) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .big-stat-label {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            margin: 1.5rem 0;
+            padding: 1.25rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .control-group label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .control-group input,
+        .control-group select {
+            padding: 0.6rem 1rem;
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .control-group input:focus,
+        .control-group select:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+        }
+
+        button.calculate-btn {
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-teal) 0%, #3db9b0 100%);
+            color: var(--bg-dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        button.calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .preset-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .preset-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .preset-btn:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--accent-teal);
+            color: var(--text-primary);
+        }
+
+        .preset-btn.active {
+            background: linear-gradient(135deg, var(--accent-teal) 0%, #3db9b0 100%);
+            border-color: var(--accent-teal);
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
+
+        .date-display {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(78, 205, 196, 0.08);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .date-display #dateRangeText {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .date-display #periodLength {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Summary Stats */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.25rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+        }
+
+        .stat-card .stat-value.positive { color: var(--accent-coral); }
+        .stat-card .stat-value.negative { color: var(--accent-teal); }
+
+        /* Tooltip */
+        .tooltip {
+            position: absolute;
+            background: rgba(17, 24, 39, 0.95);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .tooltip.visible { opacity: 1; }
+
+        .tooltip strong {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.4rem;
+        }
+
+        .tooltip .value-row {
+            margin: 0.25rem 0;
+            color: var(--text-secondary);
+        }
+
+        /* Annotation */
+        .annotation-bg {
+            fill: var(--bg-card);
+            stroke: var(--accent-teal);
+            stroke-width: 1;
+        }
+
+        .annotation-text {
+            fill: var(--text-primary);
+            font-size: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer a {
+            color: var(--accent-teal);
+            text-decoration: none;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .error {
+            padding: 1rem 1.25rem;
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 8px;
+            color: var(--accent-coral);
+            margin: 1rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 1.25rem;
+            }
+            .chart-wrapper {
+                padding: 1.25rem;
+            }
+            .controls {
+                flex-direction: column;
+            }
+            .control-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>The Inflation Story</h1>
+            <p class="subtitle">A decade of rising prices, visualized. Explore how the cost of living has changed across Canada from 2015 to 2025.</p>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Section 1: CPI Overview -->
+    <section class="section" id="overview">
+        <div class="section-header">
+            <div class="section-number">Part One</div>
+            <h2>The Big Picture</h2>
+            <p class="lead">The Consumer Price Index (CPI) tracks how prices change over time. Hover over the chart to see how each category has performed relative to any starting point you choose.</p>
+        </div>
+
+        <div class="chart-wrapper">
+            <h3 class="chart-title">Consumer Price Index by Category</h3>
+            <p class="chart-subtitle" id="cpi-subtitle">10 Years of Monthly Data — 6 Main Categories</p>
+            
+            <div class="chart-container">
+                <div class="loading" id="cpi-loading">Loading data...</div>
+                <svg id="cpi-chart"></svg>
+            </div>
+
+            <div class="chart-note">
+                <strong>Tip:</strong> Move your cursor across the chart to re-index all series from that date. Watch how relative performance shifts depending on your starting point.
+            </div>
+        </div>
+    </section>
+
+    <!-- Transition -->
+    <section class="transition-section">
+        <div class="big-stat" id="overall-increase">33%</div>
+        <p class="big-stat-label">Overall prices have increased since January 2015 — but not all categories are equal.</p>
+    </section>
+
+    <!-- Section 2: Category Deep Dive -->
+    <section class="section" id="category-analysis">
+        <div class="section-header">
+            <div class="section-number">Part Two</div>
+            <h2>Breaking Down the Basket</h2>
+            <p class="lead">See which categories drive overall inflation. Click any category to drill down into its components — all the way down to individual items like beef, cheese, or gasoline.</p>
+        </div>
+
+        <div class="chart-wrapper">
+            <h3 class="chart-title">Inflation Contributors by Category</h3>
+            <p class="chart-subtitle">Percentage point contributions to overall CPI change</p>
+
+            <div class="controls">
+                <div class="control-group" style="flex: 1; min-width: 100%;">
+                    <label>Time Period Presets</label>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-preset="1y">1 Year</button>
+                        <button class="preset-btn" data-preset="2y">2 Years</button>
+                        <button class="preset-btn" data-preset="5y">5 Years</button>
+                        <button class="preset-btn active" data-preset="all">All Time</button>
+                        <button class="preset-btn" data-preset="covid">COVID Era</button>
+                        <button class="preset-btn" data-preset="ytd">YTD</button>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label>Start Date</label>
+                    <input type="month" id="startDate" value="2015-01" min="2015-01" max="2025-11">
+                </div>
+                <div class="control-group">
+                    <label>End Date</label>
+                    <input type="month" id="endDate" value="2025-11" min="2015-01" max="2025-11">
+                </div>
+            </div>
+            
+            <div class="date-display" id="dateRangeDisplay">
+                <span id="dateRangeText">January 2015 — November 2025</span>
+                <span id="periodLength">(10 years, 10 months)</span>
+            </div>
+
+            <div class="loading" id="food-loading" style="display: none;">Calculating contributions...</div>
+            <div class="error" id="food-error" style="display: none;"></div>
+
+            <div class="summary-grid" id="summary" style="display: none;">
+                <div class="stat-card">
+                    <div class="stat-label">Total Food Inflation</div>
+                    <div class="stat-value" id="totalInflation">—</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Contribution</div>
+                    <div class="stat-value" id="totalContribution">—</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Period</div>
+                    <div class="stat-value" id="period" style="font-size: 1rem; color: var(--text-secondary);">—</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <svg id="food-chart"></svg>
+            </div>
+
+            <div class="chart-note">
+                <strong>Drill Down:</strong> Click any category to explore its subcategories. For example: <span style="color: var(--accent-coral);">Food</span> → Stores → Meat → Beef. Click a parent to zoom back out. Each level shows official Statistics Canada basket weights.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Data source: Statistics Canada (Table 18-10-0004-01: CPI, Table 18-10-0007-01: Basket Weights 2024)</p>
+        <p style="margin-top: 0.5rem;">Built with <a href="https://d3js.org" target="_blank">D3.js</a></p>
+    </footer>
+
+    <!-- Tooltips -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // ========================================================================
+        // CHART 1: CPI OVERVIEW LINE CHART
+        // ========================================================================
+        
+        d3.json("../data/inflation_multi_series.json")
+            .then(data => {
+                document.getElementById("cpi-loading").style.display = "none";
+                
+                const parseDate = d3.utcParse("%Y-%m");
+                
+                const series = data.series.map(({category, data: seriesData}) => ({
+                    key: category,
+                    values: seriesData.map(d => ({
+                        Date: parseDate(d.date),
+                        value: d.value
+                    })).filter(d => d.Date !== null)
+                }));
+                
+                // Calculate overall increase for the big stat
+                const overallSeriesForStat = series.find(s => s.key === "Overall");
+                if (overallSeriesForStat && overallSeriesForStat.values.length > 0) {
+                    const firstOverall = overallSeriesForStat.values[0].value;
+                    const lastOverall = overallSeriesForStat.values[overallSeriesForStat.values.length - 1].value;
+                    const overallPctIncrease = ((lastOverall - firstOverall) / firstOverall * 100).toFixed(0);
+                    document.getElementById("overall-increase").textContent = overallPctIncrease + "%";
+                }
+                
+                const normalizedSeries = series.map(({key, values}) => {
+                    const v = values[0].value;
+                    return {key, values: values.map(({Date, value}) => ({Date, value: value / v}))};
+                });
+                
+                const overallSeries = series.find(s => s.key === "Overall");
+                const allDates = normalizedSeries.flatMap(s => s.values.map(d => d.Date));
+                
+                const width = 928;
+                const height = 520;
+                const marginTop = 20;
+                const marginRight = 120;
+                const marginBottom = 30;
+                const marginLeft = 50;
+                
+                const x = d3.scaleUtc()
+                    .domain(d3.extent(allDates))
+                    .range([marginLeft, width - marginRight])
+                    .clamp(true);
+                
+                const k = d3.max(normalizedSeries, ({values}) => 
+                    d3.max(values, d => d.value) / d3.min(values, d => d.value)
+                );
+                
+                const y = d3.scaleLog()
+                    .domain([1 / k, k])
+                    .rangeRound([height - marginBottom, marginTop]);
+                
+                const colors = {
+                    "Overall": "#94a3b8",
+                    "Food": "#ff6b6b",
+                    "Shelter": "#4ecdc4",
+                    "Transport": "#f9c74f",
+                    "Goods": "#a78bfa",
+                    "Services": "#fb923c"
+                };
+                
+                const z = (key) => colors[key] || "#666";
+                const bisect = d3.bisector(d => d.Date).left;
+                
+                const svgWidth = width + 80;
+                
+                const svg = d3.select("#cpi-chart")
+                    .attr("width", svgWidth)
+                    .attr("height", height)
+                    .attr("viewBox", [0, 0, svgWidth, height])
+                    .attr("style", "max-width: 100%; height: auto;");
+                
+                // X-Axis
+                svg.append("g")
+                    .attr("transform", `translate(0,${height - marginBottom})`)
+                    .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+                    .call(g => g.select(".domain").attr("stroke", "rgba(255,255,255,0.2)"))
+                    .call(g => g.selectAll(".tick line").attr("stroke", "rgba(255,255,255,0.1)"))
+                    .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8"));
+                
+                // Y-Axis
+                svg.append("g")
+                    .attr("transform", `translate(${marginLeft},0)`)
+                    .call(d3.axisLeft(y).ticks(null, x => +x.toFixed(6) + "×"))
+                    .call(g => g.selectAll(".tick line").clone()
+                        .attr("stroke-opacity", d => d === 1 ? 0.3 : 0.1)
+                        .attr("stroke", "rgba(255,255,255,0.2)")
+                        .attr("x2", width - marginLeft - marginRight))
+                    .call(g => g.select(".domain").remove())
+                    .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8"));
+                
+                const rule = svg.append("g")
+                    .append("line")
+                    .attr("y1", height)
+                    .attr("y2", 0)
+                    .attr("stroke", "rgba(255,255,255,0.5)")
+                    .attr("stroke-dasharray", "3,3");
+                
+                const annotationGroup = svg.append("g").attr("class", "annotation-group");
+                const annotationBg = annotationGroup.append("rect").attr("class", "annotation-bg").attr("rx", 6);
+                const annotationText = annotationGroup.append("text").attr("class", "annotation-text");
+                
+                const serie = svg.append("g")
+                    .style("font", "bold 10px sans-serif")
+                    .selectAll("g")
+                    .data(normalizedSeries)
+                    .join("g");
+                
+                const line = d3.line()
+                    .x(d => x(d.Date))
+                    .y(d => y(d.value));
+                
+                serie.append("path")
+                    .attr("fill", "none")
+                    .attr("stroke-width", 2.5)
+                    .attr("stroke-linejoin", "round")
+                    .attr("stroke-linecap", "round")
+                    .attr("stroke", d => z(d.key))
+                    .attr("d", d => line(d.values));
+                
+                serie.append("text")
+                    .datum(d => ({key: d.key, value: d.values[d.values.length - 1].value}))
+                    .attr("fill", d => z(d.key))
+                    .attr("paint-order", "stroke")
+                    .attr("stroke", "var(--bg-card)")
+                    .attr("stroke-width", 4)
+                    .attr("x", x.range()[1] + 6)
+                    .attr("y", d => y(d.value))
+                    .attr("dy", "0.35em")
+                    .style("font-size", "12px")
+                    .style("font-weight", "500")
+                    .text(d => d.key);
+                
+                function update(date) {
+                    date = d3.utcMonth.round(date);
+                    
+                    document.getElementById("cpi-subtitle").textContent = date.toLocaleString("en", {
+                        timeZone: "UTC",
+                        month: "long",
+                        year: "numeric"
+                    });
+                    
+                    rule.attr("transform", `translate(${x(date) + 0.5},0)`);
+                    
+                    serie.attr("transform", ({values}) => {
+                        const i = bisect(values, date, 0, values.length - 1);
+                        const idx = Math.max(0, Math.min(i, values.length - 1));
+                        return `translate(0,${y(1) - y(values[idx].value / values[0].value)})`;
+                    });
+                    
+                    if (overallSeries) {
+                        const hoverIndex = bisect(overallSeries.values, date, 0, overallSeries.values.length - 1);
+                        const hoverIdx = Math.max(0, Math.min(hoverIndex, overallSeries.values.length - 1));
+                        const hoverValue = overallSeries.values[hoverIdx].value;
+                        const hoverDate = overallSeries.values[hoverIdx].Date;
+                        
+                        const latestValue = overallSeries.values[overallSeries.values.length - 1].value;
+                        const latestDate = overallSeries.values[overallSeries.values.length - 1].Date;
+                        
+                        const percentIncrease = ((latestValue - hoverValue) / hoverValue) * 100;
+                        const monthsDiff = d3.utcMonth.count(hoverDate, latestDate);
+                        const yearsDiff = monthsDiff / 12;
+                        
+                        let annotationStr = "";
+                        if (yearsDiff > 0.01) {
+                            const annualAvgRate = (Math.pow(latestValue / hoverValue, 1 / yearsDiff) - 1) * 100;
+                            const monthStr = hoverDate.toLocaleString("en", { timeZone: "UTC", month: "short" });
+                            const yearStr = hoverDate.toLocaleString("en", { timeZone: "UTC", year: "2-digit" });
+                            annotationStr = `+${percentIncrease.toFixed(1)}% since ${monthStr} '${yearStr} (${annualAvgRate.toFixed(1)}%/yr avg)`;
+                        } else {
+                            annotationStr = "Hover over earlier dates to see change";
+                        }
+                        
+                        annotationText.text(annotationStr);
+                        const bbox = annotationText.node().getBBox();
+                        const padding = 10;
+                        
+                        annotationBg
+                            .attr("x", 10)
+                            .attr("y", marginTop + 10)
+                            .attr("width", bbox.width + padding * 2)
+                            .attr("height", bbox.height + padding * 2);
+                        
+                        annotationText
+                            .attr("x", 10 + padding)
+                            .attr("y", marginTop + 10 + padding + bbox.height * 0.8);
+                    }
+                }
+                
+                d3.transition()
+                    .ease(d3.easeCubicOut)
+                    .duration(1500)
+                    .tween("date", () => {
+                        const i = d3.interpolateDate(x.domain()[1], x.domain()[0]);
+                        return t => update(i(t));
+                    });
+                
+                svg.on("mousemove touchmove", function(event) {
+                    const [mouseX] = d3.pointer(event, this);
+                    update(x.invert(mouseX));
+                    if (event.preventDefault) event.preventDefault();
+                });
+                
+                svg.on("mouseleave", function() {
+                    update(x.domain()[0]);
+                });
+            })
+            .catch(error => {
+                console.error("CPI chart error:", error);
+                document.getElementById("cpi-loading").textContent = "Error loading data";
+            });
+
+        // ========================================================================
+        // CHART 2: FULL HIERARCHY ICICLE CHART - ALL CATEGORIES
+        // ========================================================================
+        
+        let allSubcatData = null;
+        let weightsData = null;
+        
+        // Complete hierarchy definition matching our data
+        const HIERARCHY = {
+            "Food": {
+                children: {
+                    "Food from Stores": {
+                        children: {
+                            "Meat": {
+                                children: {
+                                    "Fresh/Frozen Meat": { children: { "Beef": {}, "Pork": {} } },
+                                    "Poultry": { children: { "Chicken": {} } },
+                                    "Processed Meat": {}
+                                }
+                            },
+                            "Fish & Seafood": {},
+                            "Dairy & Eggs": {
+                                children: {
+                                    "Dairy Products": { children: { "Fresh Milk": {}, "Butter": {}, "Cheese": {} } },
+                                    "Eggs": {}
+                                }
+                            },
+                            "Bakery & Cereals": {
+                                children: { "Bakery Products": {}, "Cereal Products": {} }
+                            },
+                            "Fruits & Nuts": {
+                                children: { "Fresh Fruit": {}, "Preserved Fruit": {}, "Nuts & Seeds": {} }
+                            },
+                            "Vegetables": {
+                                children: { "Fresh Vegetables": {}, "Preserved Vegetables": {} }
+                            },
+                            "Other Food & Beverages": {
+                                children: { "Sugar & Candy": {}, "Coffee & Tea": {}, "Soft Drinks": {}, "Other Prepared Foods": {} }
+                            }
+                        }
+                    },
+                    "Restaurants": {
+                        children: { "Fast Food": {}, "Table Service": {}, "Cafeterias": {} }
+                    }
+                }
+            },
+            "Shelter": {
+                children: {
+                    "Rented": { children: { "Rent": {}, "Tenant Insurance": {} } },
+                    "Owned": {
+                        children: {
+                            "Mortgage Interest": {},
+                            "Replacement Cost": {},
+                            "Property Taxes": {},
+                            "Home Insurance": {},
+                            "Maintenance": {}
+                        }
+                    },
+                    "Utilities": {
+                        children: { "Electricity": {}, "Natural Gas": {}, "Water": {}, "Fuel Oil": {} }
+                    }
+                }
+            },
+            "Transportation": {
+                children: {
+                    "Private Transport": {
+                        children: {
+                            "Vehicle Purchase": { children: { "New/Used Vehicles": {}, "Vehicle Leasing": {} } },
+                            "Gasoline": {},
+                            "Vehicle Operation": {
+                                children: { "Parts & Repairs": {}, "Auto Insurance": {} }
+                            }
+                        }
+                    },
+                    "Public Transport": {
+                        children: {
+                            "Local Transit": { children: { "Bus & Subway": {} } },
+                            "Inter-city": { children: { "Air Travel": {} } }
+                        }
+                    }
+                }
+            },
+            "Household": {
+                children: {
+                    "Operations": {
+                        children: {
+                            "Communications": { children: { "Phone": {} } },
+                            "Childcare & Housekeeping": {},
+                            "Cleaning Products": {},
+                            "Other Services": {}
+                        }
+                    },
+                    "Furnishings": {
+                        children: {
+                            "Furniture": {},
+                            "Equipment": { children: { "Appliances": {} } }
+                        }
+                    }
+                }
+            },
+            "Clothing": {
+                children: {
+                    "Apparel": {
+                        children: { "Women's": {}, "Men's": {}, "Children's": {} }
+                    },
+                    "Footwear": {}
+                }
+            },
+            "Health & Care": {
+                children: {
+                    "Health Care": {
+                        children: {
+                            "Health Goods": { children: { "Medicines": {} } },
+                            "Health Services": { children: { "Dental": {} } }
+                        }
+                    },
+                    "Personal Care": {
+                        children: { "Personal Products": {}, "Personal Services": {} }
+                    }
+                }
+            },
+            "Recreation & Education": {
+                children: {
+                    "Recreation": {
+                        children: {
+                            "Rec Equipment": {},
+                            "Rec Vehicles": {},
+                            "Home Entertainment": {},
+                            "Travel": { children: { "Hotels": {}, "Tours": {} } },
+                            "Other Recreation": {}
+                        }
+                    },
+                    "Education": {
+                        children: { "Schools": { children: { "Tuition": {} } }, "Reading": {} }
+                    }
+                }
+            },
+            "Alcohol & Tobacco": {
+                children: {
+                    "Alcohol": {
+                        children: { "Bars & Restaurants": {}, "Liquor Stores": {} }
+                    },
+                    "Tobacco": {}
+                }
+            }
+        };
+        
+        let dataDateRange = { start: "2015-01", end: "2025-11" };
+        
+        Promise.all([
+            d3.json("../data/all_subcategories.json"),
+            d3.json("../data/basket_weights.json")
+        ]).then(([subcats, weights]) => {
+            allSubcatData = subcats;
+            weightsData = weights;
+            
+            // Get actual date range from data
+            if (subcats.date_range) {
+                dataDateRange = subcats.date_range;
+            }
+            
+            // Set input constraints
+            document.getElementById("startDate").min = dataDateRange.start;
+            document.getElementById("startDate").max = dataDateRange.end;
+            document.getElementById("endDate").min = dataDateRange.start;
+            document.getElementById("endDate").max = dataDateRange.end;
+            
+            // Default to full range
+            applyPreset("all");
+            
+            // Setup preset button handlers
+            document.querySelectorAll(".preset-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".preset-btn").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    applyPreset(btn.dataset.preset);
+                });
+            });
+            
+        }).catch(error => {
+            console.error("Data loading error:", error);
+            document.getElementById("food-error").style.display = "block";
+            document.getElementById("food-error").textContent = `Error loading data: ${error.message}`;
+        });
+        
+        function applyPreset(preset) {
+            const endDate = dataDateRange.end;
+            const [endYear, endMonth] = endDate.split("-").map(Number);
+            let startDate;
+            
+            switch(preset) {
+                case "1y":
+                    startDate = `${endYear - 1}-${String(endMonth).padStart(2, "0")}`;
+                    break;
+                case "2y":
+                    startDate = `${endYear - 2}-${String(endMonth).padStart(2, "0")}`;
+                    break;
+                case "5y":
+                    startDate = `${endYear - 5}-${String(endMonth).padStart(2, "0")}`;
+                    break;
+                case "all":
+                    startDate = dataDateRange.start;
+                    break;
+                case "covid":
+                    startDate = "2020-01";
+                    break;
+                case "ytd":
+                    startDate = `${endYear}-01`;
+                    break;
+                default:
+                    startDate = dataDateRange.start;
+            }
+            
+            // Clamp to available data
+            if (startDate < dataDateRange.start) startDate = dataDateRange.start;
+            
+            document.getElementById("startDate").value = startDate;
+            document.getElementById("endDate").value = endDate;
+            
+            updateDateDisplay();
+            calculateContributions();
+        }
+        
+        function updateDateDisplay() {
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+            
+            const formatDate = (dateStr) => {
+                const [year, month] = dateStr.split("-");
+                const monthNames = ["January", "February", "March", "April", "May", "June",
+                                    "July", "August", "September", "October", "November", "December"];
+                return `${monthNames[parseInt(month) - 1]} ${year}`;
+            };
+            
+            document.getElementById("dateRangeText").textContent = `${formatDate(startDate)} — ${formatDate(endDate)}`;
+            
+            // Calculate period length
+            const [sy, sm] = startDate.split("-").map(Number);
+            const [ey, em] = endDate.split("-").map(Number);
+            const totalMonths = (ey - sy) * 12 + (em - sm);
+            const years = Math.floor(totalMonths / 12);
+            const months = totalMonths % 12;
+            
+            let periodStr = "";
+            if (years > 0) periodStr += `${years} year${years > 1 ? "s" : ""}`;
+            if (years > 0 && months > 0) periodStr += ", ";
+            if (months > 0) periodStr += `${months} month${months > 1 ? "s" : ""}`;
+            if (!periodStr) periodStr = "Same month";
+            
+            document.getElementById("periodLength").textContent = `(${periodStr})`;
+            
+            // Clear active preset if dates don't match any preset
+            document.querySelectorAll(".preset-btn").forEach(btn => {
+                btn.classList.remove("active");
+            });
+        }
+        
+        function calculateContributions() {
+            const startDate = document.getElementById("startDate").value;
+            const endDate = document.getElementById("endDate").value;
+            
+            if (!allSubcatData || !weightsData) return;
+            
+            document.getElementById("food-loading").style.display = "block";
+            document.getElementById("food-error").style.display = "none";
+            
+            try {
+                const results = calculateAllContributions(startDate, endDate);
+                displayResults(results);
+                drawIcicleChart(results);
+                document.getElementById("food-loading").style.display = "none";
+            } catch (error) {
+                console.error("Calculation error:", error);
+                document.getElementById("food-loading").style.display = "none";
+                document.getElementById("food-error").style.display = "block";
+                document.getElementById("food-error").textContent = `Error: ${error.message}`;
+            }
+        }
+        
+        // Map display names to StatCan weight names
+        const WEIGHT_MAP = {
+            // Main categories
+            "Food": "Food",
+            "Shelter": "Shelter",
+            "Transportation": "Transportation",
+            "Household": "Household operations, furnishings and equipment",
+            "Clothing": "Clothing and footwear",
+            "Health & Care": "Health and personal care",
+            "Recreation & Education": "Recreation, education and reading",
+            "Alcohol & Tobacco": "Alcoholic beverages, tobacco products and recreational cannabis",
+            
+            // Food subcategories
+            "Food from Stores": "Food purchased from stores",
+            "Restaurants": "Food purchased from restaurants",
+            "Fast Food": "Food purchased from fast food and take-out restaurants",
+            "Table Service": "Food purchased from table-service restaurants",
+            "Cafeterias": "Food purchased from cafeterias and other restaurants",
+            "Meat": "Meat",
+            "Fresh/Frozen Meat": "Fresh or frozen meat (excluding poultry)",
+            "Beef": "Fresh or frozen beef",
+            "Pork": "Fresh or frozen pork",
+            "Poultry": "Fresh or frozen poultry",
+            "Chicken": "Fresh or frozen chicken",
+            "Processed Meat": "Processed meat",
+            "Fish & Seafood": "Fish, seafood and other marine products",
+            "Dairy & Eggs": "Dairy products and eggs",
+            "Dairy Products": "Dairy products",
+            "Fresh Milk": "Fresh milk",
+            "Butter": "Butter",
+            "Cheese": "Cheese",
+            "Eggs": "Eggs",
+            "Bakery & Cereals": "Bakery and cereal products (excluding baby food)",
+            "Bakery Products": "Bakery products",
+            "Cereal Products": "Cereal products (excluding baby food)",
+            "Fruits & Nuts": "Fruit, fruit preparations and nuts",
+            "Fresh Fruit": "Fresh fruit",
+            "Preserved Fruit": "Preserved fruit and fruit preparations",
+            "Nuts & Seeds": "Nuts and seeds",
+            "Vegetables": "Vegetables and vegetable preparations",
+            "Fresh Vegetables": "Fresh vegetables",
+            "Preserved Vegetables": "Preserved vegetables and vegetable preparations",
+            "Other Food & Beverages": "Other food products and non-alcoholic beverages",
+            "Sugar & Candy": "Sugar and confectionery",
+            "Coffee & Tea": "Coffee and tea",
+            "Soft Drinks": "Non-alcoholic beverages",
+            "Other Prepared Foods": "Other food preparations",
+            
+            // Shelter subcategories
+            "Rented": "Rented accommodation",
+            "Rent": "Rent",
+            "Tenant Insurance": "Tenants' insurance premiums",
+            "Owned": "Owned accommodation",
+            "Mortgage Interest": "Mortgage interest cost",
+            "Replacement Cost": "Homeowners' replacement cost",
+            "Property Taxes": "Property taxes and other special charges",
+            "Home Insurance": "Homeowners' home and mortgage insurance",
+            "Maintenance": "Homeowners' maintenance and repairs",
+            "Utilities": "Water, fuel and electricity",
+            "Electricity": "Electricity",
+            "Natural Gas": "Natural gas",
+            "Water": "Water",
+            "Fuel Oil": "Fuel oil and other fuels",
+            
+            // Transportation
+            "Private Transport": "Private transportation",
+            "Vehicle Purchase": "Purchase, leasing and rental of passenger vehicles",
+            "New/Used Vehicles": "Purchase of passenger vehicles",
+            "Vehicle Leasing": "Leasing of passenger vehicles",
+            "Gasoline": "Gasoline",
+            "Vehicle Operation": "Operation of passenger vehicles",
+            "Parts & Repairs": "Passenger vehicle parts, maintenance and repairs",
+            "Auto Insurance": "Passenger vehicle insurance premiums",
+            "Public Transport": "Public transportation",
+            "Local Transit": "Local and commuter transportation",
+            "Bus & Subway": "City bus and subway transportation",
+            "Inter-city": "Inter-city transportation",
+            "Air Travel": "Air transportation",
+            
+            // Household
+            "Operations": "Household operations",
+            "Communications": "Communications",
+            "Phone": "Telephone services",
+            "Childcare & Housekeeping": "Child care and housekeeping services",
+            "Cleaning Products": "Household cleaning products",
+            "Other Services": "Other household goods and services",
+            "Furnishings": "Household furnishings and equipment",
+            "Furniture": "Furniture and household textiles",
+            "Equipment": "Household equipment",
+            "Appliances": "Household appliances",
+            
+            // Clothing
+            "Apparel": "Clothing",
+            "Women's": "Women's clothing",
+            "Men's": "Men's clothing",
+            "Children's": "Children's clothing",
+            "Footwear": "Footwear",
+            
+            // Health
+            "Health Care": "Health care",
+            "Health Goods": "Health care goods",
+            "Medicines": "Medicinal and pharmaceutical products",
+            "Health Services": "Health care services",
+            "Dental": "Dental care services",
+            "Personal Care": "Personal care",
+            "Personal Products": "Personal care supplies and equipment",
+            "Personal Services": "Personal care services",
+            
+            // Recreation
+            "Recreation": "Recreation",
+            "Rec Equipment": "Recreational equipment and services (excluding recreational vehicles)",
+            "Rec Vehicles": "Purchase and operation of recreational vehicles",
+            "Home Entertainment": "Home entertainment equipment, parts and services",
+            "Travel": "Travel services",
+            "Hotels": "Traveller accommodation",
+            "Tours": "Travel tours",
+            "Other Recreation": "Other cultural and recreational services",
+            "Education": "Education and reading",
+            "Schools": "Education",
+            "Tuition": "Tuition fees",
+            "Reading": "Reading material (excluding textbooks)",
+            
+            // Alcohol & Tobacco
+            "Alcohol": "Alcoholic beverages",
+            "Bars & Restaurants": "Alcoholic beverages served in licensed establishments",
+            "Liquor Stores": "Alcoholic beverages purchased from stores",
+            "Tobacco": "Tobacco products and smokers' supplies"
+        };
+        
+        function getWeight(displayName) {
+            const statCanName = WEIGHT_MAP[displayName];
+            if (statCanName && weightsData.all_weights_pct[statCanName]) {
+                return weightsData.all_weights_pct[statCanName] / 100;
+            }
+            return 0;
+        }
+        
+        function getCpiData(displayName) {
+            return allSubcatData.series.find(s => s.category === displayName);
+        }
+        
+        function buildHierarchyNode(name, hierarchyDef, startDate, endDate, parentWeight = 1) {
+            const weight = getWeight(name);
+            const series = getCpiData(name);
+            
+            let percentageChange = null;
+            let contribution = null;
+            
+            if (series) {
+                const startValue = getCpiValue(series.data, startDate);
+                const endValue = getCpiValue(series.data, endDate);
+                
+                if (startValue && endValue) {
+                    percentageChange = ((endValue / startValue - 1) * 100);
+                    contribution = weight * percentageChange;
+                }
+            }
+            
+            const node = {
+                name: name,
+                weight: weight,
+                percentageChange: percentageChange,
+                contribution: contribution
+            };
+            
+            // Recursively build children
+            if (hierarchyDef.children) {
+                node.children = [];
+                for (const [childName, childDef] of Object.entries(hierarchyDef.children)) {
+                    const childNode = buildHierarchyNode(childName, childDef, startDate, endDate, weight);
+                    if (childNode.weight > 0 || (childNode.children && childNode.children.length > 0)) {
+                        node.children.push(childNode);
+                    }
+                }
+                // Sort children by absolute contribution
+                node.children.sort((a, b) => Math.abs(b.contribution || 0) - Math.abs(a.contribution || 0));
+                
+                // Remove empty children array
+                if (node.children.length === 0) {
+                    delete node.children;
+                }
+            }
+            
+            return node;
+        }
+        
+        function calculateAllContributions(startDate, endDate) {
+            // Build the full hierarchy
+            const contributions = [];
+            let totalContribution = 0;
+            
+            for (const [categoryName, categoryDef] of Object.entries(HIERARCHY)) {
+                const node = buildHierarchyNode(categoryName, categoryDef, startDate, endDate);
+                if (node.weight > 0) {
+                    contributions.push(node);
+                    totalContribution += node.contribution || 0;
+                }
+            }
+            
+            // Sort by absolute contribution
+            contributions.sort((a, b) => Math.abs(b.contribution || 0) - Math.abs(a.contribution || 0));
+            
+            // Calculate total inflation from a known series
+            const foodSeries = getCpiData("Food");
+            let totalOverallInflation = totalContribution; // Approximate
+            
+            return { 
+                startDate, 
+                endDate, 
+                totalOverallInflation, 
+                totalContribution, 
+                contributions 
+            };
+        }
+        
+        function getCpiValue(data, date) {
+            const point = data.find(d => d.date === date);
+            return point ? point.value : null;
+        }
+        
+        function displayResults(results) {
+            document.getElementById("summary").style.display = "grid";
+            
+            const inflationEl = document.getElementById("totalInflation");
+            inflationEl.textContent = `${results.totalOverallInflation.toFixed(2)}%`;
+            inflationEl.className = `stat-value ${results.totalOverallInflation >= 0 ? 'positive' : 'negative'}`;
+            
+            const contributionEl = document.getElementById("totalContribution");
+            contributionEl.textContent = `${results.totalContribution.toFixed(2)} pp`;
+            contributionEl.className = `stat-value ${results.totalContribution >= 0 ? 'positive' : 'negative'}`;
+            
+            document.getElementById("period").textContent = `${results.startDate} to ${results.endDate}`;
+        }
+        
+        function drawIcicleChart(results) {
+            const width = 928;
+            const height = 600;
+            
+            // Build hierarchical data structure
+            const data = {
+                name: "CPI Basket",
+                contribution: results.totalContribution,
+                children: results.contributions
+            };
+            
+            // Color schemes for each main category (with lighter shades for subcategories)
+            const colorSchemes = {
+                "CPI Basket": d3.scaleSequential([0, 1], d3.interpolateGreys).domain([0, 1]),
+                "Food": d3.scaleSequential([0.2, 0.9], d3.interpolateReds),
+                "Shelter": d3.scaleSequential([0.2, 0.9], d3.interpolateBlues),
+                "Transportation": d3.scaleSequential([0.3, 0.9], d3.interpolateOranges),
+                "Household": d3.scaleSequential([0.2, 0.9], d3.interpolatePurples),
+                "Clothing": d3.scaleSequential([0.3, 0.9], d3.interpolatePuRd),
+                "Health & Care": d3.scaleSequential([0.2, 0.9], d3.interpolateGreens),
+                "Recreation & Education": d3.scaleSequential([0.3, 0.9], d3.interpolateYlOrBr),
+                "Alcohol & Tobacco": d3.scaleSequential([0.3, 0.9], d3.interpolateRdPu)
+            };
+            
+            // Find the root category for color assignment
+            function getRootCategory(d) {
+                if (!d.parent) return "CPI Basket";
+                if (d.parent.data.name === "CPI Basket") return d.data.name;
+                return getRootCategory(d.parent);
+            }
+            
+            function getColor(d) {
+                const rootCat = getRootCategory(d);
+                const scheme = colorSchemes[rootCat] || colorSchemes["CPI Basket"];
+                
+                // Use depth to determine shade (deeper = lighter)
+                const maxDepth = 5;
+                const depthRatio = Math.min(d.depth / maxDepth, 1);
+                return scheme(0.4 + depthRatio * 0.5);
+            }
+            
+            const hierarchy = d3.hierarchy(data)
+                .sum(d => d.children ? 0 : Math.abs(d.contribution || 0.001))
+                .sort((a, b) => b.value - a.value);
+            
+            const root = d3.partition()
+                .size([height, (hierarchy.height + 1) * width / 3])
+                (hierarchy);
+            
+            const svg = d3.select("#food-chart")
+                .attr("viewBox", [0, 0, width, height])
+                .attr("width", width)
+                .attr("height", height)
+                .attr("style", "max-width: 100%; height: auto;");
+            
+            svg.selectAll("*").remove();
+            
+            const cell = svg.selectAll("g")
+                .data(root.descendants())
+                .join("g")
+                .attr("transform", d => `translate(${d.y0},${d.x0})`);
+            
+            const rect = cell.append("rect")
+                .attr("width", d => d.y1 - d.y0 - 1)
+                .attr("height", d => rectHeight(d))
+                .attr("fill-opacity", 0.9)
+                .attr("fill", d => getColor(d))
+                .attr("rx", 3)
+                .attr("stroke", "rgba(0,0,0,0.2)")
+                .attr("stroke-width", 0.5)
+                .style("cursor", d => d.children ? "pointer" : "default")
+                .on("click", clicked)
+                .on("mouseover", function(event, d) { 
+                    d3.select(this).attr("fill-opacity", 1).attr("stroke", "#fff").attr("stroke-width", 2);
+                    showTooltip(event, d); 
+                })
+                .on("mousemove", function(event) { moveTooltip(event); })
+                .on("mouseout", function(event, d) { 
+                    d3.select(this).attr("fill-opacity", 0.9).attr("stroke", "rgba(0,0,0,0.2)").attr("stroke-width", 0.5);
+                    hideTooltip(); 
+                });
+            
+            const text = cell.append("text")
+                .style("user-select", "none")
+                .attr("pointer-events", "none")
+                .attr("x", 6)
+                .attr("y", 16)
+                .attr("fill", "white")
+                .attr("fill-opacity", d => +labelVisible(d))
+                .style("font-size", "11px")
+                .style("font-weight", "500")
+                .style("text-shadow", "0 1px 2px rgba(0,0,0,0.5)");
+            
+            text.append("tspan").text(d => d.data.name);
+            
+            const format = d3.format(".2f");
+            const tspan = text.append("tspan")
+                .attr("fill-opacity", d => labelVisible(d) * 0.8)
+                .attr("x", 6)
+                .attr("y", 30)
+                .style("font-size", "10px")
+                .text(d => {
+                    if (d.data.contribution !== undefined && d.data.contribution !== null) {
+                        const sign = d.data.contribution >= 0 ? '+' : '';
+                        return `${sign}${format(d.data.contribution)} pp`;
+                    }
+                    return "";
+                });
+            
+            let focus = root;
+            function clicked(event, p) {
+                if (!p.children) return; // Only zoom if has children
+                
+                focus = focus === p ? p = p.parent : p;
+                if (!p) p = root;
+                
+                root.each(d => d.target = {
+                    x0: (d.x0 - p.x0) / (p.x1 - p.x0) * height,
+                    x1: (d.x1 - p.x0) / (p.x1 - p.x0) * height,
+                    y0: d.y0 - p.y0,
+                    y1: d.y1 - p.y0
+                });
+                
+                const t = cell.transition().duration(750)
+                    .attr("transform", d => `translate(${d.target.y0},${d.target.x0})`);
+                
+                rect.transition(t).attr("height", d => rectHeight(d.target));
+                text.transition(t).attr("fill-opacity", d => +labelVisible(d.target));
+                tspan.transition(t).attr("fill-opacity", d => labelVisible(d.target) * 0.8);
+            }
+            
+            function rectHeight(d) {
+                return d.x1 - d.x0 - Math.min(1, (d.x1 - d.x0) / 2);
+            }
+            
+            function labelVisible(d) {
+                return d.y1 <= width && d.y0 >= 0 && d.x1 - d.x0 > 24;
+            }
+            
+            const tooltip = d3.select("#tooltip");
+            
+            function showTooltip(event, d) {
+                const data = d.data;
+                let html = `<strong>${data.name}</strong>`;
+                
+                if (data.contribution !== undefined && data.contribution !== null) {
+                    const sign = data.contribution >= 0 ? '+' : '';
+                    html += `<div class="value-row">Contribution: ${sign}${data.contribution.toFixed(3)} pp</div>`;
+                }
+                if (data.weight !== undefined && data.weight > 0) {
+                    html += `<div class="value-row">CPI Basket Weight: ${(data.weight * 100).toFixed(2)}%</div>`;
+                }
+                if (data.percentageChange !== undefined && data.percentageChange !== null) {
+                    const sign = data.percentageChange >= 0 ? '+' : '';
+                    html += `<div class="value-row">Price Change: ${sign}${data.percentageChange.toFixed(2)}%</div>`;
+                }
+                if (d.children) {
+                    html += `<div class="value-row" style="color: var(--accent-teal); margin-top: 4px;">Click to drill down →</div>`;
+                }
+                if (d.parent && d.parent.data.name !== "CPI Basket") {
+                    html += `<div class="value-row" style="color: var(--text-muted); margin-top: 2px;">Click to zoom out</div>`;
+                }
+                
+                tooltip.html(html).classed("visible", true);
+            }
+            
+            function moveTooltip(event) {
+                tooltip
+                    .style("left", (event.pageX + 15) + "px")
+                    .style("top", (event.pageY - 10) + "px");
+            }
+            
+            function hideTooltip() {
+                tooltip.classed("visible", false);
+            }
+        }
+        
+        // Event listeners for date inputs
+        document.getElementById("startDate").addEventListener("change", () => {
+            updateDateDisplay();
+            calculateContributions();
+        });
+        document.getElementById("endDate").addEventListener("change", () => {
+            updateDateDisplay();
+            calculateContributions();
+        });
+    </script>
+</body>
+</html>
+
