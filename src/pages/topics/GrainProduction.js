@@ -1,6 +1,6 @@
 export function GrainProductionPage() {
   return {
-    title: "Grain Production Composition Analysis",
+    title: "Grain Production",
     render: (outlet) => {
       const page = document.createElement("div");
       page.className = "grain-production-page";
@@ -168,49 +168,71 @@ export function GrainProductionPage() {
             background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
           }
           
-          /* Chart styles - these match the R Markdown styles */
+          /* Chart styles - updated for dark theme */
           #plot-history-production {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: white;
+            background-color: transparent;
+            max-width: 100%;
+            height: auto;
           }
           
           #plot-history-production .axis {
             font-size: 11px;
+            fill: var(--text-secondary);
+            color: var(--text-secondary);
+          }
+          
+          #plot-history-production .axis text {
+            fill: var(--text-secondary);
+          }
+          
+          #plot-history-production .axis path,
+          #plot-history-production .axis line {
+            stroke: var(--border-subtle);
           }
           
           #plot-history-production .title {
             font-size: 14px;
             font-weight: bold;
+            fill: var(--text-primary);
           }
           
           #plot-history-production .caption {
             font-size: 10px;
-            fill: #666;
+            fill: var(--text-muted);
+          }
+          
+          #plot-history-production .axis-label {
+            fill: var(--text-secondary);
           }
           
           #plot-history-production .grid-line {
-            stroke: #e0e0e0;
+            stroke: var(--border-subtle);
             stroke-width: 1;
           }
           
           #plot-history-production .line {
             fill: none;
-            stroke: #000000;
+            stroke: var(--accent-coral);
             stroke-width: 0.8;
           }
           
           #plot-history-production .point {
-            fill: #000000;
-            stroke: #000000;
+            fill: var(--accent-coral);
+            stroke: var(--accent-coral);
             stroke-width: 0.8;
           }
           
           #plot-history-production .hover-line {
-            stroke: #666;
+            stroke: var(--text-secondary);
             stroke-width: 1;
             stroke-dasharray: 4, 4;
             opacity: 0;
             pointer-events: none;
+          }
+          
+          #plot-history-production .hover-year-label {
+            fill: var(--text-primary);
           }
           
           .plot-history-production-tooltip {
@@ -233,46 +255,68 @@ export function GrainProductionPage() {
           
           #plot-history-area {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: white;
+            background-color: transparent;
+            max-width: 100%;
+            height: auto;
           }
           
           #plot-history-area .axis {
             font-size: 11px;
+            fill: var(--text-secondary);
+            color: var(--text-secondary);
+          }
+          
+          #plot-history-area .axis text {
+            fill: var(--text-secondary);
+          }
+          
+          #plot-history-area .axis path,
+          #plot-history-area .axis line {
+            stroke: var(--border-subtle);
           }
           
           #plot-history-area .title {
             font-size: 14px;
             font-weight: bold;
+            fill: var(--text-primary);
           }
           
           #plot-history-area .caption {
             font-size: 10px;
-            fill: #666;
+            fill: var(--text-muted);
+          }
+          
+          #plot-history-area .axis-label {
+            fill: var(--text-secondary);
           }
           
           #plot-history-area .grid-line {
-            stroke: #e0e0e0;
+            stroke: var(--border-subtle);
             stroke-width: 1;
           }
           
           #plot-history-area .line {
             fill: none;
-            stroke: #4a7c7a;
+            stroke: var(--accent-teal);
             stroke-width: 0.8;
           }
           
           #plot-history-area .point {
-            fill: #4a7c7a;
-            stroke: #4a7c7a;
+            fill: var(--accent-teal);
+            stroke: var(--accent-teal);
             stroke-width: 0.8;
           }
           
           #plot-history-area .hover-line {
-            stroke: #666;
+            stroke: var(--text-secondary);
             stroke-width: 1;
             stroke-dasharray: 4, 4;
             opacity: 0;
             pointer-events: none;
+          }
+          
+          #plot-history-area .hover-year-label {
+            fill: var(--text-primary);
           }
           
           .plot-history-area-tooltip {
@@ -295,35 +339,58 @@ export function GrainProductionPage() {
           
           #plot-history-by-crop-container {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: white;
+            background-color: transparent;
+            max-width: 100%;
+            height: auto;
+          }
+          
+          #plot-history-by-crop-container svg {
+            max-width: 100%;
+            height: auto;
           }
           
           #plot-history-by-crop-container .main-title {
             font-size: 16px;
             font-weight: bold;
+            fill: var(--text-primary);
           }
           
           #plot-history-by-crop-container .subtitle {
             font-size: 12px;
-            fill: #666;
+            fill: var(--text-muted);
           }
           
           #plot-history-by-crop-container .panel-title {
             font-size: 9px;
             font-weight: normal;
+            fill: var(--text-secondary);
           }
           
           #plot-history-by-crop-container .axis {
             font-size: 9px;
+            fill: var(--text-secondary);
+          }
+          
+          #plot-history-by-crop-container .axis text {
+            fill: var(--text-secondary);
+          }
+          
+          #plot-history-by-crop-container .axis path,
+          #plot-history-by-crop-container .axis line {
+            stroke: var(--border-subtle);
           }
           
           #plot-history-by-crop-container .caption {
             font-size: 10px;
-            fill: #666;
+            fill: var(--text-muted);
+          }
+          
+          #plot-history-by-crop-container .axis-label {
+            fill: var(--text-secondary);
           }
           
           #plot-history-by-crop-container .grid-line {
-            stroke: #e8e8e8;
+            stroke: var(--border-subtle);
             stroke-width: 0.5;
           }
           
@@ -337,38 +404,70 @@ export function GrainProductionPage() {
           }
           
           #plot-history-by-crop-container .hover-line {
-            stroke: #666;
+            stroke: var(--text-secondary);
             stroke-width: 1;
             stroke-dasharray: 4, 4;
             opacity: 0;
             pointer-events: none;
           }
           
+          #plot-history-by-crop-container .hover-year-label,
+          #plot-history-by-crop-container .hover-value-label {
+            fill: var(--text-primary);
+          }
+          
+          #plot-history-by-crop-container .crop-name {
+            fill: var(--text-primary);
+          }
+          
           #plot-cumulative-container {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: white;
+            background-color: transparent;
+            max-width: 100%;
+            height: auto;
+          }
+          
+          #plot-cumulative-container svg {
+            max-width: 100%;
+            height: auto;
           }
           
           #plot-cumulative-container .axis {
             font-size: 11px;
+            fill: var(--text-secondary);
+          }
+          
+          #plot-cumulative-container .axis text {
+            fill: var(--text-secondary);
+          }
+          
+          #plot-cumulative-container .axis path {
+            stroke: none;
+          }
+          
+          #plot-cumulative-container .axis line {
+            stroke: var(--border-subtle);
           }
           
           #plot-cumulative-container .title {
             font-size: 14px;
             font-weight: bold;
+            fill: var(--text-primary);
           }
           
           #plot-cumulative-container .axis-label {
             font-size: 10px;
+            fill: var(--text-secondary);
           }
           
           #plot-cumulative-container .grid-line {
-            stroke: #e0e0e0;
+            stroke: var(--border-subtle);
             stroke-width: 1;
           }
           
           #plot-cumulative-container .legend-text {
             font-size: 9px;
+            fill: var(--text-secondary);
           }
           
           #plot-cumulative-container .mini-window {
@@ -376,28 +475,54 @@ export function GrainProductionPage() {
           }
           
           #plot-cumulative-container .mini-window-bg {
-            fill: white;
-            stroke: #ccc;
+            fill: var(--bg-card);
+            stroke: var(--border-subtle);
             stroke-width: 1;
           }
           
           #plot-cumulative-container .mini-window-title {
             font-size: 12px;
             font-weight: bold;
+            fill: var(--text-primary);
           }
           
           #plot-cumulative-container .mini-window-label {
             font-size: 10px;
+            fill: var(--text-secondary);
           }
           
           #plot-cumulative-container .mini-window-value {
             font-size: 10px;
             font-weight: 500;
+            fill: var(--text-primary);
+          }
+          
+          #plot-cumulative-container .hover-year-label {
+            fill: var(--text-primary);
+          }
+          
+          #plot-cumulative-container .highlight-ribbon {
+            fill: rgba(255, 255, 255, 0.05);
+          }
+          
+          #plot-cumulative-container .zero-line,
+          #plot-cumulative-container .mini-zero-line {
+            stroke: var(--text-muted);
+          }
+          
+          #plot-cumulative-container .connecting-segment,
+          #plot-cumulative-container .component-connector,
+          #plot-cumulative-container .mini-connector {
+            stroke: var(--border-subtle);
+          }
+          
+          #plot-history-by-crop-container .hover-y-tick {
+            stroke: var(--text-primary);
           }
         </style>
         
         <div class="page-content">
-          <h1>Grain Production Composition Analysis</h1>
+          <h1>Grain Production</h1>
           <p class="subtitle">Understanding how seeded area, effective yield and crop mix have interacted in Canadian grain production</p>
           
           <h2>History of production, seeded area and effective yield</h2>
@@ -453,7 +578,7 @@ export function GrainProductionPage() {
         </ul>
         
         <details class="methodology-details">
-          <summary>Click here to read.</summary>
+          <summary>Click here to read details on the framework.</summary>
           <div class="details-content">
             <p>Formally:</p>
             
@@ -572,7 +697,7 @@ export function GrainProductionPage() {
         
         <h2>What accounts for the change in production?</h2>
         
-        <p>Using the <a href="#eq-decomposition">decomposition identity</a>, each year's change in total production can be attributed to three components: changes in total seeded area, within-crop effective yield changes, and shifts in crop mix. The results of the decomposition are plotted below.</p>
+        <p>Using the decomposition identity, each year's change in total production can be attributed to three components: changes in total seeded area, within-crop effective yield changes, and shifts in crop mix. The results of the decomposition are plotted below.</p>
         
         <div class="chart-container">
           <div id="plot-cumulative-container"></div>

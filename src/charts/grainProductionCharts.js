@@ -54,9 +54,11 @@ function initProductionChart() {
         return txt + suffix;
       }
       
-      // Set dimensions and margins
+      // Set dimensions and margins - make responsive
       const margin = {top: 40, right: 20, bottom: 50, left: 80};
-      const width = 960 - margin.left - margin.right;
+      const containerWidth = container.clientWidth || 960;
+      const maxWidth = 960;
+      const width = Math.min(containerWidth - margin.left - margin.right, maxWidth - margin.left - margin.right);
       const height = 576 - margin.top - margin.bottom;
       
       // Create SVG
@@ -64,7 +66,11 @@ function initProductionChart() {
         .append("svg")
         .attr("id", "plot-history-production")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom);
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("max-width", "100%")
+        .style("height", "auto");
       
       const g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -245,7 +251,6 @@ function initProductionChart() {
         .attr("y", 8)
         .attr("dy", "0.71em")
         .attr("text-anchor", "middle")
-        .attr("fill", "#000")
         .style("font-size", "11px")
         .style("opacity", 0);
       
@@ -323,7 +328,6 @@ function initAreaChart() {
     .then(function(jsonData) {
       const data = jsonData.data;
       const xAxisBreaks = jsonData.xAxisBreaks;
-      const lineColour = "#4a7c7a";
       
       // LabelClean function (replicates R function)
       function labelClean(value) {
@@ -351,9 +355,11 @@ function initAreaChart() {
         return txt + suffix;
       }
       
-      // Set dimensions and margins
+      // Set dimensions and margins - make responsive
       const margin = {top: 40, right: 20, bottom: 50, left: 80};
-      const width = 960 - margin.left - margin.right;
+      const containerWidth = container.clientWidth || 960;
+      const maxWidth = 960;
+      const width = Math.min(containerWidth - margin.left - margin.right, maxWidth - margin.left - margin.right);
       const height = 576 - margin.top - margin.bottom;
       
       // Create SVG
@@ -361,7 +367,11 @@ function initAreaChart() {
         .append("svg")
         .attr("id", "plot-history-area")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom);
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("max-width", "100%")
+        .style("height", "auto");
       
       const g = svg.append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -545,7 +555,6 @@ function initAreaChart() {
         .attr("y", 8)
         .attr("dy", "0.71em")
         .attr("text-anchor", "middle")
-        .attr("fill", "#000")
         .style("font-size", "11px")
         .style("opacity", 0);
       
@@ -655,8 +664,7 @@ function initCropComponentsChart() {
       // Global year extent (shared across all panels so data gaps are visible)
       const globalYearExtent = d3.extent(rawData, d => d.year);
       
-      // Dimensions - increased spacing to prevent overlap
-      const containerWidth = 1000;
+      // Dimensions - fixed layout based on panel sizes
       const margin = {top: 100, right: 20, bottom: 50, left: 10};
       const panelWidth = 250;
       const panelHeight = 120;
@@ -664,15 +672,22 @@ function initCropComponentsChart() {
       const panelGapY = 50;
       const yAxisWidth = 60;
       
+      // Calculate required width based on fixed panel layout
+      const requiredWidth = margin.left + yAxisWidth + 3 * panelWidth + 2 * panelGapX + margin.right;
+      
       const numCrops = crops.length;
       const totalHeight = margin.top + numCrops * (panelHeight + panelGapY) + margin.bottom;
       
-      // Create SVG
+      // Create SVG - use fixed width to maintain aspect ratio
       const svg = d3.select("#plot-history-by-crop-container")
         .append("svg")
-        .attr("width", containerWidth)
+        .attr("width", requiredWidth)
         .attr("height", totalHeight)
-        .style("background-color", "white");
+        .attr("viewBox", `0 0 ${requiredWidth} ${totalHeight}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("max-width", "100%")
+        .style("height", "auto")
+        .style("background-color", "transparent");
       
       // Title and subtitle
       svg.append("text")
@@ -696,7 +711,7 @@ function initCropComponentsChart() {
         
         // Add crop name once per row, right-justified above the row
         const rowY = margin.top + cropIndex * (panelHeight + panelGapY);
-        const rowRightX = margin.left + yAxisWidth + 3 * panelWidth + 2 * panelGapX;
+        const rowRightX = requiredWidth - margin.right;
         
         svg.append("text")
           .attr("class", "crop-name")
@@ -705,7 +720,6 @@ function initCropComponentsChart() {
           .attr("text-anchor", "end")
           .style("font-size", "11px")
           .style("font-weight", "bold")
-          .style("fill", "#333")
           .text(crop);
         
         measures.forEach((measure, measureIndex) => {
@@ -751,7 +765,6 @@ function initCropComponentsChart() {
             .attr("x", 0)
             .attr("y", -8)
             .attr("text-anchor", "start")
-            .style("fill", "#666")
             .text(measure);
           
           // Line generator
@@ -824,7 +837,6 @@ function initCropComponentsChart() {
             .attr("y", panelHeight + 5)
             .attr("dy", "0.71em")
             .attr("text-anchor", "middle")
-            .attr("fill", "#000")
             .style("font-size", "9px")
             .style("opacity", 0);
           
@@ -836,7 +848,6 @@ function initCropComponentsChart() {
             .attr("y", 0)
             .attr("dy", "0.32em")
             .attr("text-anchor", "end")
-            .attr("fill", "#000")
             .style("font-size", "9px")
             .style("opacity", 0);
           
@@ -847,7 +858,6 @@ function initCropComponentsChart() {
             .attr("x2", 2)
             .attr("y1", 0)
             .attr("y2", 0)
-            .attr("stroke", "#000")
             .attr("stroke-width", 1)
             .style("opacity", 0);
           
@@ -1005,7 +1015,7 @@ function initCropComponentsChart() {
       // Caption
       svg.append("text")
         .attr("class", "caption")
-        .attr("x", containerWidth - margin.right)
+        .attr("x", requiredWidth - margin.right)
         .attr("y", totalHeight - 15)
         .attr("text-anchor", "end")
         .text("Data from Statistics Canada, Table 32-10-0359");
@@ -1053,18 +1063,25 @@ function initCumulativeChart() {
       const colours = jsonData.colours;
       const uniqueYears = jsonData.uniqueYears;
       
-      // Set dimensions and margins
+      // Set dimensions and margins - make responsive
       const margin = {top: 60, right: 20, bottom: 50, left: 80};
-      const width = 960 - margin.left - margin.right;
+      const containerWidth = container.clientWidth || 960;
+      const maxWidth = 960;
+      const width = Math.min(containerWidth - margin.left - margin.right, maxWidth - margin.left - margin.right);
       const height = 500 - margin.top - margin.bottom;
       
       // Create SVG
-      const svg = d3.select("#plot-cumulative-container")
+      const svgContainer = d3.select("#plot-cumulative-container")
         .append("svg")
         .attr("id", "plot-cumulative")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
-        .append("g")
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("max-width", "100%")
+        .style("height", "auto");
+      
+      const svg = svgContainer.append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
       
       // Create scales
@@ -1093,11 +1110,11 @@ function initCumulativeChart() {
       
       // Add zero line
       svg.append("line")
+        .attr("class", "zero-line")
         .attr("x1", 0)
         .attr("x2", width)
         .attr("y1", yScale(0))
         .attr("y2", yScale(0))
-        .attr("stroke", "#808080")
         .attr("stroke-width", 0.5);
       
       // Add connecting segments between years
@@ -1110,7 +1127,6 @@ function initCumulativeChart() {
         .attr("x2", d => xScale(d.yearEnd - 0.4))
         .attr("y1", d => yScale(d.yValue))
         .attr("y2", d => yScale(d.yValue))
-        .attr("stroke", "#b3b3b3")
         .attr("stroke-width", 0.5);
       
       // Add component connectors (grey lines between components within year)
@@ -1123,7 +1139,6 @@ function initCumulativeChart() {
         .attr("x2", d => xScale(d.xEnd))
         .attr("y1", d => yScale(d.yValue))
         .attr("y2", d => yScale(d.yValue))
-        .attr("stroke", "#d9d9d9")
         .attr("stroke-width", 0.5);
       
       // Add vertical bars for each component
@@ -1142,6 +1157,8 @@ function initCumulativeChart() {
       // Create x-axis
       const xAxis = d3.axisBottom(xScale)
         .tickValues(xAxisBreaks)
+        .tickSize(0)
+        .tickPadding(8)
         .tickFormat(d => String(d));
       
       const xAxisGroup = svg.append("g")
@@ -1152,6 +1169,8 @@ function initCumulativeChart() {
       // Create y-axis with percentage format
       const yAxis = d3.axisLeft(yScale)
         .ticks(6)
+        .tickSize(0)
+        .tickPadding(8)
         .tickFormat(d => Math.round(d * 100) + "%");
       
       const yAxisGroup = svg.append("g")
@@ -1220,7 +1239,6 @@ function initCumulativeChart() {
         .attr("class", "highlight-ribbon")
         .attr("y", 0)
         .attr("height", height)
-        .attr("fill", "#e8e8e8")
         .style("opacity", 0);
       
       // Hover year label on x-axis
@@ -1230,7 +1248,6 @@ function initCumulativeChart() {
         .attr("dy", "0.71em")
         .attr("text-anchor", "middle")
         .style("font-size", "11px")
-        .style("fill", "#000")
         .style("opacity", 0);
       
       // Mini-window dimensions
@@ -1277,9 +1294,9 @@ function initCumulativeChart() {
       
       // Zero line for mini chart
       const miniZeroLine = miniChart.append("line")
+        .attr("class", "mini-zero-line")
         .attr("x1", 0)
         .attr("x2", miniChartWidth)
-        .attr("stroke", "#808080")
         .attr("stroke-width", 0.5);
       
       // Component bars in mini chart
@@ -1301,7 +1318,6 @@ function initCumulativeChart() {
           .attr("class", "mini-connector")
           .attr("x1", (i + 0.5) * barSpacing)
           .attr("x2", (i + 1.5) * barSpacing)
-          .attr("stroke", "#d9d9d9")
           .attr("stroke-width", 0.5);
       });
       
