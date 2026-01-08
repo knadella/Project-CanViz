@@ -9,4 +9,9 @@ export const topics = [
     description: "Explore the raw CPI data and track inflation trends over time.",
     href: "#/topics/consumer-price-index",
   },
+  {
+    title: "Grain Production",
+    description: "Understanding how seeded area, effective yield and crop mix have interacted in Canadian grain production.",
+    href: "#/topics/grain-production",
+  },
 ];

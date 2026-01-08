@@ -2,6 +2,7 @@ import { HomePage } from "./pages/Home.js";
 import { TopicsIndexPage } from "./pages/TopicsIndex.js";
 import { ConsumerPriceIndexPage } from "./pages/topics/ConsumerPriceIndex.js";
 import { InflationStoryPage } from "./pages/topics/InflationStory.js";
+import { GrainProductionPage } from "./pages/topics/GrainProduction.js";
 
 function normalisePath(path) {
   const trimmed = (path || "").trim();
@@ -25,6 +26,7 @@ export function createRouter({ outlet, setTitle }) {
     "/topics": TopicsIndexPage,
     "/topics/consumer-price-index": ConsumerPriceIndexPage,
     "/topics/inflation-story": InflationStoryPage,
+    "/topics/grain-production": GrainProductionPage,
   };
 
   function renderNotFound(path) {

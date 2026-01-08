@@ -1,0 +1,4931 @@
+{
+  "cumulativeData": [
+    {
+      "year": 1909,
+      "component": "Seeded Area",
+      "value": 0.13549379854368127,
+      "cumulativeStart": 0.0,
+      "cumulativeEnd": 0.13549379854368127,
+      "xPosition": 1908.75
+    },
+    {
+      "year": 1909,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.1839205009201077,
+      "cumulativeStart": 0.13549379854368127,
+      "cumulativeEnd": 0.31941429946378896,
+      "xPosition": 1909
+    },
+    {
+      "year": 1909,
+      "component": "Crop Mix",
+      "value": -0.01952278104190361,
+      "cumulativeStart": 0.31941429946378896,
+      "cumulativeEnd": 0.29989151842188533,
+      "xPosition": 1909.25
+    },
+    {
+      "year": 1910,
+      "component": "Seeded Area",
+      "value": 0.004457707061366278,
+      "cumulativeStart": 0.29989151842188533,
+      "cumulativeEnd": 0.3043492254832516,
+      "xPosition": 1909.75
+    },
+    {
+      "year": 1910,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.3164402142223866,
+      "cumulativeStart": 0.3043492254832516,
+      "cumulativeEnd": -0.012090988739135,
+      "xPosition": 1910
+    },
+    {
+      "year": 1910,
+      "component": "Crop Mix",
+      "value": -0.01827000131446227,
+      "cumulativeStart": -0.012090988739135,
+      "cumulativeEnd": -0.03036099005359727,
+      "xPosition": 1910.25
+    },
+    {
+      "year": 1911,
+      "component": "Seeded Area",
+      "value": 0.18991155617632316,
+      "cumulativeStart": -0.03036099005359727,
+      "cumulativeEnd": 0.1595505661227259,
+      "xPosition": 1910.75
+    },
+    {
+      "year": 1911,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.30245807345184517,
+      "cumulativeStart": 0.1595505661227259,
+      "cumulativeEnd": 0.46200863957457106,
+      "xPosition": 1911
+    },
+    {
+      "year": 1911,
+      "component": "Crop Mix",
+      "value": -0.021196784065980245,
+      "cumulativeStart": 0.46200863957457106,
+      "cumulativeEnd": 0.4408118555085908,
+      "xPosition": 1911.25
+    },
+    {
+      "year": 1912,
+      "component": "Seeded Area",
+      "value": 0.033900395517814985,
+      "cumulativeStart": 0.4408118555085908,
+      "cumulativeEnd": 0.4747122510264058,
+      "xPosition": 1911.75
+    },
+    {
+      "year": 1912,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.016402631948513886,
+      "cumulativeStart": 0.4747122510264058,
+      "cumulativeEnd": 0.4911148829749197,
+      "xPosition": 1912
+    },
+    {
+      "year": 1912,
+      "component": "Crop Mix",
+      "value": -0.013652379891914375,
+      "cumulativeStart": 0.4911148829749197,
+      "cumulativeEnd": 0.4774625030830053,
+      "xPosition": 1912.25
+    },
+    {
+      "year": 1913,
+      "component": "Seeded Area",
+      "value": -0.0017402105587471794,
+      "cumulativeStart": 0.4774625030830053,
+      "cumulativeEnd": 0.47572229252425813,
+      "xPosition": 1912.75
+    },
+    {
+      "year": 1913,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.003329270752057378,
+      "cumulativeStart": 0.47572229252425813,
+      "cumulativeEnd": 0.47239302177220077,
+      "xPosition": 1913
+    },
+    {
+      "year": 1913,
+      "component": "Crop Mix",
+      "value": 0.013328229384013977,
+      "cumulativeStart": 0.47239302177220077,
+      "cumulativeEnd": 0.48572125115621473,
+      "xPosition": 1913.25
+    },
+    {
+      "year": 1914,
+      "component": "Seeded Area",
+      "value": -0.0697423478999859,
+      "cumulativeStart": 0.48572125115621473,
+      "cumulativeEnd": 0.4159789032562288,
+      "xPosition": 1913.75
+    },
+    {
+      "year": 1914,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.26188181813850453,
+      "cumulativeStart": 0.4159789032562288,
+      "cumulativeEnd": 0.1540970851177243,
+      "xPosition": 1914
+    },
+    {
+      "year": 1914,
+      "component": "Crop Mix",
+      "value": 0.02658626748148013,
+      "cumulativeStart": 0.1540970851177243,
+      "cumulativeEnd": 0.18068335259920443,
+      "xPosition": 1914.25
+    },
+    {
+      "year": 1915,
+      "component": "Seeded Area",
+      "value": 0.2199301458359315,
+      "cumulativeStart": 0.18068335259920443,
+      "cumulativeEnd": 0.40061349843513594,
+      "xPosition": 1914.75
+    },
+    {
+      "year": 1915,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.37587161496066324,
+      "cumulativeStart": 0.40061349843513594,
+      "cumulativeEnd": 0.7764851133957992,
+      "xPosition": 1915
+    },
+    {
+      "year": 1915,
+      "component": "Crop Mix",
+      "value": 0.003952367502423282,
+      "cumulativeStart": 0.7764851133957992,
+      "cumulativeEnd": 0.7804374808982224,
+      "xPosition": 1915.25
+    },
+    {
+      "year": 1916,
+      "component": "Seeded Area",
+      "value": -0.0061213946433120725,
+      "cumulativeStart": 0.7804374808982224,
+      "cumulativeEnd": 0.7743160862549103,
+      "xPosition": 1915.75
+    },
+    {
+      "year": 1916,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.27043933764218187,
+      "cumulativeStart": 0.7743160862549103,
+      "cumulativeEnd": 0.5038767486127285,
+      "xPosition": 1916
+    },
+    {
+      "year": 1916,
+      "component": "Crop Mix",
+      "value": -0.0076066277523796355,
+      "cumulativeStart": 0.5038767486127285,
+      "cumulativeEnd": 0.49627012086034883,
+      "xPosition": 1916.25
+    },
+    {
+      "year": 1917,
+      "component": "Seeded Area",
+      "value": 0.09246984363548094,
+      "cumulativeStart": 0.49627012086034883,
+      "cumulativeEnd": 0.5887399644958298,
+      "xPosition": 1916.75
+    },
+    {
+      "year": 1917,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.1307458351359139,
+      "cumulativeStart": 0.5887399644958298,
+      "cumulativeEnd": 0.4579941293599159,
+      "xPosition": 1917
+    },
+    {
+      "year": 1917,
+      "component": "Crop Mix",
+      "value": 0.006640758558554505,
+      "cumulativeStart": 0.4579941293599159,
+      "cumulativeEnd": 0.4646348879184704,
+      "xPosition": 1917.25
+    },
+    {
+      "year": 1918,
+      "component": "Seeded Area",
+      "value": 0.16710204426346564,
+      "cumulativeStart": 0.4646348879184704,
+      "cumulativeEnd": 0.631736932181936,
+      "xPosition": 1917.75
+    },
+    {
+      "year": 1918,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.18114635561260284,
+      "cumulativeStart": 0.631736932181936,
+      "cumulativeEnd": 0.4505905765693332,
+      "xPosition": 1918
+    },
+    {
+      "year": 1918,
+      "component": "Crop Mix",
+      "value": 0.041593867736404055,
+      "cumulativeStart": 0.4505905765693332,
+      "cumulativeEnd": 0.49218444430573727,
+      "xPosition": 1918.25
+    },
+    {
+      "year": 1919,
+      "component": "Seeded Area",
+      "value": 0.0381503034956836,
+      "cumulativeStart": 0.49218444430573727,
+      "cumulativeEnd": 0.5303347478014209,
+      "xPosition": 1918.75
+    },
+    {
+      "year": 1919,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.09023055134586969,
+      "cumulativeStart": 0.5303347478014209,
+      "cumulativeEnd": 0.4401041964555512,
+      "xPosition": 1919
+    },
+    {
+      "year": 1919,
+      "component": "Crop Mix",
+      "value": -0.015010587975920281,
+      "cumulativeStart": 0.4401041964555512,
+      "cumulativeEnd": 0.42509360847963096,
+      "xPosition": 1919.25
+    },
+    {
+      "year": 1920,
+      "component": "Seeded Area",
+      "value": 0.0006142131479336399,
+      "cumulativeStart": 0.42509360847963096,
+      "cumulativeEnd": 0.4257078216275646,
+      "xPosition": 1919.75
+    },
+    {
+      "year": 1920,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.2826158603279806,
+      "cumulativeStart": 0.4257078216275646,
+      "cumulativeEnd": 0.7083236819555452,
+      "xPosition": 1920
+    },
+    {
+      "year": 1920,
+      "component": "Crop Mix",
+      "value": -0.018480673065719933,
+      "cumulativeStart": 0.7083236819555452,
+      "cumulativeEnd": 0.6898430088898253,
+      "xPosition": 1920.25
+    },
+    {
+      "year": 1921,
+      "component": "Seeded Area",
+      "value": 0.15478874009925292,
+      "cumulativeStart": 0.6898430088898253,
+      "cumulativeEnd": 0.8446317489890782,
+      "xPosition": 1920.75
+    },
+    {
+      "year": 1921,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.17726947999035936,
+      "cumulativeStart": 0.8446317489890782,
+      "cumulativeEnd": 0.6673622689987189,
+      "xPosition": 1921
+    },
+    {
+      "year": 1921,
+      "component": "Crop Mix",
+      "value": -0.01742600361017055,
+      "cumulativeStart": 0.6673622689987189,
+      "cumulativeEnd": 0.6499362653885483,
+      "xPosition": 1921.25
+    },
+    {
+      "year": 1922,
+      "component": "Seeded Area",
+      "value": -0.0705110310285022,
+      "cumulativeStart": 0.6499362653885483,
+      "cumulativeEnd": 0.5794252343600461,
+      "xPosition": 1921.75
+    },
+    {
+      "year": 1922,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.2998244266698936,
+      "cumulativeStart": 0.5794252343600461,
+      "cumulativeEnd": 0.8792496610299397,
+      "xPosition": 1922
+    },
+    {
+      "year": 1922,
+      "component": "Crop Mix",
+      "value": -0.00847925265416788,
+      "cumulativeStart": 0.8792496610299397,
+      "cumulativeEnd": 0.8707704083757719,
+      "xPosition": 1922.25
+    },
+    {
+      "year": 1923,
+      "component": "Seeded Area",
+      "value": -0.025111960080948847,
+      "cumulativeStart": 0.8707704083757719,
+      "cumulativeEnd": 0.8456584482948231,
+      "xPosition": 1922.75
+    },
+    {
+      "year": 1923,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.15489795333505055,
+      "cumulativeStart": 0.8456584482948231,
+      "cumulativeEnd": 1.0005564016298736,
+      "xPosition": 1923
+    },
+    {
+      "year": 1923,
+      "component": "Crop Mix",
+      "value": 0.0018361503912485144,
+      "cumulativeStart": 1.0005564016298736,
+      "cumulativeEnd": 1.002392552021122,
+      "xPosition": 1923.25
+    },
+    {
+      "year": 1924,
+      "component": "Seeded Area",
+      "value": 0.023072920369251904,
+      "cumulativeStart": 1.002392552021122,
+      "cumulativeEnd": 1.025465472390374,
+      "xPosition": 1923.75
+    },
+    {
+      "year": 1924,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.4329241770584339,
+      "cumulativeStart": 1.025465472390374,
+      "cumulativeEnd": 0.5925412953319401,
+      "xPosition": 1924
+    },
+    {
+      "year": 1924,
+      "component": "Crop Mix",
+      "value": 0.01977484443077998,
+      "cumulativeStart": 0.5925412953319401,
+      "cumulativeEnd": 0.6123161397627201,
+      "xPosition": 1924.25
+    },
+    {
+      "year": 1925,
+      "component": "Seeded Area",
+      "value": -0.09141617300980798,
+      "cumulativeStart": 0.6123161397627201,
+      "cumulativeEnd": 0.5208999667529122,
+      "xPosition": 1924.75
+    },
+    {
+      "year": 1925,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.27808468200525766,
+      "cumulativeStart": 0.5208999667529122,
+      "cumulativeEnd": 0.7989846487581698,
+      "xPosition": 1925
+    },
+    {
+      "year": 1925,
+      "component": "Crop Mix",
+      "value": -0.007702919552623921,
+      "cumulativeStart": 0.7989846487581698,
+      "cumulativeEnd": 0.7912817292055458,
+      "xPosition": 1925.25
+    },
+    {
+      "year": 1926,
+      "component": "Seeded Area",
+      "value": 0.05982839073554658,
+      "cumulativeStart": 0.7912817292055458,
+      "cumulativeEnd": 0.8511101199410924,
+      "xPosition": 1925.75
+    },
+    {
+      "year": 1926,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.045363976340773195,
+      "cumulativeStart": 0.8511101199410924,
+      "cumulativeEnd": 0.8057461436003193,
+      "xPosition": 1926
+    },
+    {
+      "year": 1926,
+      "component": "Crop Mix",
+      "value": -0.00016171440317046953,
+      "cumulativeStart": 0.8057461436003193,
+      "cumulativeEnd": 0.8055844291971488,
+      "xPosition": 1926.25
+    },
+    {
+      "year": 1927,
+      "component": "Seeded Area",
+      "value": -0.0090580676115124,
+      "cumulativeStart": 0.8055844291971488,
+      "cumulativeEnd": 0.7965263615856364,
+      "xPosition": 1926.75
+    },
+    {
+      "year": 1927,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.13928602075190213,
+      "cumulativeStart": 0.7965263615856364,
+      "cumulativeEnd": 0.9358123823375385,
+      "xPosition": 1927
+    },
+    {
+      "year": 1927,
+      "component": "Crop Mix",
+      "value": -0.0020815223186243237,
+      "cumulativeStart": 0.9358123823375385,
+      "cumulativeEnd": 0.9337308600189141,
+      "xPosition": 1927.25
+    },
+    {
+      "year": 1928,
+      "component": "Seeded Area",
+      "value": 0.07033787379134182,
+      "cumulativeStart": 0.9337308600189141,
+      "cumulativeEnd": 1.0040687338102559,
+      "xPosition": 1927.75
+    },
+    {
+      "year": 1928,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.058391215841281686,
+      "cumulativeStart": 1.0040687338102559,
+      "cumulativeEnd": 1.0624599496515374,
+      "xPosition": 1928
+    },
+    {
+      "year": 1928,
+      "component": "Crop Mix",
+      "value": 0.007398858219820802,
+      "cumulativeStart": 1.0624599496515374,
+      "cumulativeEnd": 1.0698588078713582,
+      "xPosition": 1928.25
+    },
+    {
+      "year": 1929,
+      "component": "Seeded Area",
+      "value": 0.0349043480185145,
+      "cumulativeStart": 1.0698588078713582,
+      "cumulativeEnd": 1.1047631558898727,
+      "xPosition": 1928.75
+    },
+    {
+      "year": 1929,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.5487958786708653,
+      "cumulativeStart": 1.1047631558898727,
+      "cumulativeEnd": 0.5559672772190074,
+      "xPosition": 1929
+    },
+    {
+      "year": 1929,
+      "component": "Crop Mix",
+      "value": 0.0053736149953018675,
+      "cumulativeStart": 0.5559672772190074,
+      "cumulativeEnd": 0.5613408922143093,
+      "xPosition": 1929.25
+    },
+    {
+      "year": 1930,
+      "component": "Seeded Area",
+      "value": 0.019643952398268993,
+      "cumulativeStart": 0.5613408922143093,
+      "cumulativeEnd": 0.5809848446125783,
+      "xPosition": 1929.75
+    },
+    {
+      "year": 1930,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.3311527775886607,
+      "cumulativeStart": 0.5809848446125783,
+      "cumulativeEnd": 0.912137622201239,
+      "xPosition": 1930
+    },
+    {
+      "year": 1930,
+      "component": "Crop Mix",
+      "value": -0.008012824378708094,
+      "cumulativeStart": 0.912137622201239,
+      "cumulativeEnd": 0.9041247978225309,
+      "xPosition": 1930.25
+    },
+    {
+      "year": 1931,
+      "component": "Seeded Area",
+      "value": -0.030329281396703323,
+      "cumulativeStart": 0.9041247978225309,
+      "cumulativeEnd": 0.8737955164258275,
+      "xPosition": 1930.75
+    },
+    {
+      "year": 1931,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.3085917583844034,
+      "cumulativeStart": 0.8737955164258275,
+      "cumulativeEnd": 0.5652037580414242,
+      "xPosition": 1931
+    },
+    {
+      "year": 1931,
+      "component": "Crop Mix",
+      "value": 0.016475634471800782,
+      "cumulativeStart": 0.5652037580414242,
+      "cumulativeEnd": 0.581679392513225,
+      "xPosition": 1931.25
+    },
+    {
+      "year": 1932,
+      "component": "Seeded Area",
+      "value": 0.01866004742294436,
+      "cumulativeStart": 0.581679392513225,
+      "cumulativeEnd": 0.6003394399361693,
+      "xPosition": 1931.75
+    },
+    {
+      "year": 1932,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.2399400860551389,
+      "cumulativeStart": 0.6003394399361693,
+      "cumulativeEnd": 0.8402795259913083,
+      "xPosition": 1932
+    },
+    {
+      "year": 1932,
+      "component": "Crop Mix",
+      "value": -0.010224174301039168,
+      "cumulativeStart": 0.8402795259913083,
+      "cumulativeEnd": 0.8300553516902691,
+      "xPosition": 1932.25
+    },
+    {
+      "year": 1933,
+      "component": "Seeded Area",
+      "value": -0.029112741476534865,
+      "cumulativeStart": 0.8300553516902691,
+      "cumulativeEnd": 0.8009426102137343,
+      "xPosition": 1932.75
+    },
+    {
+      "year": 1933,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.3491678142584201,
+      "cumulativeStart": 0.8009426102137343,
+      "cumulativeEnd": 0.45177479595531417,
+      "xPosition": 1933
+    },
+    {
+      "year": 1933,
+      "component": "Crop Mix",
+      "value": 0.020487754125163515,
+      "cumulativeStart": 0.45177479595531417,
+      "cumulativeEnd": 0.4722625500804777,
+      "xPosition": 1933.25
+    },
+    {
+      "year": 1934,
+      "component": "Seeded Area",
+      "value": -0.03891431585144289,
+      "cumulativeStart": 0.4722625500804777,
+      "cumulativeEnd": 0.4333482342290348,
+      "xPosition": 1933.75
+    },
+    {
+      "year": 1934,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.04936742705866856,
+      "cumulativeStart": 0.4333482342290348,
+      "cumulativeEnd": 0.4827156612877034,
+      "xPosition": 1934
+    },
+    {
+      "year": 1934,
+      "component": "Crop Mix",
+      "value": 0.004596531511019214,
+      "cumulativeStart": 0.4827156612877034,
+      "cumulativeEnd": 0.4873121927987226,
+      "xPosition": 1934.25
+    },
+    {
+      "year": 1935,
+      "component": "Seeded Area",
+      "value": 0.02017704226332029,
+      "cumulativeStart": 0.4873121927987226,
+      "cumulativeEnd": 0.5074892350620429,
+      "xPosition": 1934.75
+    },
+    {
+      "year": 1935,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.09594843428098435,
+      "cumulativeStart": 0.5074892350620429,
+      "cumulativeEnd": 0.6034376693430272,
+      "xPosition": 1935
+    },
+    {
+      "year": 1935,
+      "component": "Crop Mix",
+      "value": 0.005868194335285987,
+      "cumulativeStart": 0.6034376693430272,
+      "cumulativeEnd": 0.6093058636783132,
+      "xPosition": 1935.25
+    },
+    {
+      "year": 1936,
+      "component": "Seeded Area",
+      "value": 0.029200729037356155,
+      "cumulativeStart": 0.6093058636783132,
+      "cumulativeEnd": 0.6385065927156693,
+      "xPosition": 1935.75
+    },
+    {
+      "year": 1936,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.31200106264838484,
+      "cumulativeStart": 0.6385065927156693,
+      "cumulativeEnd": 0.3265055300672845,
+      "xPosition": 1936
+    },
+    {
+      "year": 1936,
+      "component": "Crop Mix",
+      "value": 0.000282004113236034,
+      "cumulativeStart": 0.3265055300672845,
+      "cumulativeEnd": 0.32678753418052053,
+      "xPosition": 1936.25
+    },
+    {
+      "year": 1937,
+      "component": "Seeded Area",
+      "value": -0.008624632972257018,
+      "cumulativeStart": 0.32678753418052053,
+      "cumulativeEnd": 0.3181629012082635,
+      "xPosition": 1936.75
+    },
+    {
+      "year": 1937,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.09019330950493336,
+      "cumulativeStart": 0.3181629012082635,
+      "cumulativeEnd": 0.22796959170333014,
+      "xPosition": 1937
+    },
+    {
+      "year": 1937,
+      "component": "Crop Mix",
+      "value": 0.03290764051803628,
+      "cumulativeStart": 0.22796959170333014,
+      "cumulativeEnd": 0.26087723222136644,
+      "xPosition": 1937.25
+    },
+    {
+      "year": 1938,
+      "component": "Seeded Area",
+      "value": 0.006693800323812837,
+      "cumulativeStart": 0.26087723222136644,
+      "cumulativeEnd": 0.2675710325451793,
+      "xPosition": 1937.75
+    },
+    {
+      "year": 1938,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.5141359674080833,
+      "cumulativeStart": 0.2675710325451793,
+      "cumulativeEnd": 0.7817069999532626,
+      "xPosition": 1938
+    },
+    {
+      "year": 1938,
+      "component": "Crop Mix",
+      "value": -0.0510952334534891,
+      "cumulativeStart": 0.7817069999532626,
+      "cumulativeEnd": 0.7306117664997736,
+      "xPosition": 1938.25
+    },
+    {
+      "year": 1939,
+      "component": "Seeded Area",
+      "value": 0.021685929573383333,
+      "cumulativeStart": 0.7306117664997736,
+      "cumulativeEnd": 0.7522976960731569,
+      "xPosition": 1938.75
+    },
+    {
+      "year": 1939,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.2103285509406666,
+      "cumulativeStart": 0.7522976960731569,
+      "cumulativeEnd": 0.9626262470138235,
+      "xPosition": 1939
+    },
+    {
+      "year": 1939,
+      "component": "Crop Mix",
+      "value": -0.006856305140507585,
+      "cumulativeStart": 0.9626262470138235,
+      "cumulativeEnd": 0.9557699418733159,
+      "xPosition": 1939.25
+    },
+    {
+      "year": 1940,
+      "component": "Seeded Area",
+      "value": 0.0319592806505149,
+      "cumulativeStart": 0.9557699418733159,
+      "cumulativeEnd": 0.9877292225238308,
+      "xPosition": 1939.75
+    },
+    {
+      "year": 1940,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.011949847228715303,
+      "cumulativeStart": 0.9877292225238308,
+      "cumulativeEnd": 0.9757793752951155,
+      "xPosition": 1940
+    },
+    {
+      "year": 1940,
+      "component": "Crop Mix",
+      "value": -0.0018466226843218483,
+      "cumulativeStart": 0.9757793752951155,
+      "cumulativeEnd": 0.9739327526107936,
+      "xPosition": 1940.25
+    },
+    {
+      "year": 1941,
+      "component": "Seeded Area",
+      "value": -0.10701138917590569,
+      "cumulativeStart": 0.9739327526107936,
+      "cumulativeEnd": 0.8669213634348879,
+      "xPosition": 1940.75
+    },
+    {
+      "year": 1941,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.23543601732418387,
+      "cumulativeStart": 0.8669213634348879,
+      "cumulativeEnd": 0.6314853461107041,
+      "xPosition": 1941
+    },
+    {
+      "year": 1941,
+      "component": "Crop Mix",
+      "value": 0.00999418965491164,
+      "cumulativeStart": 0.6314853461107041,
+      "cumulativeEnd": 0.6414795357656157,
+      "xPosition": 1941.25
+    },
+    {
+      "year": 1942,
+      "component": "Seeded Area",
+      "value": 0.07518662259352027,
+      "cumulativeStart": 0.6414795357656157,
+      "cumulativeEnd": 0.7166661583591359,
+      "xPosition": 1941.75
+    },
+    {
+      "year": 1942,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.5784126620660174,
+      "cumulativeStart": 0.7166661583591359,
+      "cumulativeEnd": 1.2950788204251533,
+      "xPosition": 1942
+    },
+    {
+      "year": 1942,
+      "component": "Crop Mix",
+      "value": -0.009337251884422693,
+      "cumulativeStart": 1.2950788204251533,
+      "cumulativeEnd": 1.2857415685407307,
+      "xPosition": 1942.25
+    },
+    {
+      "year": 1943,
+      "component": "Seeded Area",
+      "value": -0.04456877200173537,
+      "cumulativeStart": 1.2857415685407307,
+      "cumulativeEnd": 1.2411727965389954,
+      "xPosition": 1942.75
+    },
+    {
+      "year": 1943,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.41505807333211225,
+      "cumulativeStart": 1.2411727965389954,
+      "cumulativeEnd": 0.8261147232068831,
+      "xPosition": 1943
+    },
+    {
+      "year": 1943,
+      "component": "Crop Mix",
+      "value": -0.007256647231017543,
+      "cumulativeStart": 0.8261147232068831,
+      "cumulativeEnd": 0.8188580759758655,
+      "xPosition": 1943.25
+    },
+    {
+      "year": 1944,
+      "component": "Seeded Area",
+      "value": 0.04212095196561805,
+      "cumulativeStart": 0.8188580759758655,
+      "cumulativeEnd": 0.8609790279414835,
+      "xPosition": 1943.75
+    },
+    {
+      "year": 1944,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.10247770878774827,
+      "cumulativeStart": 0.8609790279414835,
+      "cumulativeEnd": 0.9634567367292318,
+      "xPosition": 1944
+    },
+    {
+      "year": 1944,
+      "component": "Crop Mix",
+      "value": 0.014679059867705582,
+      "cumulativeStart": 0.9634567367292318,
+      "cumulativeEnd": 0.9781357965969374,
+      "xPosition": 1944.25
+    },
+    {
+      "year": 1945,
+      "component": "Seeded Area",
+      "value": -0.0069349288636786355,
+      "cumulativeStart": 0.9781357965969374,
+      "cumulativeEnd": 0.9712008677332588,
+      "xPosition": 1944.75
+    },
+    {
+      "year": 1945,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.2633772156455982,
+      "cumulativeStart": 0.9712008677332588,
+      "cumulativeEnd": 0.7078236520876606,
+      "xPosition": 1945
+    },
+    {
+      "year": 1945,
+      "component": "Crop Mix",
+      "value": 0.0030525847543114715,
+      "cumulativeStart": 0.7078236520876606,
+      "cumulativeEnd": 0.7108762368419721,
+      "xPosition": 1945.25
+    },
+    {
+      "year": 1946,
+      "component": "Seeded Area",
+      "value": -0.016454008459074743,
+      "cumulativeStart": 0.7108762368419721,
+      "cumulativeEnd": 0.6944222283828974,
+      "xPosition": 1945.75
+    },
+    {
+      "year": 1946,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.17009603709690616,
+      "cumulativeStart": 0.6944222283828974,
+      "cumulativeEnd": 0.8645182654798035,
+      "xPosition": 1946
+    },
+    {
+      "year": 1946,
+      "component": "Crop Mix",
+      "value": -0.006243609166013714,
+      "cumulativeStart": 0.8645182654798035,
+      "cumulativeEnd": 0.8582746563137897,
+      "xPosition": 1946.25
+    },
+    {
+      "year": 1947,
+      "component": "Seeded Area",
+      "value": 0.023547553764739604,
+      "cumulativeStart": 0.8582746563137897,
+      "cumulativeEnd": 0.8818222100785293,
+      "xPosition": 1946.75
+    },
+    {
+      "year": 1947,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.19001847208108014,
+      "cumulativeStart": 0.8818222100785293,
+      "cumulativeEnd": 0.6918037379974492,
+      "xPosition": 1947
+    },
+    {
+      "year": 1947,
+      "component": "Crop Mix",
+      "value": -0.02020897823930634,
+      "cumulativeStart": 0.6918037379974492,
+      "cumulativeEnd": 0.6715947597581429,
+      "xPosition": 1947.25
+    },
+    {
+      "year": 1948,
+      "component": "Seeded Area",
+      "value": 0.009832522595953463,
+      "cumulativeStart": 0.6715947597581429,
+      "cumulativeEnd": 0.6814272823540963,
+      "xPosition": 1947.75
+    },
+    {
+      "year": 1948,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.17775801187696283,
+      "cumulativeStart": 0.6814272823540963,
+      "cumulativeEnd": 0.8591852942310592,
+      "xPosition": 1948
+    },
+    {
+      "year": 1948,
+      "component": "Crop Mix",
+      "value": 0.0002891195171239036,
+      "cumulativeStart": 0.8591852942310592,
+      "cumulativeEnd": 0.8594744137481831,
+      "xPosition": 1948.25
+    },
+    {
+      "year": 1949,
+      "component": "Seeded Area",
+      "value": 0.013741436246206717,
+      "cumulativeStart": 0.8594744137481831,
+      "cumulativeEnd": 0.8732158499943898,
+      "xPosition": 1948.75
+    },
+    {
+      "year": 1949,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.18130667628575137,
+      "cumulativeStart": 0.8732158499943898,
+      "cumulativeEnd": 0.6919091737086385,
+      "xPosition": 1949
+    },
+    {
+      "year": 1949,
+      "component": "Crop Mix",
+      "value": 0.033759809667316926,
+      "cumulativeStart": 0.6919091737086385,
+      "cumulativeEnd": 0.7256689833759554,
+      "xPosition": 1949.25
+    },
+    {
+      "year": 1950,
+      "component": "Seeded Area",
+      "value": 0.01816740959419505,
+      "cumulativeStart": 0.7256689833759554,
+      "cumulativeEnd": 0.7438363929701505,
+      "xPosition": 1949.75
+    },
+    {
+      "year": 1950,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.24723269721852648,
+      "cumulativeStart": 0.7438363929701505,
+      "cumulativeEnd": 0.991069090188677,
+      "xPosition": 1950
+    },
+    {
+      "year": 1950,
+      "component": "Crop Mix",
+      "value": -0.001900898368000531,
+      "cumulativeStart": 0.991069090188677,
+      "cumulativeEnd": 0.9891681918206764,
+      "xPosition": 1950.25
+    },
+    {
+      "year": 1951,
+      "component": "Seeded Area",
+      "value": 0.014375444991692632,
+      "cumulativeStart": 0.9891681918206764,
+      "cumulativeEnd": 1.0035436368123691,
+      "xPosition": 1950.75
+    },
+    {
+      "year": 1951,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.20804425906746127,
+      "cumulativeStart": 1.0035436368123691,
+      "cumulativeEnd": 1.2115878958798305,
+      "xPosition": 1951
+    },
+    {
+      "year": 1951,
+      "component": "Crop Mix",
+      "value": -0.007965304705096904,
+      "cumulativeStart": 1.2115878958798305,
+      "cumulativeEnd": 1.2036225911747336,
+      "xPosition": 1951.25
+    },
+    {
+      "year": 1952,
+      "component": "Seeded Area",
+      "value": 0.017770032941495373,
+      "cumulativeStart": 1.2036225911747336,
+      "cumulativeEnd": 1.221392624116229,
+      "xPosition": 1951.75
+    },
+    {
+      "year": 1952,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.13303976494069125,
+      "cumulativeStart": 1.221392624116229,
+      "cumulativeEnd": 1.35443238905692,
+      "xPosition": 1952
+    },
+    {
+      "year": 1952,
+      "component": "Crop Mix",
+      "value": -0.0013370869577031819,
+      "cumulativeStart": 1.35443238905692,
+      "cumulativeEnd": 1.353095302099217,
+      "xPosition": 1952.25
+    },
+    {
+      "year": 1953,
+      "component": "Seeded Area",
+      "value": -0.006161670482057957,
+      "cumulativeStart": 1.353095302099217,
+      "cumulativeEnd": 1.346933631617159,
+      "xPosition": 1952.75
+    },
+    {
+      "year": 1953,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.08656355928885288,
+      "cumulativeStart": 1.346933631617159,
+      "cumulativeEnd": 1.260370072328306,
+      "xPosition": 1953
+    },
+    {
+      "year": 1953,
+      "component": "Crop Mix",
+      "value": 0.0006100023596557896,
+      "cumulativeStart": 1.260370072328306,
+      "cumulativeEnd": 1.2609800746879618,
+      "xPosition": 1953.25
+    },
+    {
+      "year": 1954,
+      "component": "Seeded Area",
+      "value": -0.040368282618700846,
+      "cumulativeStart": 1.2609800746879618,
+      "cumulativeEnd": 1.220611792069261,
+      "xPosition": 1953.75
+    },
+    {
+      "year": 1954,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.4486859216529613,
+      "cumulativeStart": 1.220611792069261,
+      "cumulativeEnd": 0.7719258704162997,
+      "xPosition": 1954
+    },
+    {
+      "year": 1954,
+      "component": "Crop Mix",
+      "value": 0.019227976833953775,
+      "cumulativeStart": 0.7719258704162997,
+      "cumulativeEnd": 0.7911538472502535,
+      "xPosition": 1954.25
+    },
+    {
+      "year": 1955,
+      "component": "Seeded Area",
+      "value": 0.01923545272411431,
+      "cumulativeStart": 0.7911538472502535,
+      "cumulativeEnd": 0.8103892999743678,
+      "xPosition": 1954.75
+    },
+    {
+      "year": 1955,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.3684200131517476,
+      "cumulativeStart": 0.8103892999743678,
+      "cumulativeEnd": 1.1788093131261155,
+      "xPosition": 1955
+    },
+    {
+      "year": 1955,
+      "component": "Crop Mix",
+      "value": -0.0278396084564127,
+      "cumulativeStart": 1.1788093131261155,
+      "cumulativeEnd": 1.1509697046697027,
+      "xPosition": 1955.25
+    },
+    {
+      "year": 1956,
+      "component": "Seeded Area",
+      "value": -0.015471899763827679,
+      "cumulativeStart": 1.1509697046697027,
+      "cumulativeEnd": 1.135497804905875,
+      "xPosition": 1955.75
+    },
+    {
+      "year": 1956,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.14000812433540263,
+      "cumulativeStart": 1.135497804905875,
+      "cumulativeEnd": 1.2755059292412776,
+      "xPosition": 1956
+    },
+    {
+      "year": 1956,
+      "component": "Crop Mix",
+      "value": -0.02257888074139633,
+      "cumulativeStart": 1.2755059292412776,
+      "cumulativeEnd": 1.2529270484998813,
+      "xPosition": 1956.25
+    },
+    {
+      "year": 1957,
+      "component": "Seeded Area",
+      "value": -0.027363314745183942,
+      "cumulativeStart": 1.2529270484998813,
+      "cumulativeEnd": 1.2255637337546974,
+      "xPosition": 1956.75
+    },
+    {
+      "year": 1957,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.30516888922458846,
+      "cumulativeStart": 1.2255637337546974,
+      "cumulativeEnd": 0.9203948445301089,
+      "xPosition": 1957
+    },
+    {
+      "year": 1957,
+      "component": "Crop Mix",
+      "value": 0.015091751377771023,
+      "cumulativeStart": 0.9203948445301089,
+      "cumulativeEnd": 0.93548659590788,
+      "xPosition": 1957.25
+    },
+    {
+      "year": 1958,
+      "component": "Seeded Area",
+      "value": -0.0027188154175803447,
+      "cumulativeStart": 0.93548659590788,
+      "cumulativeEnd": 0.9327677804902996,
+      "xPosition": 1957.75
+    },
+    {
+      "year": 1958,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.05818791251411968,
+      "cumulativeStart": 0.9327677804902996,
+      "cumulativeEnd": 0.9909556930044193,
+      "xPosition": 1958
+    },
+    {
+      "year": 1958,
+      "component": "Crop Mix",
+      "value": -0.007984584393533396,
+      "cumulativeStart": 0.9909556930044193,
+      "cumulativeEnd": 0.9829711086108859,
+      "xPosition": 1958.25
+    },
+    {
+      "year": 1959,
+      "component": "Seeded Area",
+      "value": -0.0009140840906880499,
+      "cumulativeStart": 0.9829711086108859,
+      "cumulativeEnd": 0.9820570245201978,
+      "xPosition": 1958.75
+    },
+    {
+      "year": 1959,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.02100442909720031,
+      "cumulativeStart": 0.9820570245201978,
+      "cumulativeEnd": 1.003061453617398,
+      "xPosition": 1959
+    },
+    {
+      "year": 1959,
+      "component": "Crop Mix",
+      "value": 0.002509815817952829,
+      "cumulativeStart": 1.003061453617398,
+      "cumulativeEnd": 1.005571269435351,
+      "xPosition": 1959.25
+    },
+    {
+      "year": 1960,
+      "component": "Seeded Area",
+      "value": 0.009375808560175614,
+      "cumulativeStart": 1.005571269435351,
+      "cumulativeEnd": 1.0149470779955265,
+      "xPosition": 1959.75
+    },
+    {
+      "year": 1960,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.10410880046767029,
+      "cumulativeStart": 1.0149470779955265,
+      "cumulativeEnd": 1.1190558784631968,
+      "xPosition": 1960
+    },
+    {
+      "year": 1960,
+      "component": "Crop Mix",
+      "value": -0.020384129770218695,
+      "cumulativeStart": 1.1190558784631968,
+      "cumulativeEnd": 1.098671748692978,
+      "xPosition": 1960.25
+    },
+    {
+      "year": 1961,
+      "component": "Seeded Area",
+      "value": -0.04286020686143033,
+      "cumulativeStart": 1.098671748692978,
+      "cumulativeEnd": 1.0558115418315477,
+      "xPosition": 1960.75
+    },
+    {
+      "year": 1961,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.4399022710237623,
+      "cumulativeStart": 1.0558115418315477,
+      "cumulativeEnd": 0.6159092708077853,
+      "xPosition": 1961
+    },
+    {
+      "year": 1961,
+      "component": "Crop Mix",
+      "value": 0.030971602781522833,
+      "cumulativeStart": 0.6159092708077853,
+      "cumulativeEnd": 0.6468808735893081,
+      "xPosition": 1961.25
+    },
+    {
+      "year": 1962,
+      "component": "Seeded Area",
+      "value": 0.050307947563734245,
+      "cumulativeStart": 0.6468808735893081,
+      "cumulativeEnd": 0.6971888211530424,
+      "xPosition": 1961.75
+    },
+    {
+      "year": 1962,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.5078847019551336,
+      "cumulativeStart": 0.6971888211530424,
+      "cumulativeEnd": 1.205073523108176,
+      "xPosition": 1962
+    },
+    {
+      "year": 1962,
+      "component": "Crop Mix",
+      "value": -0.023135544297675503,
+      "cumulativeStart": 1.205073523108176,
+      "cumulativeEnd": 1.1819379788105004,
+      "xPosition": 1962.25
+    },
+    {
+      "year": 1963,
+      "component": "Seeded Area",
+      "value": 0.019710028137357227,
+      "cumulativeStart": 1.1819379788105004,
+      "cumulativeEnd": 1.2016480069478577,
+      "xPosition": 1962.75
+    },
+    {
+      "year": 1963,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.14687688690325904,
+      "cumulativeStart": 1.2016480069478577,
+      "cumulativeEnd": 1.3485248938511167,
+      "xPosition": 1963
+    },
+    {
+      "year": 1963,
+      "component": "Crop Mix",
+      "value": -0.011417517616479494,
+      "cumulativeStart": 1.3485248938511167,
+      "cumulativeEnd": 1.3371073762346373,
+      "xPosition": 1963.25
+    },
+    {
+      "year": 1964,
+      "component": "Seeded Area",
+      "value": 0.0183662813016241,
+      "cumulativeStart": 1.3371073762346373,
+      "cumulativeEnd": 1.3554736575362614,
+      "xPosition": 1963.75
+    },
+    {
+      "year": 1964,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.19336796523157357,
+      "cumulativeStart": 1.3554736575362614,
+      "cumulativeEnd": 1.1621056923046877,
+      "xPosition": 1964
+    },
+    {
+      "year": 1964,
+      "component": "Crop Mix",
+      "value": 0.005470315232691314,
+      "cumulativeStart": 1.1621056923046877,
+      "cumulativeEnd": 1.1675760075373791,
+      "xPosition": 1964.25
+    },
+    {
+      "year": 1965,
+      "component": "Seeded Area",
+      "value": 0.019503338472876663,
+      "cumulativeStart": 1.1675760075373791,
+      "cumulativeEnd": 1.1870793460102558,
+      "xPosition": 1964.75
+    },
+    {
+      "year": 1965,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.12100582476625574,
+      "cumulativeStart": 1.1870793460102558,
+      "cumulativeEnd": 1.3080851707765115,
+      "xPosition": 1965
+    },
+    {
+      "year": 1965,
+      "component": "Crop Mix",
+      "value": -0.007171690908065992,
+      "cumulativeStart": 1.3080851707765115,
+      "cumulativeEnd": 1.3009134798684456,
+      "xPosition": 1965.25
+    },
+    {
+      "year": 1966,
+      "component": "Seeded Area",
+      "value": 0.04171625855723704,
+      "cumulativeStart": 1.3009134798684456,
+      "cumulativeEnd": 1.3426297384256827,
+      "xPosition": 1965.75
+    },
+    {
+      "year": 1966,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.11786747599139295,
+      "cumulativeStart": 1.3426297384256827,
+      "cumulativeEnd": 1.4604972144170756,
+      "xPosition": 1966
+    },
+    {
+      "year": 1966,
+      "component": "Crop Mix",
+      "value": 0.009229318588677551,
+      "cumulativeStart": 1.4604972144170756,
+      "cumulativeEnd": 1.4697265330057532,
+      "xPosition": 1966.25
+    },
+    {
+      "year": 1967,
+      "component": "Seeded Area",
+      "value": -0.005604780729200343,
+      "cumulativeStart": 1.4697265330057532,
+      "cumulativeEnd": 1.4641217522765528,
+      "xPosition": 1966.75
+    },
+    {
+      "year": 1967,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.2698391337449921,
+      "cumulativeStart": 1.4641217522765528,
+      "cumulativeEnd": 1.1942826185315607,
+      "xPosition": 1967
+    },
+    {
+      "year": 1967,
+      "component": "Crop Mix",
+      "value": 0.026121609713037175,
+      "cumulativeStart": 1.1942826185315607,
+      "cumulativeEnd": 1.220404228244598,
+      "xPosition": 1967.25
+    },
+    {
+      "year": 1968,
+      "component": "Seeded Area",
+      "value": 0.008053924635966325,
+      "cumulativeStart": 1.220404228244598,
+      "cumulativeEnd": 1.2284581528805643,
+      "xPosition": 1967.75
+    },
+    {
+      "year": 1968,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.1342893292648199,
+      "cumulativeStart": 1.2284581528805643,
+      "cumulativeEnd": 1.3627474821453842,
+      "xPosition": 1968
+    },
+    {
+      "year": 1968,
+      "component": "Crop Mix",
+      "value": -0.0015263398087978497,
+      "cumulativeStart": 1.3627474821453842,
+      "cumulativeEnd": 1.3612211423365863,
+      "xPosition": 1968.25
+    },
+    {
+      "year": 1969,
+      "component": "Seeded Area",
+      "value": -0.04391762418749323,
+      "cumulativeStart": 1.3612211423365863,
+      "cumulativeEnd": 1.317303518149093,
+      "xPosition": 1968.75
+    },
+    {
+      "year": 1969,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.11593259086294729,
+      "cumulativeStart": 1.317303518149093,
+      "cumulativeEnd": 1.4332361090120405,
+      "xPosition": 1969
+    },
+    {
+      "year": 1969,
+      "component": "Crop Mix",
+      "value": -0.022218917904112137,
+      "cumulativeStart": 1.4332361090120405,
+      "cumulativeEnd": 1.4110171911079283,
+      "xPosition": 1969.25
+    },
+    {
+      "year": 1970,
+      "component": "Seeded Area",
+      "value": -0.1654264306351081,
+      "cumulativeStart": 1.4110171911079283,
+      "cumulativeEnd": 1.2455907604728202,
+      "xPosition": 1969.75
+    },
+    {
+      "year": 1970,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.004884674017581833,
+      "cumulativeStart": 1.2455907604728202,
+      "cumulativeEnd": 1.250475434490402,
+      "xPosition": 1970
+    },
+    {
+      "year": 1970,
+      "component": "Crop Mix",
+      "value": -0.010415480841888345,
+      "cumulativeStart": 1.250475434490402,
+      "cumulativeEnd": 1.2400599536485137,
+      "xPosition": 1970.25
+    },
+    {
+      "year": 1971,
+      "component": "Seeded Area",
+      "value": 0.23099190218363574,
+      "cumulativeStart": 1.2400599536485137,
+      "cumulativeEnd": 1.4710518558321495,
+      "xPosition": 1970.75
+    },
+    {
+      "year": 1971,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.020989125794542998,
+      "cumulativeStart": 1.4710518558321495,
+      "cumulativeEnd": 1.4920409816266924,
+      "xPosition": 1971
+    },
+    {
+      "year": 1971,
+      "component": "Crop Mix",
+      "value": 0.02803053043755059,
+      "cumulativeStart": 1.4920409816266924,
+      "cumulativeEnd": 1.520071512064243,
+      "xPosition": 1971.25
+    },
+    {
+      "year": 1972,
+      "component": "Seeded Area",
+      "value": -0.05813861507192897,
+      "cumulativeStart": 1.520071512064243,
+      "cumulativeEnd": 1.461932896992314,
+      "xPosition": 1971.75
+    },
+    {
+      "year": 1972,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.06031704682710671,
+      "cumulativeStart": 1.461932896992314,
+      "cumulativeEnd": 1.4016158501652072,
+      "xPosition": 1972
+    },
+    {
+      "year": 1972,
+      "component": "Crop Mix",
+      "value": 0.012986113871738987,
+      "cumulativeStart": 1.4016158501652072,
+      "cumulativeEnd": 1.4146019640369463,
+      "xPosition": 1972.25
+    },
+    {
+      "year": 1973,
+      "component": "Seeded Area",
+      "value": 0.050674543036247854,
+      "cumulativeStart": 1.4146019640369463,
+      "cumulativeEnd": 1.4652765070731941,
+      "xPosition": 1972.75
+    },
+    {
+      "year": 1973,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.01704133152155492,
+      "cumulativeStart": 1.4652765070731941,
+      "cumulativeEnd": 1.4482351755516392,
+      "xPosition": 1973
+    },
+    {
+      "year": 1973,
+      "component": "Crop Mix",
+      "value": -0.003725610486458402,
+      "cumulativeStart": 1.4482351755516392,
+      "cumulativeEnd": 1.4445095650651807,
+      "xPosition": 1973.25
+    },
+    {
+      "year": 1974,
+      "component": "Seeded Area",
+      "value": -0.04065700442482978,
+      "cumulativeStart": 1.4445095650651807,
+      "cumulativeEnd": 1.403852560640351,
+      "xPosition": 1973.75
+    },
+    {
+      "year": 1974,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.13514493478828138,
+      "cumulativeStart": 1.403852560640351,
+      "cumulativeEnd": 1.2687076258520695,
+      "xPosition": 1974
+    },
+    {
+      "year": 1974,
+      "component": "Crop Mix",
+      "value": 0.004240037649730244,
+      "cumulativeStart": 1.2687076258520695,
+      "cumulativeEnd": 1.2729476635017998,
+      "xPosition": 1974.25
+    },
+    {
+      "year": 1975,
+      "component": "Seeded Area",
+      "value": 0.02530111494372278,
+      "cumulativeStart": 1.2729476635017998,
+      "cumulativeEnd": 1.2982487784455226,
+      "xPosition": 1974.75
+    },
+    {
+      "year": 1975,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.17161034943511494,
+      "cumulativeStart": 1.2982487784455226,
+      "cumulativeEnd": 1.4698591278806374,
+      "xPosition": 1975
+    },
+    {
+      "year": 1975,
+      "component": "Crop Mix",
+      "value": -0.003012840580900178,
+      "cumulativeStart": 1.4698591278806374,
+      "cumulativeEnd": 1.4668462872997372,
+      "xPosition": 1975.25
+    },
+    {
+      "year": 1976,
+      "component": "Seeded Area",
+      "value": 0.013820205377292893,
+      "cumulativeStart": 1.4668462872997372,
+      "cumulativeEnd": 1.48066649267703,
+      "xPosition": 1975.75
+    },
+    {
+      "year": 1976,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.10902992275880177,
+      "cumulativeStart": 1.48066649267703,
+      "cumulativeEnd": 1.589696415435832,
+      "xPosition": 1976
+    },
+    {
+      "year": 1976,
+      "component": "Crop Mix",
+      "value": 0.023352503397199825,
+      "cumulativeStart": 1.589696415435832,
+      "cumulativeEnd": 1.6130489188330317,
+      "xPosition": 1976.25
+    },
+    {
+      "year": 1977,
+      "component": "Seeded Area",
+      "value": -0.001291985348562008,
+      "cumulativeStart": 1.6130489188330317,
+      "cumulativeEnd": 1.6117569334844697,
+      "xPosition": 1976.75
+    },
+    {
+      "year": 1977,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.006415079798283913,
+      "cumulativeStart": 1.6117569334844697,
+      "cumulativeEnd": 1.6053418536861859,
+      "xPosition": 1977
+    },
+    {
+      "year": 1977,
+      "component": "Crop Mix",
+      "value": -0.004906143368216836,
+      "cumulativeStart": 1.6053418536861859,
+      "cumulativeEnd": 1.600435710317969,
+      "xPosition": 1977.25
+    },
+    {
+      "year": 1978,
+      "component": "Seeded Area",
+      "value": 0.05281833200745467,
+      "cumulativeStart": 1.600435710317969,
+      "cumulativeEnd": 1.6532540423254236,
+      "xPosition": 1977.75
+    },
+    {
+      "year": 1978,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.005545927054334253,
+      "cumulativeStart": 1.6532540423254236,
+      "cumulativeEnd": 1.6477081152710893,
+      "xPosition": 1978
+    },
+    {
+      "year": 1978,
+      "component": "Crop Mix",
+      "value": -0.023073972969571324,
+      "cumulativeStart": 1.6477081152710893,
+      "cumulativeEnd": 1.624634142301518,
+      "xPosition": 1978.25
+    },
+    {
+      "year": 1979,
+      "component": "Seeded Area",
+      "value": 0.007586585889509223,
+      "cumulativeStart": 1.624634142301518,
+      "cumulativeEnd": 1.6322207281910273,
+      "xPosition": 1978.75
+    },
+    {
+      "year": 1979,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.14101127953309772,
+      "cumulativeStart": 1.6322207281910273,
+      "cumulativeEnd": 1.4912094486579295,
+      "xPosition": 1979
+    },
+    {
+      "year": 1979,
+      "component": "Crop Mix",
+      "value": 0.00652774912696702,
+      "cumulativeStart": 1.4912094486579295,
+      "cumulativeEnd": 1.4977371977848966,
+      "xPosition": 1979.25
+    },
+    {
+      "year": 1980,
+      "component": "Seeded Area",
+      "value": 0.008006440924074099,
+      "cumulativeStart": 1.4977371977848966,
+      "cumulativeEnd": 1.5057436387089707,
+      "xPosition": 1979.75
+    },
+    {
+      "year": 1980,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.05087397443348959,
+      "cumulativeStart": 1.5057436387089707,
+      "cumulativeEnd": 1.5566176131424603,
+      "xPosition": 1980
+    },
+    {
+      "year": 1980,
+      "component": "Crop Mix",
+      "value": 0.03652152988817884,
+      "cumulativeStart": 1.5566176131424603,
+      "cumulativeEnd": 1.5931391430306392,
+      "xPosition": 1980.25
+    },
+    {
+      "year": 1981,
+      "component": "Seeded Area",
+      "value": 0.061888686473370313,
+      "cumulativeStart": 1.5931391430306392,
+      "cumulativeEnd": 1.6550278295040095,
+      "xPosition": 1980.75
+    },
+    {
+      "year": 1981,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.10898402833611684,
+      "cumulativeStart": 1.6550278295040095,
+      "cumulativeEnd": 1.7640118578401263,
+      "xPosition": 1981
+    },
+    {
+      "year": 1981,
+      "component": "Crop Mix",
+      "value": 0.007650235860599902,
+      "cumulativeStart": 1.7640118578401263,
+      "cumulativeEnd": 1.7716620937007261,
+      "xPosition": 1981.25
+    },
+    {
+      "year": 1982,
+      "component": "Seeded Area",
+      "value": 0.018614939542683118,
+      "cumulativeStart": 1.7716620937007261,
+      "cumulativeEnd": 1.7902770332434093,
+      "xPosition": 1981.75
+    },
+    {
+      "year": 1982,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.058182137592323865,
+      "cumulativeStart": 1.7902770332434093,
+      "cumulativeEnd": 1.8484591708357332,
+      "xPosition": 1982
+    },
+    {
+      "year": 1982,
+      "component": "Crop Mix",
+      "value": -0.016661216906125362,
+      "cumulativeStart": 1.8484591708357332,
+      "cumulativeEnd": 1.8317979539296079,
+      "xPosition": 1982.25
+    },
+    {
+      "year": 1983,
+      "component": "Seeded Area",
+      "value": 0.015331164142178721,
+      "cumulativeStart": 1.8317979539296079,
+      "cumulativeEnd": 1.8471291180717866,
+      "xPosition": 1982.75
+    },
+    {
+      "year": 1983,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.11900485172686395,
+      "cumulativeStart": 1.8471291180717866,
+      "cumulativeEnd": 1.7281242663449226,
+      "xPosition": 1983
+    },
+    {
+      "year": 1983,
+      "component": "Crop Mix",
+      "value": -0.00818888253819669,
+      "cumulativeStart": 1.7281242663449226,
+      "cumulativeEnd": 1.719935383806726,
+      "xPosition": 1983.25
+    },
+    {
+      "year": 1984,
+      "component": "Seeded Area",
+      "value": 0.04099182813256519,
+      "cumulativeStart": 1.719935383806726,
+      "cumulativeEnd": 1.7609272119392911,
+      "xPosition": 1983.75
+    },
+    {
+      "year": 1984,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.11568521077135062,
+      "cumulativeStart": 1.7609272119392911,
+      "cumulativeEnd": 1.6452420011679405,
+      "xPosition": 1984
+    },
+    {
+      "year": 1984,
+      "component": "Crop Mix",
+      "value": 0.008038122666048628,
+      "cumulativeStart": 1.6452420011679405,
+      "cumulativeEnd": 1.6532801238339891,
+      "xPosition": 1984.25
+    },
+    {
+      "year": 1985,
+      "component": "Seeded Area",
+      "value": 0.021661847851799365,
+      "cumulativeStart": 1.6532801238339891,
+      "cumulativeEnd": 1.6749419716857885,
+      "xPosition": 1984.75
+    },
+    {
+      "year": 1985,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.09870585393801137,
+      "cumulativeStart": 1.6749419716857885,
+      "cumulativeEnd": 1.7736478256238,
+      "xPosition": 1985
+    },
+    {
+      "year": 1985,
+      "component": "Crop Mix",
+      "value": -0.004457610496785086,
+      "cumulativeStart": 1.7736478256238,
+      "cumulativeEnd": 1.769190215127015,
+      "xPosition": 1985.25
+    },
+    {
+      "year": 1986,
+      "component": "Seeded Area",
+      "value": 0.00013688114483656477,
+      "cumulativeStart": 1.769190215127015,
+      "cumulativeEnd": 1.7693270962718515,
+      "xPosition": 1985.75
+    },
+    {
+      "year": 1986,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.17922740615304567,
+      "cumulativeStart": 1.7693270962718515,
+      "cumulativeEnd": 1.9485545024248971,
+      "xPosition": 1986
+    },
+    {
+      "year": 1986,
+      "component": "Crop Mix",
+      "value": -0.02692474788557664,
+      "cumulativeStart": 1.9485545024248971,
+      "cumulativeEnd": 1.9216297545393206,
+      "xPosition": 1986.25
+    },
+    {
+      "year": 1987,
+      "component": "Seeded Area",
+      "value": -0.02262327478673143,
+      "cumulativeStart": 1.9216297545393206,
+      "cumulativeEnd": 1.8990064797525892,
+      "xPosition": 1986.75
+    },
+    {
+      "year": 1987,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.08571637130775833,
+      "cumulativeStart": 1.8990064797525892,
+      "cumulativeEnd": 1.8132901084448307,
+      "xPosition": 1987
+    },
+    {
+      "year": 1987,
+      "component": "Crop Mix",
+      "value": 0.02554929290422825,
+      "cumulativeStart": 1.8132901084448307,
+      "cumulativeEnd": 1.838839401349059,
+      "xPosition": 1987.25
+    },
+    {
+      "year": 1988,
+      "component": "Seeded Area",
+      "value": 0.006923182891792834,
+      "cumulativeStart": 1.838839401349059,
+      "cumulativeEnd": 1.8457625842408518,
+      "xPosition": 1987.75
+    },
+    {
+      "year": 1988,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.34789929141320736,
+      "cumulativeStart": 1.8457625842408518,
+      "cumulativeEnd": 1.4978632928276445,
+      "xPosition": 1988
+    },
+    {
+      "year": 1988,
+      "component": "Crop Mix",
+      "value": 0.016982280895048107,
+      "cumulativeStart": 1.4978632928276445,
+      "cumulativeEnd": 1.5148455737226927,
+      "xPosition": 1988.25
+    },
+    {
+      "year": 1989,
+      "component": "Seeded Area",
+      "value": 0.03087698466076816,
+      "cumulativeStart": 1.5148455737226927,
+      "cumulativeEnd": 1.5457225583834608,
+      "xPosition": 1988.75
+    },
+    {
+      "year": 1989,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.22356867932897914,
+      "cumulativeStart": 1.5457225583834608,
+      "cumulativeEnd": 1.76929123771244,
+      "xPosition": 1989
+    },
+    {
+      "year": 1989,
+      "component": "Crop Mix",
+      "value": -0.00852678646390656,
+      "cumulativeStart": 1.76929123771244,
+      "cumulativeEnd": 1.7607644512485334,
+      "xPosition": 1989.25
+    },
+    {
+      "year": 1990,
+      "component": "Seeded Area",
+      "value": -0.02211850369185342,
+      "cumulativeStart": 1.7607644512485334,
+      "cumulativeEnd": 1.73864594755668,
+      "xPosition": 1989.75
+    },
+    {
+      "year": 1990,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.1878819402812695,
+      "cumulativeStart": 1.73864594755668,
+      "cumulativeEnd": 1.9265278878379495,
+      "xPosition": 1990
+    },
+    {
+      "year": 1990,
+      "component": "Crop Mix",
+      "value": -0.002395094401812209,
+      "cumulativeStart": 1.9265278878379495,
+      "cumulativeEnd": 1.9241327934361372,
+      "xPosition": 1990.25
+    },
+    {
+      "year": 1991,
+      "component": "Seeded Area",
+      "value": -0.0036593528859896196,
+      "cumulativeStart": 1.9241327934361372,
+      "cumulativeEnd": 1.9204734405501476,
+      "xPosition": 1990.75
+    },
+    {
+      "year": 1991,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.03451303120564265,
+      "cumulativeStart": 1.9204734405501476,
+      "cumulativeEnd": 1.8859604093445048,
+      "xPosition": 1991
+    },
+    {
+      "year": 1991,
+      "component": "Crop Mix",
+      "value": 0.006488636940925947,
+      "cumulativeStart": 1.8859604093445048,
+      "cumulativeEnd": 1.8924490462854309,
+      "xPosition": 1991.25
+    },
+    {
+      "year": 1992,
+      "component": "Seeded Area",
+      "value": 0.0029178019672713162,
+      "cumulativeStart": 1.8924490462854309,
+      "cumulativeEnd": 1.8953668482527022,
+      "xPosition": 1991.75
+    },
+    {
+      "year": 1992,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.05742668334618364,
+      "cumulativeStart": 1.8953668482527022,
+      "cumulativeEnd": 1.8379401649065186,
+      "xPosition": 1992
+    },
+    {
+      "year": 1992,
+      "component": "Crop Mix",
+      "value": -0.026119816963755288,
+      "cumulativeStart": 1.8379401649065186,
+      "cumulativeEnd": 1.8118203479427633,
+      "xPosition": 1992.25
+    },
+    {
+      "year": 1993,
+      "component": "Seeded Area",
+      "value": 0.031273877582524534,
+      "cumulativeStart": 1.8118203479427633,
+      "cumulativeEnd": 1.8430942255252878,
+      "xPosition": 1992.75
+    },
+    {
+      "year": 1993,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.05523676151386434,
+      "cumulativeStart": 1.8430942255252878,
+      "cumulativeEnd": 1.898330987039152,
+      "xPosition": 1993
+    },
+    {
+      "year": 1993,
+      "component": "Crop Mix",
+      "value": -7.579629538154858e-05,
+      "cumulativeStart": 1.898330987039152,
+      "cumulativeEnd": 1.8982551907437706,
+      "xPosition": 1993.25
+    },
+    {
+      "year": 1994,
+      "component": "Seeded Area",
+      "value": 0.005879085360518843,
+      "cumulativeStart": 1.8982551907437706,
+      "cumulativeEnd": 1.9041342761042894,
+      "xPosition": 1993.75
+    },
+    {
+      "year": 1994,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.008461173392362915,
+      "cumulativeStart": 1.9041342761042894,
+      "cumulativeEnd": 1.8956731027119265,
+      "xPosition": 1994
+    },
+    {
+      "year": 1994,
+      "component": "Crop Mix",
+      "value": -0.027865487814384297,
+      "cumulativeStart": 1.8956731027119265,
+      "cumulativeEnd": 1.8678076148975422,
+      "xPosition": 1994.25
+    },
+    {
+      "year": 1995,
+      "component": "Seeded Area",
+      "value": 0.002464535452279648,
+      "cumulativeStart": 1.8678076148975422,
+      "cumulativeEnd": 1.8702721503498219,
+      "xPosition": 1994.75
+    },
+    {
+      "year": 1995,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.007468017130364763,
+      "cumulativeStart": 1.8702721503498219,
+      "cumulativeEnd": 1.8777401674801866,
+      "xPosition": 1995
+    },
+    {
+      "year": 1995,
+      "component": "Crop Mix",
+      "value": 0.020841747080023683,
+      "cumulativeStart": 1.8777401674801866,
+      "cumulativeEnd": 1.8985819145602103,
+      "xPosition": 1995.25
+    },
+    {
+      "year": 1996,
+      "component": "Seeded Area",
+      "value": -0.0005521090445377297,
+      "cumulativeStart": 1.8985819145602103,
+      "cumulativeEnd": 1.8980298055156726,
+      "xPosition": 1995.75
+    },
+    {
+      "year": 1996,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.08841121746934642,
+      "cumulativeStart": 1.8980298055156726,
+      "cumulativeEnd": 1.986441022985019,
+      "xPosition": 1996
+    },
+    {
+      "year": 1996,
+      "component": "Crop Mix",
+      "value": 0.01973019456609916,
+      "cumulativeStart": 1.986441022985019,
+      "cumulativeEnd": 2.006171217551118,
+      "xPosition": 1996.25
+    },
+    {
+      "year": 1997,
+      "component": "Seeded Area",
+      "value": 0.024750149376064456,
+      "cumulativeStart": 2.006171217551118,
+      "cumulativeEnd": 2.0309213669271826,
+      "xPosition": 1996.75
+    },
+    {
+      "year": 1997,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.10196442043254408,
+      "cumulativeStart": 2.0309213669271826,
+      "cumulativeEnd": 1.9289569464946386,
+      "xPosition": 1997
+    },
+    {
+      "year": 1997,
+      "component": "Crop Mix",
+      "value": -0.01704799122737663,
+      "cumulativeStart": 1.9289569464946386,
+      "cumulativeEnd": 1.911908955267262,
+      "xPosition": 1997.25
+    },
+    {
+      "year": 1998,
+      "component": "Seeded Area",
+      "value": 0.004720701134939276,
+      "cumulativeStart": 1.911908955267262,
+      "cumulativeEnd": 1.9166296564022012,
+      "xPosition": 1997.75
+    },
+    {
+      "year": 1998,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.05058664810730758,
+      "cumulativeStart": 1.9166296564022012,
+      "cumulativeEnd": 1.9672163045095088,
+      "xPosition": 1998
+    },
+    {
+      "year": 1998,
+      "component": "Crop Mix",
+      "value": -0.0023253312196302584,
+      "cumulativeStart": 1.9672163045095088,
+      "cumulativeEnd": 1.9648909732898785,
+      "xPosition": 1998.25
+    },
+    {
+      "year": 1999,
+      "component": "Seeded Area",
+      "value": -0.02534931454268019,
+      "cumulativeStart": 1.9648909732898785,
+      "cumulativeEnd": 1.9395416587471983,
+      "xPosition": 1998.75
+    },
+    {
+      "year": 1999,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.10510239142761726,
+      "cumulativeStart": 1.9395416587471983,
+      "cumulativeEnd": 2.0446440501748158,
+      "xPosition": 1999
+    },
+    {
+      "year": 1999,
+      "component": "Crop Mix",
+      "value": -0.010665099585603494,
+      "cumulativeStart": 2.0446440501748158,
+      "cumulativeEnd": 2.033978950589212,
+      "xPosition": 1999.25
+    },
+    {
+      "year": 2000,
+      "component": "Seeded Area",
+      "value": 0.03945123940151518,
+      "cumulativeStart": 2.033978950589212,
+      "cumulativeEnd": 2.0734301899907273,
+      "xPosition": 1999.75
+    },
+    {
+      "year": 2000,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.09601516407250026,
+      "cumulativeStart": 2.0734301899907273,
+      "cumulativeEnd": 1.977415025918227,
+      "xPosition": 2000
+    },
+    {
+      "year": 2000,
+      "component": "Crop Mix",
+      "value": -0.0035994912897507475,
+      "cumulativeStart": 1.977415025918227,
+      "cumulativeEnd": 1.9738155346284763,
+      "xPosition": 2000.25
+    },
+    {
+      "year": 2001,
+      "component": "Seeded Area",
+      "value": -0.036107982495991564,
+      "cumulativeStart": 1.9738155346284763,
+      "cumulativeEnd": 1.9377075521324847,
+      "xPosition": 2000.75
+    },
+    {
+      "year": 2001,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.2044666365985823,
+      "cumulativeStart": 1.9377075521324847,
+      "cumulativeEnd": 1.7332409155339024,
+      "xPosition": 2001
+    },
+    {
+      "year": 2001,
+      "component": "Crop Mix",
+      "value": 0.03992569753921224,
+      "cumulativeStart": 1.7332409155339024,
+      "cumulativeEnd": 1.7731666130731145,
+      "xPosition": 2001.25
+    },
+    {
+      "year": 2002,
+      "component": "Seeded Area",
+      "value": -0.004969020791840251,
+      "cumulativeStart": 1.7731666130731145,
+      "cumulativeEnd": 1.7681975922812743,
+      "xPosition": 2001.75
+    },
+    {
+      "year": 2002,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.19247954193631756,
+      "cumulativeStart": 1.7681975922812743,
+      "cumulativeEnd": 1.5757180503449568,
+      "xPosition": 2002
+    },
+    {
+      "year": 2002,
+      "component": "Crop Mix",
+      "value": 0.032397156389155024,
+      "cumulativeStart": 1.5757180503449568,
+      "cumulativeEnd": 1.6081152067341118,
+      "xPosition": 2002.25
+    },
+    {
+      "year": 2003,
+      "component": "Seeded Area",
+      "value": 0.013176244951917937,
+      "cumulativeStart": 1.6081152067341118,
+      "cumulativeEnd": 1.6212914516860297,
+      "xPosition": 2002.75
+    },
+    {
+      "year": 2003,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.3236541831855633,
+      "cumulativeStart": 1.6212914516860297,
+      "cumulativeEnd": 1.944945634871593,
+      "xPosition": 2003
+    },
+    {
+      "year": 2003,
+      "component": "Crop Mix",
+      "value": -0.03685759320504822,
+      "cumulativeStart": 1.944945634871593,
+      "cumulativeEnd": 1.9080880416665447,
+      "xPosition": 2003.25
+    },
+    {
+      "year": 2004,
+      "component": "Seeded Area",
+      "value": -0.01186113710580372,
+      "cumulativeStart": 1.9080880416665447,
+      "cumulativeEnd": 1.896226904560741,
+      "xPosition": 2003.75
+    },
+    {
+      "year": 2004,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.0996392621312373,
+      "cumulativeStart": 1.896226904560741,
+      "cumulativeEnd": 1.9958661666919784,
+      "xPosition": 2004
+    },
+    {
+      "year": 2004,
+      "component": "Crop Mix",
+      "value": -0.018819382934614604,
+      "cumulativeStart": 1.9958661666919784,
+      "cumulativeEnd": 1.9770467837573638,
+      "xPosition": 2004.25
+    },
+    {
+      "year": 2005,
+      "component": "Seeded Area",
+      "value": -0.027590553841314147,
+      "cumulativeStart": 1.9770467837573638,
+      "cumulativeEnd": 1.9494562299160496,
+      "xPosition": 2004.75
+    },
+    {
+      "year": 2005,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.08817862534773067,
+      "cumulativeStart": 1.9494562299160496,
+      "cumulativeEnd": 2.0376348552637804,
+      "xPosition": 2005
+    },
+    {
+      "year": 2005,
+      "component": "Crop Mix",
+      "value": -0.018953032251221233,
+      "cumulativeStart": 2.0376348552637804,
+      "cumulativeEnd": 2.0186818230125594,
+      "xPosition": 2005.25
+    },
+    {
+      "year": 2006,
+      "component": "Seeded Area",
+      "value": -0.005367015754210058,
+      "cumulativeStart": 2.0186818230125594,
+      "cumulativeEnd": 2.0133148072583493,
+      "xPosition": 2005.75
+    },
+    {
+      "year": 2006,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.047479924815237336,
+      "cumulativeStart": 2.0133148072583493,
+      "cumulativeEnd": 1.965834882443112,
+      "xPosition": 2006
+    },
+    {
+      "year": 2006,
+      "component": "Crop Mix",
+      "value": 0.0030512509730041895,
+      "cumulativeStart": 1.965834882443112,
+      "cumulativeEnd": 1.9688861334161163,
+      "xPosition": 2006.25
+    },
+    {
+      "year": 2007,
+      "component": "Seeded Area",
+      "value": 0.03117389421614547,
+      "cumulativeStart": 1.9688861334161163,
+      "cumulativeEnd": 2.0000600276322618,
+      "xPosition": 2006.75
+    },
+    {
+      "year": 2007,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.06741091231427812,
+      "cumulativeStart": 2.0000600276322618,
+      "cumulativeEnd": 1.9326491153179837,
+      "xPosition": 2007
+    },
+    {
+      "year": 2007,
+      "component": "Crop Mix",
+      "value": 0.025309712161356718,
+      "cumulativeStart": 1.9326491153179837,
+      "cumulativeEnd": 1.9579588274793405,
+      "xPosition": 2007.25
+    },
+    {
+      "year": 2008,
+      "component": "Seeded Area",
+      "value": 0.018935187599371517,
+      "cumulativeStart": 1.9579588274793405,
+      "cumulativeEnd": 1.976894015078712,
+      "xPosition": 2007.75
+    },
+    {
+      "year": 2008,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.1960662026521798,
+      "cumulativeStart": 1.976894015078712,
+      "cumulativeEnd": 2.1729602177308918,
+      "xPosition": 2008
+    },
+    {
+      "year": 2008,
+      "component": "Crop Mix",
+      "value": -0.03602032260273738,
+      "cumulativeStart": 2.1729602177308918,
+      "cumulativeEnd": 2.136939895128154,
+      "xPosition": 2008.25
+    },
+    {
+      "year": 2009,
+      "component": "Seeded Area",
+      "value": 0.0026924994442225625,
+      "cumulativeStart": 2.136939895128154,
+      "cumulativeEnd": 2.1396323945723768,
+      "xPosition": 2008.75
+    },
+    {
+      "year": 2009,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.05925830873550218,
+      "cumulativeStart": 2.1396323945723768,
+      "cumulativeEnd": 2.0803740858368744,
+      "xPosition": 2009
+    },
+    {
+      "year": 2009,
+      "component": "Crop Mix",
+      "value": -0.013437376824373196,
+      "cumulativeStart": 2.0803740858368744,
+      "cumulativeEnd": 2.0669367090125013,
+      "xPosition": 2009.25
+    },
+    {
+      "year": 2010,
+      "component": "Seeded Area",
+      "value": -0.07133111559511462,
+      "cumulativeStart": 2.0669367090125013,
+      "cumulativeEnd": 1.9956055934173866,
+      "xPosition": 2009.75
+    },
+    {
+      "year": 2010,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.003258725694276556,
+      "cumulativeStart": 1.9956055934173866,
+      "cumulativeEnd": 1.99234686772311,
+      "xPosition": 2010
+    },
+    {
+      "year": 2010,
+      "component": "Crop Mix",
+      "value": 0.026055303554938916,
+      "cumulativeStart": 1.99234686772311,
+      "cumulativeEnd": 2.018402171278049,
+      "xPosition": 2010.25
+    },
+    {
+      "year": 2011,
+      "component": "Seeded Area",
+      "value": -0.014219442513351055,
+      "cumulativeStart": 2.018402171278049,
+      "cumulativeEnd": 2.004182728764698,
+      "xPosition": 2010.75
+    },
+    {
+      "year": 2011,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.06595120965881791,
+      "cumulativeStart": 2.004182728764698,
+      "cumulativeEnd": 2.070133938423516,
+      "xPosition": 2011
+    },
+    {
+      "year": 2011,
+      "component": "Crop Mix",
+      "value": -0.010911098995027804,
+      "cumulativeStart": 2.070133938423516,
+      "cumulativeEnd": 2.059222839428488,
+      "xPosition": 2011.25
+    },
+    {
+      "year": 2012,
+      "component": "Seeded Area",
+      "value": 0.12013215061280391,
+      "cumulativeStart": 2.059222839428488,
+      "cumulativeEnd": 2.179354990041292,
+      "xPosition": 2011.75
+    },
+    {
+      "year": 2012,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.07911984062541767,
+      "cumulativeStart": 2.179354990041292,
+      "cumulativeEnd": 2.1002351494158744,
+      "xPosition": 2012
+    },
+    {
+      "year": 2012,
+      "component": "Crop Mix",
+      "value": 0.01973125069424643,
+      "cumulativeStart": 2.1002351494158744,
+      "cumulativeEnd": 2.119966400110121,
+      "xPosition": 2012.25
+    },
+    {
+      "year": 2013,
+      "component": "Seeded Area",
+      "value": 0.015784344378257487,
+      "cumulativeStart": 2.119966400110121,
+      "cumulativeEnd": 2.1357507444883783,
+      "xPosition": 2012.75
+    },
+    {
+      "year": 2013,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.25066547067348643,
+      "cumulativeStart": 2.1357507444883783,
+      "cumulativeEnd": 2.386416215161865,
+      "xPosition": 2013
+    },
+    {
+      "year": 2013,
+      "component": "Crop Mix",
+      "value": -0.022928978160573377,
+      "cumulativeStart": 2.386416215161865,
+      "cumulativeEnd": 2.3634872370012916,
+      "xPosition": 2013.25
+    },
+    {
+      "year": 2014,
+      "component": "Seeded Area",
+      "value": -0.008727109256390975,
+      "cumulativeStart": 2.3634872370012916,
+      "cumulativeEnd": 2.3547601277449006,
+      "xPosition": 2013.75
+    },
+    {
+      "year": 2014,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.15641870846035097,
+      "cumulativeStart": 2.3547601277449006,
+      "cumulativeEnd": 2.19834141928455,
+      "xPosition": 2014
+    },
+    {
+      "year": 2014,
+      "component": "Crop Mix",
+      "value": -0.019492320013757364,
+      "cumulativeStart": 2.19834141928455,
+      "cumulativeEnd": 2.1788490992707925,
+      "xPosition": 2014.25
+    },
+    {
+      "year": 2015,
+      "component": "Seeded Area",
+      "value": 0.01906714097170692,
+      "cumulativeStart": 2.1788490992707925,
+      "cumulativeEnd": 2.1979162402424994,
+      "xPosition": 2014.75
+    },
+    {
+      "year": 2015,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.02367961577010239,
+      "cumulativeStart": 2.1979162402424994,
+      "cumulativeEnd": 2.221595856012602,
+      "xPosition": 2015
+    },
+    {
+      "year": 2015,
+      "component": "Crop Mix",
+      "value": 0.006891063789338094,
+      "cumulativeStart": 2.221595856012602,
+      "cumulativeEnd": 2.22848691980194,
+      "xPosition": 2015.25
+    },
+    {
+      "year": 2016,
+      "component": "Seeded Area",
+      "value": 0.01929230050245323,
+      "cumulativeStart": 2.22848691980194,
+      "cumulativeEnd": 2.2477792203043934,
+      "xPosition": 2015.75
+    },
+    {
+      "year": 2016,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.0887879663242606,
+      "cumulativeStart": 2.2477792203043934,
+      "cumulativeEnd": 2.336567186628654,
+      "xPosition": 2016
+    },
+    {
+      "year": 2016,
+      "component": "Crop Mix",
+      "value": -0.011311557712665052,
+      "cumulativeStart": 2.336567186628654,
+      "cumulativeEnd": 2.325255628915989,
+      "xPosition": 2016.25
+    },
+    {
+      "year": 2017,
+      "component": "Seeded Area",
+      "value": 0.004311831949902256,
+      "cumulativeStart": 2.325255628915989,
+      "cumulativeEnd": 2.329567460865891,
+      "xPosition": 2016.75
+    },
+    {
+      "year": 2017,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.011870942851404769,
+      "cumulativeStart": 2.329567460865891,
+      "cumulativeEnd": 2.3176965180144866,
+      "xPosition": 2017
+    },
+    {
+      "year": 2017,
+      "component": "Crop Mix",
+      "value": 0.0017836704541986867,
+      "cumulativeStart": 2.3176965180144866,
+      "cumulativeEnd": 2.319480188468685,
+      "xPosition": 2017.25
+    },
+    {
+      "year": 2018,
+      "component": "Seeded Area",
+      "value": 0.012691609152469141,
+      "cumulativeStart": 2.319480188468685,
+      "cumulativeEnd": 2.3321717976211542,
+      "xPosition": 2017.75
+    },
+    {
+      "year": 2018,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.015564854733313897,
+      "cumulativeStart": 2.3321717976211542,
+      "cumulativeEnd": 2.3166069428878404,
+      "xPosition": 2018
+    },
+    {
+      "year": 2018,
+      "component": "Crop Mix",
+      "value": 0.005089919922423329,
+      "cumulativeStart": 2.3166069428878404,
+      "cumulativeEnd": 2.321696862810264,
+      "xPosition": 2018.25
+    },
+    {
+      "year": 2019,
+      "component": "Seeded Area",
+      "value": 0.003029896747531069,
+      "cumulativeStart": 2.321696862810264,
+      "cumulativeEnd": 2.324726759557795,
+      "xPosition": 2018.75
+    },
+    {
+      "year": 2019,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.011408012190819931,
+      "cumulativeStart": 2.324726759557795,
+      "cumulativeEnd": 2.3361347717486147,
+      "xPosition": 2019
+    },
+    {
+      "year": 2019,
+      "component": "Crop Mix",
+      "value": 7.333303551210896e-05,
+      "cumulativeStart": 2.3361347717486147,
+      "cumulativeEnd": 2.3362081047841268,
+      "xPosition": 2019.25
+    },
+    {
+      "year": 2020,
+      "component": "Seeded Area",
+      "value": -0.0016169177468192686,
+      "cumulativeStart": 2.3362081047841268,
+      "cumulativeEnd": 2.3345911870373075,
+      "xPosition": 2019.75
+    },
+    {
+      "year": 2020,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.0537608720801963,
+      "cumulativeStart": 2.3345911870373075,
+      "cumulativeEnd": 2.3883520591175036,
+      "xPosition": 2020
+    },
+    {
+      "year": 2020,
+      "component": "Crop Mix",
+      "value": -0.003613324102612163,
+      "cumulativeStart": 2.3883520591175036,
+      "cumulativeEnd": 2.3847387350148916,
+      "xPosition": 2020.25
+    },
+    {
+      "year": 2021,
+      "component": "Seeded Area",
+      "value": 0.0010359209208878895,
+      "cumulativeStart": 2.3847387350148916,
+      "cumulativeEnd": 2.3857746559357795,
+      "xPosition": 2020.75
+    },
+    {
+      "year": 2021,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.3816306019118239,
+      "cumulativeStart": 2.3857746559357795,
+      "cumulativeEnd": 2.0041440540239557,
+      "xPosition": 2021
+    },
+    {
+      "year": 2021,
+      "component": "Crop Mix",
+      "value": 0.06357592993069422,
+      "cumulativeStart": 2.0041440540239557,
+      "cumulativeEnd": 2.06771998395465,
+      "xPosition": 2021.25
+    },
+    {
+      "year": 2022,
+      "component": "Seeded Area",
+      "value": -0.0054975663442888845,
+      "cumulativeStart": 2.06771998395465,
+      "cumulativeEnd": 2.062222417610361,
+      "xPosition": 2021.75
+    },
+    {
+      "year": 2022,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.3455866405589109,
+      "cumulativeStart": 2.062222417610361,
+      "cumulativeEnd": 2.407809058169272,
+      "xPosition": 2022
+    },
+    {
+      "year": 2022,
+      "component": "Crop Mix",
+      "value": -0.04543875022077398,
+      "cumulativeStart": 2.407809058169272,
+      "cumulativeEnd": 2.362370307948498,
+      "xPosition": 2022.25
+    },
+    {
+      "year": 2023,
+      "component": "Seeded Area",
+      "value": 0.00868548310447892,
+      "cumulativeStart": 2.362370307948498,
+      "cumulativeEnd": 2.371055791052977,
+      "xPosition": 2022.75
+    },
+    {
+      "year": 2023,
+      "component": "Within-Crop Effective Yield",
+      "value": -0.08070643251673576,
+      "cumulativeStart": 2.371055791052977,
+      "cumulativeEnd": 2.290349358536241,
+      "xPosition": 2023
+    },
+    {
+      "year": 2023,
+      "component": "Crop Mix",
+      "value": 0.020170951476155052,
+      "cumulativeStart": 2.290349358536241,
+      "cumulativeEnd": 2.310520310012396,
+      "xPosition": 2023.25
+    },
+    {
+      "year": 2024,
+      "component": "Seeded Area",
+      "value": -0.00219201568092231,
+      "cumulativeStart": 2.310520310012396,
+      "cumulativeEnd": 2.308328294331474,
+      "xPosition": 2023.75
+    },
+    {
+      "year": 2024,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.056701495239074785,
+      "cumulativeStart": 2.308328294331474,
+      "cumulativeEnd": 2.3650297895705488,
+      "xPosition": 2024
+    },
+    {
+      "year": 2024,
+      "component": "Crop Mix",
+      "value": -0.011349950501112795,
+      "cumulativeStart": 2.3650297895705488,
+      "cumulativeEnd": 2.353679839069436,
+      "xPosition": 2024.25
+    },
+    {
+      "year": 2025,
+      "component": "Seeded Area",
+      "value": 0.007061748392114708,
+      "cumulativeStart": 2.353679839069436,
+      "cumulativeEnd": 2.3607415874615505,
+      "xPosition": 2024.75
+    },
+    {
+      "year": 2025,
+      "component": "Within-Crop Effective Yield",
+      "value": 0.11581987274248974,
+      "cumulativeStart": 2.3607415874615505,
+      "cumulativeEnd": 2.4765614602040404,
+      "xPosition": 2025
+    },
+    {
+      "year": 2025,
+      "component": "Crop Mix",
+      "value": -0.024246421289119593,
+      "cumulativeStart": 2.4765614602040404,
+      "cumulativeEnd": 2.4523150389149206,
+      "xPosition": 2025.25
+    }
+  ],
+  "connectingSegments": [
+    {
+      "year": 1909,
+      "yearEnd": 1910,
+      "yValue": 0.29989151842188533
+    },
+    {
+      "year": 1910,
+      "yearEnd": 1911,
+      "yValue": -0.03036099005359727
+    },
+    {
+      "year": 1911,
+      "yearEnd": 1912,
+      "yValue": 0.4408118555085908
+    },
+    {
+      "year": 1912,
+      "yearEnd": 1913,
+      "yValue": 0.4774625030830053
+    },
+    {
+      "year": 1913,
+      "yearEnd": 1914,
+      "yValue": 0.48572125115621473
+    },
+    {
+      "year": 1914,
+      "yearEnd": 1915,
+      "yValue": 0.18068335259920443
+    },
+    {
+      "year": 1915,
+      "yearEnd": 1916,
+      "yValue": 0.7804374808982224
+    },
+    {
+      "year": 1916,
+      "yearEnd": 1917,
+      "yValue": 0.49627012086034883
+    },
+    {
+      "year": 1917,
+      "yearEnd": 1918,
+      "yValue": 0.4646348879184704
+    },
+    {
+      "year": 1918,
+      "yearEnd": 1919,
+      "yValue": 0.49218444430573727
+    },
+    {
+      "year": 1919,
+      "yearEnd": 1920,
+      "yValue": 0.42509360847963096
+    },
+    {
+      "year": 1920,
+      "yearEnd": 1921,
+      "yValue": 0.6898430088898253
+    },
+    {
+      "year": 1921,
+      "yearEnd": 1922,
+      "yValue": 0.6499362653885483
+    },
+    {
+      "year": 1922,
+      "yearEnd": 1923,
+      "yValue": 0.8707704083757719
+    },
+    {
+      "year": 1923,
+      "yearEnd": 1924,
+      "yValue": 1.002392552021122
+    },
+    {
+      "year": 1924,
+      "yearEnd": 1925,
+      "yValue": 0.6123161397627201
+    },
+    {
+      "year": 1925,
+      "yearEnd": 1926,
+      "yValue": 0.7912817292055458
+    },
+    {
+      "year": 1926,
+      "yearEnd": 1927,
+      "yValue": 0.8055844291971488
+    },
+    {
+      "year": 1927,
+      "yearEnd": 1928,
+      "yValue": 0.9337308600189141
+    },
+    {
+      "year": 1928,
+      "yearEnd": 1929,
+      "yValue": 1.0698588078713582
+    },
+    {
+      "year": 1929,
+      "yearEnd": 1930,
+      "yValue": 0.5613408922143093
+    },
+    {
+      "year": 1930,
+      "yearEnd": 1931,
+      "yValue": 0.9041247978225309
+    },
+    {
+      "year": 1931,
+      "yearEnd": 1932,
+      "yValue": 0.581679392513225
+    },
+    {
+      "year": 1932,
+      "yearEnd": 1933,
+      "yValue": 0.8300553516902691
+    },
+    {
+      "year": 1933,
+      "yearEnd": 1934,
+      "yValue": 0.4722625500804777
+    },
+    {
+      "year": 1934,
+      "yearEnd": 1935,
+      "yValue": 0.4873121927987226
+    },
+    {
+      "year": 1935,
+      "yearEnd": 1936,
+      "yValue": 0.6093058636783132
+    },
+    {
+      "year": 1936,
+      "yearEnd": 1937,
+      "yValue": 0.32678753418052053
+    },
+    {
+      "year": 1937,
+      "yearEnd": 1938,
+      "yValue": 0.26087723222136644
+    },
+    {
+      "year": 1938,
+      "yearEnd": 1939,
+      "yValue": 0.7306117664997736
+    },
+    {
+      "year": 1939,
+      "yearEnd": 1940,
+      "yValue": 0.9557699418733159
+    },
+    {
+      "year": 1940,
+      "yearEnd": 1941,
+      "yValue": 0.9739327526107936
+    },
+    {
+      "year": 1941,
+      "yearEnd": 1942,
+      "yValue": 0.6414795357656157
+    },
+    {
+      "year": 1942,
+      "yearEnd": 1943,
+      "yValue": 1.2857415685407307
+    },
+    {
+      "year": 1943,
+      "yearEnd": 1944,
+      "yValue": 0.8188580759758655
+    },
+    {
+      "year": 1944,
+      "yearEnd": 1945,
+      "yValue": 0.9781357965969374
+    },
+    {
+      "year": 1945,
+      "yearEnd": 1946,
+      "yValue": 0.7108762368419721
+    },
+    {
+      "year": 1946,
+      "yearEnd": 1947,
+      "yValue": 0.8582746563137897
+    },
+    {
+      "year": 1947,
+      "yearEnd": 1948,
+      "yValue": 0.6715947597581429
+    },
+    {
+      "year": 1948,
+      "yearEnd": 1949,
+      "yValue": 0.8594744137481831
+    },
+    {
+      "year": 1949,
+      "yearEnd": 1950,
+      "yValue": 0.7256689833759554
+    },
+    {
+      "year": 1950,
+      "yearEnd": 1951,
+      "yValue": 0.9891681918206764
+    },
+    {
+      "year": 1951,
+      "yearEnd": 1952,
+      "yValue": 1.2036225911747336
+    },
+    {
+      "year": 1952,
+      "yearEnd": 1953,
+      "yValue": 1.353095302099217
+    },
+    {
+      "year": 1953,
+      "yearEnd": 1954,
+      "yValue": 1.2609800746879618
+    },
+    {
+      "year": 1954,
+      "yearEnd": 1955,
+      "yValue": 0.7911538472502535
+    },
+    {
+      "year": 1955,
+      "yearEnd": 1956,
+      "yValue": 1.1509697046697027
+    },
+    {
+      "year": 1956,
+      "yearEnd": 1957,
+      "yValue": 1.2529270484998813
+    },
+    {
+      "year": 1957,
+      "yearEnd": 1958,
+      "yValue": 0.93548659590788
+    },
+    {
+      "year": 1958,
+      "yearEnd": 1959,
+      "yValue": 0.9829711086108859
+    },
+    {
+      "year": 1959,
+      "yearEnd": 1960,
+      "yValue": 1.005571269435351
+    },
+    {
+      "year": 1960,
+      "yearEnd": 1961,
+      "yValue": 1.098671748692978
+    },
+    {
+      "year": 1961,
+      "yearEnd": 1962,
+      "yValue": 0.6468808735893081
+    },
+    {
+      "year": 1962,
+      "yearEnd": 1963,
+      "yValue": 1.1819379788105004
+    },
+    {
+      "year": 1963,
+      "yearEnd": 1964,
+      "yValue": 1.3371073762346373
+    },
+    {
+      "year": 1964,
+      "yearEnd": 1965,
+      "yValue": 1.1675760075373791
+    },
+    {
+      "year": 1965,
+      "yearEnd": 1966,
+      "yValue": 1.3009134798684456
+    },
+    {
+      "year": 1966,
+      "yearEnd": 1967,
+      "yValue": 1.4697265330057532
+    },
+    {
+      "year": 1967,
+      "yearEnd": 1968,
+      "yValue": 1.220404228244598
+    },
+    {
+      "year": 1968,
+      "yearEnd": 1969,
+      "yValue": 1.3612211423365863
+    },
+    {
+      "year": 1969,
+      "yearEnd": 1970,
+      "yValue": 1.4110171911079283
+    },
+    {
+      "year": 1970,
+      "yearEnd": 1971,
+      "yValue": 1.2400599536485137
+    },
+    {
+      "year": 1971,
+      "yearEnd": 1972,
+      "yValue": 1.520071512064243
+    },
+    {
+      "year": 1972,
+      "yearEnd": 1973,
+      "yValue": 1.4146019640369463
+    },
+    {
+      "year": 1973,
+      "yearEnd": 1974,
+      "yValue": 1.4445095650651807
+    },
+    {
+      "year": 1974,
+      "yearEnd": 1975,
+      "yValue": 1.2729476635017998
+    },
+    {
+      "year": 1975,
+      "yearEnd": 1976,
+      "yValue": 1.4668462872997372
+    },
+    {
+      "year": 1976,
+      "yearEnd": 1977,
+      "yValue": 1.6130489188330317
+    },
+    {
+      "year": 1977,
+      "yearEnd": 1978,
+      "yValue": 1.600435710317969
+    },
+    {
+      "year": 1978,
+      "yearEnd": 1979,
+      "yValue": 1.624634142301518
+    },
+    {
+      "year": 1979,
+      "yearEnd": 1980,
+      "yValue": 1.4977371977848966
+    },
+    {
+      "year": 1980,
+      "yearEnd": 1981,
+      "yValue": 1.5931391430306392
+    },
+    {
+      "year": 1981,
+      "yearEnd": 1982,
+      "yValue": 1.7716620937007261
+    },
+    {
+      "year": 1982,
+      "yearEnd": 1983,
+      "yValue": 1.8317979539296079
+    },
+    {
+      "year": 1983,
+      "yearEnd": 1984,
+      "yValue": 1.719935383806726
+    },
+    {
+      "year": 1984,
+      "yearEnd": 1985,
+      "yValue": 1.6532801238339891
+    },
+    {
+      "year": 1985,
+      "yearEnd": 1986,
+      "yValue": 1.769190215127015
+    },
+    {
+      "year": 1986,
+      "yearEnd": 1987,
+      "yValue": 1.9216297545393206
+    },
+    {
+      "year": 1987,
+      "yearEnd": 1988,
+      "yValue": 1.838839401349059
+    },
+    {
+      "year": 1988,
+      "yearEnd": 1989,
+      "yValue": 1.5148455737226927
+    },
+    {
+      "year": 1989,
+      "yearEnd": 1990,
+      "yValue": 1.7607644512485334
+    },
+    {
+      "year": 1990,
+      "yearEnd": 1991,
+      "yValue": 1.9241327934361372
+    },
+    {
+      "year": 1991,
+      "yearEnd": 1992,
+      "yValue": 1.8924490462854309
+    },
+    {
+      "year": 1992,
+      "yearEnd": 1993,
+      "yValue": 1.8118203479427633
+    },
+    {
+      "year": 1993,
+      "yearEnd": 1994,
+      "yValue": 1.8982551907437706
+    },
+    {
+      "year": 1994,
+      "yearEnd": 1995,
+      "yValue": 1.8678076148975422
+    },
+    {
+      "year": 1995,
+      "yearEnd": 1996,
+      "yValue": 1.8985819145602103
+    },
+    {
+      "year": 1996,
+      "yearEnd": 1997,
+      "yValue": 2.006171217551118
+    },
+    {
+      "year": 1997,
+      "yearEnd": 1998,
+      "yValue": 1.911908955267262
+    },
+    {
+      "year": 1998,
+      "yearEnd": 1999,
+      "yValue": 1.9648909732898785
+    },
+    {
+      "year": 1999,
+      "yearEnd": 2000,
+      "yValue": 2.033978950589212
+    },
+    {
+      "year": 2000,
+      "yearEnd": 2001,
+      "yValue": 1.9738155346284763
+    },
+    {
+      "year": 2001,
+      "yearEnd": 2002,
+      "yValue": 1.7731666130731145
+    },
+    {
+      "year": 2002,
+      "yearEnd": 2003,
+      "yValue": 1.6081152067341118
+    },
+    {
+      "year": 2003,
+      "yearEnd": 2004,
+      "yValue": 1.9080880416665447
+    },
+    {
+      "year": 2004,
+      "yearEnd": 2005,
+      "yValue": 1.9770467837573638
+    },
+    {
+      "year": 2005,
+      "yearEnd": 2006,
+      "yValue": 2.0186818230125594
+    },
+    {
+      "year": 2006,
+      "yearEnd": 2007,
+      "yValue": 1.9688861334161163
+    },
+    {
+      "year": 2007,
+      "yearEnd": 2008,
+      "yValue": 1.9579588274793405
+    },
+    {
+      "year": 2008,
+      "yearEnd": 2009,
+      "yValue": 2.136939895128154
+    },
+    {
+      "year": 2009,
+      "yearEnd": 2010,
+      "yValue": 2.0669367090125013
+    },
+    {
+      "year": 2010,
+      "yearEnd": 2011,
+      "yValue": 2.018402171278049
+    },
+    {
+      "year": 2011,
+      "yearEnd": 2012,
+      "yValue": 2.059222839428488
+    },
+    {
+      "year": 2012,
+      "yearEnd": 2013,
+      "yValue": 2.119966400110121
+    },
+    {
+      "year": 2013,
+      "yearEnd": 2014,
+      "yValue": 2.3634872370012916
+    },
+    {
+      "year": 2014,
+      "yearEnd": 2015,
+      "yValue": 2.1788490992707925
+    },
+    {
+      "year": 2015,
+      "yearEnd": 2016,
+      "yValue": 2.22848691980194
+    },
+    {
+      "year": 2016,
+      "yearEnd": 2017,
+      "yValue": 2.325255628915989
+    },
+    {
+      "year": 2017,
+      "yearEnd": 2018,
+      "yValue": 2.319480188468685
+    },
+    {
+      "year": 2018,
+      "yearEnd": 2019,
+      "yValue": 2.321696862810264
+    },
+    {
+      "year": 2019,
+      "yearEnd": 2020,
+      "yValue": 2.3362081047841268
+    },
+    {
+      "year": 2020,
+      "yearEnd": 2021,
+      "yValue": 2.3847387350148916
+    },
+    {
+      "year": 2021,
+      "yearEnd": 2022,
+      "yValue": 2.06771998395465
+    },
+    {
+      "year": 2022,
+      "yearEnd": 2023,
+      "yValue": 2.362370307948498
+    },
+    {
+      "year": 2023,
+      "yearEnd": 2024,
+      "yValue": 2.310520310012396
+    },
+    {
+      "year": 2024,
+      "yearEnd": 2025,
+      "yValue": 2.353679839069436
+    }
+  ],
+  "componentConnectors": [
+    {
+      "year": 1909,
+      "xStart": 1908.75,
+      "xEnd": 1909,
+      "yValue": 0.13549379854368127
+    },
+    {
+      "year": 1909,
+      "xStart": 1909,
+      "xEnd": 1909.25,
+      "yValue": 0.31941429946378896
+    },
+    {
+      "year": 1910,
+      "xStart": 1909.75,
+      "xEnd": 1910,
+      "yValue": 0.3043492254832516
+    },
+    {
+      "year": 1910,
+      "xStart": 1910,
+      "xEnd": 1910.25,
+      "yValue": -0.012090988739135
+    },
+    {
+      "year": 1911,
+      "xStart": 1910.75,
+      "xEnd": 1911,
+      "yValue": 0.1595505661227259
+    },
+    {
+      "year": 1911,
+      "xStart": 1911,
+      "xEnd": 1911.25,
+      "yValue": 0.46200863957457106
+    },
+    {
+      "year": 1912,
+      "xStart": 1911.75,
+      "xEnd": 1912,
+      "yValue": 0.4747122510264058
+    },
+    {
+      "year": 1912,
+      "xStart": 1912,
+      "xEnd": 1912.25,
+      "yValue": 0.4911148829749197
+    },
+    {
+      "year": 1913,
+      "xStart": 1912.75,
+      "xEnd": 1913,
+      "yValue": 0.47572229252425813
+    },
+    {
+      "year": 1913,
+      "xStart": 1913,
+      "xEnd": 1913.25,
+      "yValue": 0.47239302177220077
+    },
+    {
+      "year": 1914,
+      "xStart": 1913.75,
+      "xEnd": 1914,
+      "yValue": 0.4159789032562288
+    },
+    {
+      "year": 1914,
+      "xStart": 1914,
+      "xEnd": 1914.25,
+      "yValue": 0.1540970851177243
+    },
+    {
+      "year": 1915,
+      "xStart": 1914.75,
+      "xEnd": 1915,
+      "yValue": 0.40061349843513594
+    },
+    {
+      "year": 1915,
+      "xStart": 1915,
+      "xEnd": 1915.25,
+      "yValue": 0.7764851133957992
+    },
+    {
+      "year": 1916,
+      "xStart": 1915.75,
+      "xEnd": 1916,
+      "yValue": 0.7743160862549103
+    },
+    {
+      "year": 1916,
+      "xStart": 1916,
+      "xEnd": 1916.25,
+      "yValue": 0.5038767486127285
+    },
+    {
+      "year": 1917,
+      "xStart": 1916.75,
+      "xEnd": 1917,
+      "yValue": 0.5887399644958298
+    },
+    {
+      "year": 1917,
+      "xStart": 1917,
+      "xEnd": 1917.25,
+      "yValue": 0.4579941293599159
+    },
+    {
+      "year": 1918,
+      "xStart": 1917.75,
+      "xEnd": 1918,
+      "yValue": 0.631736932181936
+    },
+    {
+      "year": 1918,
+      "xStart": 1918,
+      "xEnd": 1918.25,
+      "yValue": 0.4505905765693332
+    },
+    {
+      "year": 1919,
+      "xStart": 1918.75,
+      "xEnd": 1919,
+      "yValue": 0.5303347478014209
+    },
+    {
+      "year": 1919,
+      "xStart": 1919,
+      "xEnd": 1919.25,
+      "yValue": 0.4401041964555512
+    },
+    {
+      "year": 1920,
+      "xStart": 1919.75,
+      "xEnd": 1920,
+      "yValue": 0.4257078216275646
+    },
+    {
+      "year": 1920,
+      "xStart": 1920,
+      "xEnd": 1920.25,
+      "yValue": 0.7083236819555452
+    },
+    {
+      "year": 1921,
+      "xStart": 1920.75,
+      "xEnd": 1921,
+      "yValue": 0.8446317489890782
+    },
+    {
+      "year": 1921,
+      "xStart": 1921,
+      "xEnd": 1921.25,
+      "yValue": 0.6673622689987189
+    },
+    {
+      "year": 1922,
+      "xStart": 1921.75,
+      "xEnd": 1922,
+      "yValue": 0.5794252343600461
+    },
+    {
+      "year": 1922,
+      "xStart": 1922,
+      "xEnd": 1922.25,
+      "yValue": 0.8792496610299397
+    },
+    {
+      "year": 1923,
+      "xStart": 1922.75,
+      "xEnd": 1923,
+      "yValue": 0.8456584482948231
+    },
+    {
+      "year": 1923,
+      "xStart": 1923,
+      "xEnd": 1923.25,
+      "yValue": 1.0005564016298736
+    },
+    {
+      "year": 1924,
+      "xStart": 1923.75,
+      "xEnd": 1924,
+      "yValue": 1.025465472390374
+    },
+    {
+      "year": 1924,
+      "xStart": 1924,
+      "xEnd": 1924.25,
+      "yValue": 0.5925412953319401
+    },
+    {
+      "year": 1925,
+      "xStart": 1924.75,
+      "xEnd": 1925,
+      "yValue": 0.5208999667529122
+    },
+    {
+      "year": 1925,
+      "xStart": 1925,
+      "xEnd": 1925.25,
+      "yValue": 0.7989846487581698
+    },
+    {
+      "year": 1926,
+      "xStart": 1925.75,
+      "xEnd": 1926,
+      "yValue": 0.8511101199410924
+    },
+    {
+      "year": 1926,
+      "xStart": 1926,
+      "xEnd": 1926.25,
+      "yValue": 0.8057461436003193
+    },
+    {
+      "year": 1927,
+      "xStart": 1926.75,
+      "xEnd": 1927,
+      "yValue": 0.7965263615856364
+    },
+    {
+      "year": 1927,
+      "xStart": 1927,
+      "xEnd": 1927.25,
+      "yValue": 0.9358123823375385
+    },
+    {
+      "year": 1928,
+      "xStart": 1927.75,
+      "xEnd": 1928,
+      "yValue": 1.0040687338102559
+    },
+    {
+      "year": 1928,
+      "xStart": 1928,
+      "xEnd": 1928.25,
+      "yValue": 1.0624599496515374
+    },
+    {
+      "year": 1929,
+      "xStart": 1928.75,
+      "xEnd": 1929,
+      "yValue": 1.1047631558898727
+    },
+    {
+      "year": 1929,
+      "xStart": 1929,
+      "xEnd": 1929.25,
+      "yValue": 0.5559672772190074
+    },
+    {
+      "year": 1930,
+      "xStart": 1929.75,
+      "xEnd": 1930,
+      "yValue": 0.5809848446125783
+    },
+    {
+      "year": 1930,
+      "xStart": 1930,
+      "xEnd": 1930.25,
+      "yValue": 0.912137622201239
+    },
+    {
+      "year": 1931,
+      "xStart": 1930.75,
+      "xEnd": 1931,
+      "yValue": 0.8737955164258275
+    },
+    {
+      "year": 1931,
+      "xStart": 1931,
+      "xEnd": 1931.25,
+      "yValue": 0.5652037580414242
+    },
+    {
+      "year": 1932,
+      "xStart": 1931.75,
+      "xEnd": 1932,
+      "yValue": 0.6003394399361693
+    },
+    {
+      "year": 1932,
+      "xStart": 1932,
+      "xEnd": 1932.25,
+      "yValue": 0.8402795259913083
+    },
+    {
+      "year": 1933,
+      "xStart": 1932.75,
+      "xEnd": 1933,
+      "yValue": 0.8009426102137343
+    },
+    {
+      "year": 1933,
+      "xStart": 1933,
+      "xEnd": 1933.25,
+      "yValue": 0.45177479595531417
+    },
+    {
+      "year": 1934,
+      "xStart": 1933.75,
+      "xEnd": 1934,
+      "yValue": 0.4333482342290348
+    },
+    {
+      "year": 1934,
+      "xStart": 1934,
+      "xEnd": 1934.25,
+      "yValue": 0.4827156612877034
+    },
+    {
+      "year": 1935,
+      "xStart": 1934.75,
+      "xEnd": 1935,
+      "yValue": 0.5074892350620429
+    },
+    {
+      "year": 1935,
+      "xStart": 1935,
+      "xEnd": 1935.25,
+      "yValue": 0.6034376693430272
+    },
+    {
+      "year": 1936,
+      "xStart": 1935.75,
+      "xEnd": 1936,
+      "yValue": 0.6385065927156693
+    },
+    {
+      "year": 1936,
+      "xStart": 1936,
+      "xEnd": 1936.25,
+      "yValue": 0.3265055300672845
+    },
+    {
+      "year": 1937,
+      "xStart": 1936.75,
+      "xEnd": 1937,
+      "yValue": 0.3181629012082635
+    },
+    {
+      "year": 1937,
+      "xStart": 1937,
+      "xEnd": 1937.25,
+      "yValue": 0.22796959170333014
+    },
+    {
+      "year": 1938,
+      "xStart": 1937.75,
+      "xEnd": 1938,
+      "yValue": 0.2675710325451793
+    },
+    {
+      "year": 1938,
+      "xStart": 1938,
+      "xEnd": 1938.25,
+      "yValue": 0.7817069999532626
+    },
+    {
+      "year": 1939,
+      "xStart": 1938.75,
+      "xEnd": 1939,
+      "yValue": 0.7522976960731569
+    },
+    {
+      "year": 1939,
+      "xStart": 1939,
+      "xEnd": 1939.25,
+      "yValue": 0.9626262470138235
+    },
+    {
+      "year": 1940,
+      "xStart": 1939.75,
+      "xEnd": 1940,
+      "yValue": 0.9877292225238308
+    },
+    {
+      "year": 1940,
+      "xStart": 1940,
+      "xEnd": 1940.25,
+      "yValue": 0.9757793752951155
+    },
+    {
+      "year": 1941,
+      "xStart": 1940.75,
+      "xEnd": 1941,
+      "yValue": 0.8669213634348879
+    },
+    {
+      "year": 1941,
+      "xStart": 1941,
+      "xEnd": 1941.25,
+      "yValue": 0.6314853461107041
+    },
+    {
+      "year": 1942,
+      "xStart": 1941.75,
+      "xEnd": 1942,
+      "yValue": 0.7166661583591359
+    },
+    {
+      "year": 1942,
+      "xStart": 1942,
+      "xEnd": 1942.25,
+      "yValue": 1.2950788204251533
+    },
+    {
+      "year": 1943,
+      "xStart": 1942.75,
+      "xEnd": 1943,
+      "yValue": 1.2411727965389954
+    },
+    {
+      "year": 1943,
+      "xStart": 1943,
+      "xEnd": 1943.25,
+      "yValue": 0.8261147232068831
+    },
+    {
+      "year": 1944,
+      "xStart": 1943.75,
+      "xEnd": 1944,
+      "yValue": 0.8609790279414835
+    },
+    {
+      "year": 1944,
+      "xStart": 1944,
+      "xEnd": 1944.25,
+      "yValue": 0.9634567367292318
+    },
+    {
+      "year": 1945,
+      "xStart": 1944.75,
+      "xEnd": 1945,
+      "yValue": 0.9712008677332588
+    },
+    {
+      "year": 1945,
+      "xStart": 1945,
+      "xEnd": 1945.25,
+      "yValue": 0.7078236520876606
+    },
+    {
+      "year": 1946,
+      "xStart": 1945.75,
+      "xEnd": 1946,
+      "yValue": 0.6944222283828974
+    },
+    {
+      "year": 1946,
+      "xStart": 1946,
+      "xEnd": 1946.25,
+      "yValue": 0.8645182654798035
+    },
+    {
+      "year": 1947,
+      "xStart": 1946.75,
+      "xEnd": 1947,
+      "yValue": 0.8818222100785293
+    },
+    {
+      "year": 1947,
+      "xStart": 1947,
+      "xEnd": 1947.25,
+      "yValue": 0.6918037379974492
+    },
+    {
+      "year": 1948,
+      "xStart": 1947.75,
+      "xEnd": 1948,
+      "yValue": 0.6814272823540963
+    },
+    {
+      "year": 1948,
+      "xStart": 1948,
+      "xEnd": 1948.25,
+      "yValue": 0.8591852942310592
+    },
+    {
+      "year": 1949,
+      "xStart": 1948.75,
+      "xEnd": 1949,
+      "yValue": 0.8732158499943898
+    },
+    {
+      "year": 1949,
+      "xStart": 1949,
+      "xEnd": 1949.25,
+      "yValue": 0.6919091737086385
+    },
+    {
+      "year": 1950,
+      "xStart": 1949.75,
+      "xEnd": 1950,
+      "yValue": 0.7438363929701505
+    },
+    {
+      "year": 1950,
+      "xStart": 1950,
+      "xEnd": 1950.25,
+      "yValue": 0.991069090188677
+    },
+    {
+      "year": 1951,
+      "xStart": 1950.75,
+      "xEnd": 1951,
+      "yValue": 1.0035436368123691
+    },
+    {
+      "year": 1951,
+      "xStart": 1951,
+      "xEnd": 1951.25,
+      "yValue": 1.2115878958798305
+    },
+    {
+      "year": 1952,
+      "xStart": 1951.75,
+      "xEnd": 1952,
+      "yValue": 1.221392624116229
+    },
+    {
+      "year": 1952,
+      "xStart": 1952,
+      "xEnd": 1952.25,
+      "yValue": 1.35443238905692
+    },
+    {
+      "year": 1953,
+      "xStart": 1952.75,
+      "xEnd": 1953,
+      "yValue": 1.346933631617159
+    },
+    {
+      "year": 1953,
+      "xStart": 1953,
+      "xEnd": 1953.25,
+      "yValue": 1.260370072328306
+    },
+    {
+      "year": 1954,
+      "xStart": 1953.75,
+      "xEnd": 1954,
+      "yValue": 1.220611792069261
+    },
+    {
+      "year": 1954,
+      "xStart": 1954,
+      "xEnd": 1954.25,
+      "yValue": 0.7719258704162997
+    },
+    {
+      "year": 1955,
+      "xStart": 1954.75,
+      "xEnd": 1955,
+      "yValue": 0.8103892999743678
+    },
+    {
+      "year": 1955,
+      "xStart": 1955,
+      "xEnd": 1955.25,
+      "yValue": 1.1788093131261155
+    },
+    {
+      "year": 1956,
+      "xStart": 1955.75,
+      "xEnd": 1956,
+      "yValue": 1.135497804905875
+    },
+    {
+      "year": 1956,
+      "xStart": 1956,
+      "xEnd": 1956.25,
+      "yValue": 1.2755059292412776
+    },
+    {
+      "year": 1957,
+      "xStart": 1956.75,
+      "xEnd": 1957,
+      "yValue": 1.2255637337546974
+    },
+    {
+      "year": 1957,
+      "xStart": 1957,
+      "xEnd": 1957.25,
+      "yValue": 0.9203948445301089
+    },
+    {
+      "year": 1958,
+      "xStart": 1957.75,
+      "xEnd": 1958,
+      "yValue": 0.9327677804902996
+    },
+    {
+      "year": 1958,
+      "xStart": 1958,
+      "xEnd": 1958.25,
+      "yValue": 0.9909556930044193
+    },
+    {
+      "year": 1959,
+      "xStart": 1958.75,
+      "xEnd": 1959,
+      "yValue": 0.9820570245201978
+    },
+    {
+      "year": 1959,
+      "xStart": 1959,
+      "xEnd": 1959.25,
+      "yValue": 1.003061453617398
+    },
+    {
+      "year": 1960,
+      "xStart": 1959.75,
+      "xEnd": 1960,
+      "yValue": 1.0149470779955265
+    },
+    {
+      "year": 1960,
+      "xStart": 1960,
+      "xEnd": 1960.25,
+      "yValue": 1.1190558784631968
+    },
+    {
+      "year": 1961,
+      "xStart": 1960.75,
+      "xEnd": 1961,
+      "yValue": 1.0558115418315477
+    },
+    {
+      "year": 1961,
+      "xStart": 1961,
+      "xEnd": 1961.25,
+      "yValue": 0.6159092708077853
+    },
+    {
+      "year": 1962,
+      "xStart": 1961.75,
+      "xEnd": 1962,
+      "yValue": 0.6971888211530424
+    },
+    {
+      "year": 1962,
+      "xStart": 1962,
+      "xEnd": 1962.25,
+      "yValue": 1.205073523108176
+    },
+    {
+      "year": 1963,
+      "xStart": 1962.75,
+      "xEnd": 1963,
+      "yValue": 1.2016480069478577
+    },
+    {
+      "year": 1963,
+      "xStart": 1963,
+      "xEnd": 1963.25,
+      "yValue": 1.3485248938511167
+    },
+    {
+      "year": 1964,
+      "xStart": 1963.75,
+      "xEnd": 1964,
+      "yValue": 1.3554736575362614
+    },
+    {
+      "year": 1964,
+      "xStart": 1964,
+      "xEnd": 1964.25,
+      "yValue": 1.1621056923046877
+    },
+    {
+      "year": 1965,
+      "xStart": 1964.75,
+      "xEnd": 1965,
+      "yValue": 1.1870793460102558
+    },
+    {
+      "year": 1965,
+      "xStart": 1965,
+      "xEnd": 1965.25,
+      "yValue": 1.3080851707765115
+    },
+    {
+      "year": 1966,
+      "xStart": 1965.75,
+      "xEnd": 1966,
+      "yValue": 1.3426297384256827
+    },
+    {
+      "year": 1966,
+      "xStart": 1966,
+      "xEnd": 1966.25,
+      "yValue": 1.4604972144170756
+    },
+    {
+      "year": 1967,
+      "xStart": 1966.75,
+      "xEnd": 1967,
+      "yValue": 1.4641217522765528
+    },
+    {
+      "year": 1967,
+      "xStart": 1967,
+      "xEnd": 1967.25,
+      "yValue": 1.1942826185315607
+    },
+    {
+      "year": 1968,
+      "xStart": 1967.75,
+      "xEnd": 1968,
+      "yValue": 1.2284581528805643
+    },
+    {
+      "year": 1968,
+      "xStart": 1968,
+      "xEnd": 1968.25,
+      "yValue": 1.3627474821453842
+    },
+    {
+      "year": 1969,
+      "xStart": 1968.75,
+      "xEnd": 1969,
+      "yValue": 1.317303518149093
+    },
+    {
+      "year": 1969,
+      "xStart": 1969,
+      "xEnd": 1969.25,
+      "yValue": 1.4332361090120405
+    },
+    {
+      "year": 1970,
+      "xStart": 1969.75,
+      "xEnd": 1970,
+      "yValue": 1.2455907604728202
+    },
+    {
+      "year": 1970,
+      "xStart": 1970,
+      "xEnd": 1970.25,
+      "yValue": 1.250475434490402
+    },
+    {
+      "year": 1971,
+      "xStart": 1970.75,
+      "xEnd": 1971,
+      "yValue": 1.4710518558321495
+    },
+    {
+      "year": 1971,
+      "xStart": 1971,
+      "xEnd": 1971.25,
+      "yValue": 1.4920409816266924
+    },
+    {
+      "year": 1972,
+      "xStart": 1971.75,
+      "xEnd": 1972,
+      "yValue": 1.461932896992314
+    },
+    {
+      "year": 1972,
+      "xStart": 1972,
+      "xEnd": 1972.25,
+      "yValue": 1.4016158501652072
+    },
+    {
+      "year": 1973,
+      "xStart": 1972.75,
+      "xEnd": 1973,
+      "yValue": 1.4652765070731941
+    },
+    {
+      "year": 1973,
+      "xStart": 1973,
+      "xEnd": 1973.25,
+      "yValue": 1.4482351755516392
+    },
+    {
+      "year": 1974,
+      "xStart": 1973.75,
+      "xEnd": 1974,
+      "yValue": 1.403852560640351
+    },
+    {
+      "year": 1974,
+      "xStart": 1974,
+      "xEnd": 1974.25,
+      "yValue": 1.2687076258520695
+    },
+    {
+      "year": 1975,
+      "xStart": 1974.75,
+      "xEnd": 1975,
+      "yValue": 1.2982487784455226
+    },
+    {
+      "year": 1975,
+      "xStart": 1975,
+      "xEnd": 1975.25,
+      "yValue": 1.4698591278806374
+    },
+    {
+      "year": 1976,
+      "xStart": 1975.75,
+      "xEnd": 1976,
+      "yValue": 1.48066649267703
+    },
+    {
+      "year": 1976,
+      "xStart": 1976,
+      "xEnd": 1976.25,
+      "yValue": 1.589696415435832
+    },
+    {
+      "year": 1977,
+      "xStart": 1976.75,
+      "xEnd": 1977,
+      "yValue": 1.6117569334844697
+    },
+    {
+      "year": 1977,
+      "xStart": 1977,
+      "xEnd": 1977.25,
+      "yValue": 1.6053418536861859
+    },
+    {
+      "year": 1978,
+      "xStart": 1977.75,
+      "xEnd": 1978,
+      "yValue": 1.6532540423254236
+    },
+    {
+      "year": 1978,
+      "xStart": 1978,
+      "xEnd": 1978.25,
+      "yValue": 1.6477081152710893
+    },
+    {
+      "year": 1979,
+      "xStart": 1978.75,
+      "xEnd": 1979,
+      "yValue": 1.6322207281910273
+    },
+    {
+      "year": 1979,
+      "xStart": 1979,
+      "xEnd": 1979.25,
+      "yValue": 1.4912094486579295
+    },
+    {
+      "year": 1980,
+      "xStart": 1979.75,
+      "xEnd": 1980,
+      "yValue": 1.5057436387089707
+    },
+    {
+      "year": 1980,
+      "xStart": 1980,
+      "xEnd": 1980.25,
+      "yValue": 1.5566176131424603
+    },
+    {
+      "year": 1981,
+      "xStart": 1980.75,
+      "xEnd": 1981,
+      "yValue": 1.6550278295040095
+    },
+    {
+      "year": 1981,
+      "xStart": 1981,
+      "xEnd": 1981.25,
+      "yValue": 1.7640118578401263
+    },
+    {
+      "year": 1982,
+      "xStart": 1981.75,
+      "xEnd": 1982,
+      "yValue": 1.7902770332434093
+    },
+    {
+      "year": 1982,
+      "xStart": 1982,
+      "xEnd": 1982.25,
+      "yValue": 1.8484591708357332
+    },
+    {
+      "year": 1983,
+      "xStart": 1982.75,
+      "xEnd": 1983,
+      "yValue": 1.8471291180717866
+    },
+    {
+      "year": 1983,
+      "xStart": 1983,
+      "xEnd": 1983.25,
+      "yValue": 1.7281242663449226
+    },
+    {
+      "year": 1984,
+      "xStart": 1983.75,
+      "xEnd": 1984,
+      "yValue": 1.7609272119392911
+    },
+    {
+      "year": 1984,
+      "xStart": 1984,
+      "xEnd": 1984.25,
+      "yValue": 1.6452420011679405
+    },
+    {
+      "year": 1985,
+      "xStart": 1984.75,
+      "xEnd": 1985,
+      "yValue": 1.6749419716857885
+    },
+    {
+      "year": 1985,
+      "xStart": 1985,
+      "xEnd": 1985.25,
+      "yValue": 1.7736478256238
+    },
+    {
+      "year": 1986,
+      "xStart": 1985.75,
+      "xEnd": 1986,
+      "yValue": 1.7693270962718515
+    },
+    {
+      "year": 1986,
+      "xStart": 1986,
+      "xEnd": 1986.25,
+      "yValue": 1.9485545024248971
+    },
+    {
+      "year": 1987,
+      "xStart": 1986.75,
+      "xEnd": 1987,
+      "yValue": 1.8990064797525892
+    },
+    {
+      "year": 1987,
+      "xStart": 1987,
+      "xEnd": 1987.25,
+      "yValue": 1.8132901084448307
+    },
+    {
+      "year": 1988,
+      "xStart": 1987.75,
+      "xEnd": 1988,
+      "yValue": 1.8457625842408518
+    },
+    {
+      "year": 1988,
+      "xStart": 1988,
+      "xEnd": 1988.25,
+      "yValue": 1.4978632928276445
+    },
+    {
+      "year": 1989,
+      "xStart": 1988.75,
+      "xEnd": 1989,
+      "yValue": 1.5457225583834608
+    },
+    {
+      "year": 1989,
+      "xStart": 1989,
+      "xEnd": 1989.25,
+      "yValue": 1.76929123771244
+    },
+    {
+      "year": 1990,
+      "xStart": 1989.75,
+      "xEnd": 1990,
+      "yValue": 1.73864594755668
+    },
+    {
+      "year": 1990,
+      "xStart": 1990,
+      "xEnd": 1990.25,
+      "yValue": 1.9265278878379495
+    },
+    {
+      "year": 1991,
+      "xStart": 1990.75,
+      "xEnd": 1991,
+      "yValue": 1.9204734405501476
+    },
+    {
+      "year": 1991,
+      "xStart": 1991,
+      "xEnd": 1991.25,
+      "yValue": 1.8859604093445048
+    },
+    {
+      "year": 1992,
+      "xStart": 1991.75,
+      "xEnd": 1992,
+      "yValue": 1.8953668482527022
+    },
+    {
+      "year": 1992,
+      "xStart": 1992,
+      "xEnd": 1992.25,
+      "yValue": 1.8379401649065186
+    },
+    {
+      "year": 1993,
+      "xStart": 1992.75,
+      "xEnd": 1993,
+      "yValue": 1.8430942255252878
+    },
+    {
+      "year": 1993,
+      "xStart": 1993,
+      "xEnd": 1993.25,
+      "yValue": 1.898330987039152
+    },
+    {
+      "year": 1994,
+      "xStart": 1993.75,
+      "xEnd": 1994,
+      "yValue": 1.9041342761042894
+    },
+    {
+      "year": 1994,
+      "xStart": 1994,
+      "xEnd": 1994.25,
+      "yValue": 1.8956731027119265
+    },
+    {
+      "year": 1995,
+      "xStart": 1994.75,
+      "xEnd": 1995,
+      "yValue": 1.8702721503498219
+    },
+    {
+      "year": 1995,
+      "xStart": 1995,
+      "xEnd": 1995.25,
+      "yValue": 1.8777401674801866
+    },
+    {
+      "year": 1996,
+      "xStart": 1995.75,
+      "xEnd": 1996,
+      "yValue": 1.8980298055156726
+    },
+    {
+      "year": 1996,
+      "xStart": 1996,
+      "xEnd": 1996.25,
+      "yValue": 1.986441022985019
+    },
+    {
+      "year": 1997,
+      "xStart": 1996.75,
+      "xEnd": 1997,
+      "yValue": 2.0309213669271826
+    },
+    {
+      "year": 1997,
+      "xStart": 1997,
+      "xEnd": 1997.25,
+      "yValue": 1.9289569464946386
+    },
+    {
+      "year": 1998,
+      "xStart": 1997.75,
+      "xEnd": 1998,
+      "yValue": 1.9166296564022012
+    },
+    {
+      "year": 1998,
+      "xStart": 1998,
+      "xEnd": 1998.25,
+      "yValue": 1.9672163045095088
+    },
+    {
+      "year": 1999,
+      "xStart": 1998.75,
+      "xEnd": 1999,
+      "yValue": 1.9395416587471983
+    },
+    {
+      "year": 1999,
+      "xStart": 1999,
+      "xEnd": 1999.25,
+      "yValue": 2.0446440501748158
+    },
+    {
+      "year": 2000,
+      "xStart": 1999.75,
+      "xEnd": 2000,
+      "yValue": 2.0734301899907273
+    },
+    {
+      "year": 2000,
+      "xStart": 2000,
+      "xEnd": 2000.25,
+      "yValue": 1.977415025918227
+    },
+    {
+      "year": 2001,
+      "xStart": 2000.75,
+      "xEnd": 2001,
+      "yValue": 1.9377075521324847
+    },
+    {
+      "year": 2001,
+      "xStart": 2001,
+      "xEnd": 2001.25,
+      "yValue": 1.7332409155339024
+    },
+    {
+      "year": 2002,
+      "xStart": 2001.75,
+      "xEnd": 2002,
+      "yValue": 1.7681975922812743
+    },
+    {
+      "year": 2002,
+      "xStart": 2002,
+      "xEnd": 2002.25,
+      "yValue": 1.5757180503449568
+    },
+    {
+      "year": 2003,
+      "xStart": 2002.75,
+      "xEnd": 2003,
+      "yValue": 1.6212914516860297
+    },
+    {
+      "year": 2003,
+      "xStart": 2003,
+      "xEnd": 2003.25,
+      "yValue": 1.944945634871593
+    },
+    {
+      "year": 2004,
+      "xStart": 2003.75,
+      "xEnd": 2004,
+      "yValue": 1.896226904560741
+    },
+    {
+      "year": 2004,
+      "xStart": 2004,
+      "xEnd": 2004.25,
+      "yValue": 1.9958661666919784
+    },
+    {
+      "year": 2005,
+      "xStart": 2004.75,
+      "xEnd": 2005,
+      "yValue": 1.9494562299160496
+    },
+    {
+      "year": 2005,
+      "xStart": 2005,
+      "xEnd": 2005.25,
+      "yValue": 2.0376348552637804
+    },
+    {
+      "year": 2006,
+      "xStart": 2005.75,
+      "xEnd": 2006,
+      "yValue": 2.0133148072583493
+    },
+    {
+      "year": 2006,
+      "xStart": 2006,
+      "xEnd": 2006.25,
+      "yValue": 1.965834882443112
+    },
+    {
+      "year": 2007,
+      "xStart": 2006.75,
+      "xEnd": 2007,
+      "yValue": 2.0000600276322618
+    },
+    {
+      "year": 2007,
+      "xStart": 2007,
+      "xEnd": 2007.25,
+      "yValue": 1.9326491153179837
+    },
+    {
+      "year": 2008,
+      "xStart": 2007.75,
+      "xEnd": 2008,
+      "yValue": 1.976894015078712
+    },
+    {
+      "year": 2008,
+      "xStart": 2008,
+      "xEnd": 2008.25,
+      "yValue": 2.1729602177308918
+    },
+    {
+      "year": 2009,
+      "xStart": 2008.75,
+      "xEnd": 2009,
+      "yValue": 2.1396323945723768
+    },
+    {
+      "year": 2009,
+      "xStart": 2009,
+      "xEnd": 2009.25,
+      "yValue": 2.0803740858368744
+    },
+    {
+      "year": 2010,
+      "xStart": 2009.75,
+      "xEnd": 2010,
+      "yValue": 1.9956055934173866
+    },
+    {
+      "year": 2010,
+      "xStart": 2010,
+      "xEnd": 2010.25,
+      "yValue": 1.99234686772311
+    },
+    {
+      "year": 2011,
+      "xStart": 2010.75,
+      "xEnd": 2011,
+      "yValue": 2.004182728764698
+    },
+    {
+      "year": 2011,
+      "xStart": 2011,
+      "xEnd": 2011.25,
+      "yValue": 2.070133938423516
+    },
+    {
+      "year": 2012,
+      "xStart": 2011.75,
+      "xEnd": 2012,
+      "yValue": 2.179354990041292
+    },
+    {
+      "year": 2012,
+      "xStart": 2012,
+      "xEnd": 2012.25,
+      "yValue": 2.1002351494158744
+    },
+    {
+      "year": 2013,
+      "xStart": 2012.75,
+      "xEnd": 2013,
+      "yValue": 2.1357507444883783
+    },
+    {
+      "year": 2013,
+      "xStart": 2013,
+      "xEnd": 2013.25,
+      "yValue": 2.386416215161865
+    },
+    {
+      "year": 2014,
+      "xStart": 2013.75,
+      "xEnd": 2014,
+      "yValue": 2.3547601277449006
+    },
+    {
+      "year": 2014,
+      "xStart": 2014,
+      "xEnd": 2014.25,
+      "yValue": 2.19834141928455
+    },
+    {
+      "year": 2015,
+      "xStart": 2014.75,
+      "xEnd": 2015,
+      "yValue": 2.1979162402424994
+    },
+    {
+      "year": 2015,
+      "xStart": 2015,
+      "xEnd": 2015.25,
+      "yValue": 2.221595856012602
+    },
+    {
+      "year": 2016,
+      "xStart": 2015.75,
+      "xEnd": 2016,
+      "yValue": 2.2477792203043934
+    },
+    {
+      "year": 2016,
+      "xStart": 2016,
+      "xEnd": 2016.25,
+      "yValue": 2.336567186628654
+    },
+    {
+      "year": 2017,
+      "xStart": 2016.75,
+      "xEnd": 2017,
+      "yValue": 2.329567460865891
+    },
+    {
+      "year": 2017,
+      "xStart": 2017,
+      "xEnd": 2017.25,
+      "yValue": 2.3176965180144866
+    },
+    {
+      "year": 2018,
+      "xStart": 2017.75,
+      "xEnd": 2018,
+      "yValue": 2.3321717976211542
+    },
+    {
+      "year": 2018,
+      "xStart": 2018,
+      "xEnd": 2018.25,
+      "yValue": 2.3166069428878404
+    },
+    {
+      "year": 2019,
+      "xStart": 2018.75,
+      "xEnd": 2019,
+      "yValue": 2.324726759557795
+    },
+    {
+      "year": 2019,
+      "xStart": 2019,
+      "xEnd": 2019.25,
+      "yValue": 2.3361347717486147
+    },
+    {
+      "year": 2020,
+      "xStart": 2019.75,
+      "xEnd": 2020,
+      "yValue": 2.3345911870373075
+    },
+    {
+      "year": 2020,
+      "xStart": 2020,
+      "xEnd": 2020.25,
+      "yValue": 2.3883520591175036
+    },
+    {
+      "year": 2021,
+      "xStart": 2020.75,
+      "xEnd": 2021,
+      "yValue": 2.3857746559357795
+    },
+    {
+      "year": 2021,
+      "xStart": 2021,
+      "xEnd": 2021.25,
+      "yValue": 2.0041440540239557
+    },
+    {
+      "year": 2022,
+      "xStart": 2021.75,
+      "xEnd": 2022,
+      "yValue": 2.062222417610361
+    },
+    {
+      "year": 2022,
+      "xStart": 2022,
+      "xEnd": 2022.25,
+      "yValue": 2.407809058169272
+    },
+    {
+      "year": 2023,
+      "xStart": 2022.75,
+      "xEnd": 2023,
+      "yValue": 2.371055791052977
+    },
+    {
+      "year": 2023,
+      "xStart": 2023,
+      "xEnd": 2023.25,
+      "yValue": 2.290349358536241
+    },
+    {
+      "year": 2024,
+      "xStart": 2023.75,
+      "xEnd": 2024,
+      "yValue": 2.308328294331474
+    },
+    {
+      "year": 2024,
+      "xStart": 2024,
+      "xEnd": 2024.25,
+      "yValue": 2.3650297895705488
+    },
+    {
+      "year": 2025,
+      "xStart": 2024.75,
+      "xEnd": 2025,
+      "yValue": 2.3607415874615505
+    },
+    {
+      "year": 2025,
+      "xStart": 2025,
+      "xEnd": 2025.25,
+      "yValue": 2.4765614602040404
+    }
+  ],
+  "xAxisBreaks": [
+    1925,
+    1950,
+    1975,
+    2000,
+    2025
+  ],
+  "colours": {
+    "Seeded Area": "#4a7c7a",
+    "Within-Crop Effective Yield": "#c87941",
+    "Crop Mix": "#4b3d60"
+  },
+  "uniqueYears": [
+    1909,
+    1910,
+    1911,
+    1912,
+    1913,
+    1914,
+    1915,
+    1916,
+    1917,
+    1918,
+    1919,
+    1920,
+    1921,
+    1922,
+    1923,
+    1924,
+    1925,
+    1926,
+    1927,
+    1928,
+    1929,
+    1930,
+    1931,
+    1932,
+    1933,
+    1934,
+    1935,
+    1936,
+    1937,
+    1938,
+    1939,
+    1940,
+    1941,
+    1942,
+    1943,
+    1944,
+    1945,
+    1946,
+    1947,
+    1948,
+    1949,
+    1950,
+    1951,
+    1952,
+    1953,
+    1954,
+    1955,
+    1956,
+    1957,
+    1958,
+    1959,
+    1960,
+    1961,
+    1962,
+    1963,
+    1964,
+    1965,
+    1966,
+    1967,
+    1968,
+    1969,
+    1970,
+    1971,
+    1972,
+    1973,
+    1974,
+    1975,
+    1976,
+    1977,
+    1978,
+    1979,
+    1980,
+    1981,
+    1982,
+    1983,
+    1984,
+    1985,
+    1986,
+    1987,
+    1988,
+    1989,
+    1990,
+    1991,
+    1992,
+    1993,
+    1994,
+    1995,
+    1996,
+    1997,
+    1998,
+    1999,
+    2000,
+    2001,
+    2002,
+    2003,
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ]
+}

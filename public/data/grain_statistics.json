@@ -1,0 +1,16 @@
+{
+  "firstYear": 1908,
+  "lastYear": 2025,
+  "production2025MillionTonnes": 107.0,
+  "productionRatio": 11.6,
+  "areaFirstYear": 1908,
+  "areaLastYear": 2025,
+  "areaMultiplier": "quadrupled",
+  "cumulativeLogChangeProduction": 245.0,
+  "cumulativeArea": 148.0,
+  "cumulativeWithin": 103.0,
+  "cumulativeMix": -6.0,
+  "productionMultiplier": 11.6,
+  "withinExceeds15Pre1960": 34,
+  "withinExceeds15Post1960": 17
+}
