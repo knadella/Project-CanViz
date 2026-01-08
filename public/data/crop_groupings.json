@@ -1,0 +1,36 @@
+{
+  "crop_groupings": {
+    "Wheat": {
+      "crops": [
+        "Wheat, all"
+      ]
+    },
+    "Coarse Grains": {
+      "crops": [
+        "Barley",
+        "Corn for grain",
+        "Oats",
+        "Rye, all",
+        "Mixed grains"
+      ]
+    },
+    "Oilseeds": {
+      "crops": [
+        "Canola (rapeseed)",
+        "Flaxseed",
+        "Soybeans"
+      ]
+    },
+    "Pulses and Special Crops": {
+      "crops": [
+        "Peas, dry",
+        "Lentils",
+        "Beans, all dry (white and coloured)",
+        "Chick peas",
+        "Mustard seed",
+        "Canary seed",
+        "Sunflower seed"
+      ]
+    }
+  }
+}
