@@ -519,6 +519,23 @@ export function GrainProductionPage() {
           #plot-history-by-crop-container .hover-y-tick {
             stroke: var(--text-primary);
           }
+          
+          /* MathJax styling */
+          .grain-production-page .MathJax {
+            color: var(--text-primary);
+          }
+          
+          .grain-production-page mjx-container {
+            color: var(--text-primary);
+          }
+          
+          .grain-production-page mjx-container[display="true"] {
+            margin: 1em 0;
+          }
+          
+          .grain-production-page .details-content mjx-container {
+            color: var(--text-primary);
+          }
         </style>
         
         <div class="page-content">
@@ -583,40 +600,40 @@ export function GrainProductionPage() {
             <p>Formally:</p>
             
             <p style="text-align: center; font-size: 1.2em; margin: 1em 0;">
-              P<sub>total</sub> = Σ<sub>i</sub> A<sub>i</sub> Y<sub>i</sub>
+              \\[P_{\\text{total}} = \\sum_{i} A_{i} Y_{i}\\]
             </p>
             
             <p style="text-align: center; font-style: italic; margin-top: -10px; margin-bottom: 10px; color: var(--text-muted);">The production identity</p>
             
-            <p>where A<sub>i</sub> is seeded area and Y<sub>i</sub> is <strong>effective yield</strong>, defined as production per seeded hectare for crop i. So we add up each crop's production (its area times its yield) to get total production.</p>
+            <p>where \\(A_{i}\\) is seeded area and \\(Y_{i}\\) is <strong>effective yield</strong>, defined as production per seeded hectare for crop i. So we add up each crop's production (its area times its yield) to get total production.</p>
             
             <p style="text-align: center; font-size: 1.2em; margin: 1em 0;">
-              Y<sub>i</sub> ≡ P<sub>i</sub> / A<sub>i</sub>
+              \\[Y_{i} \\equiv P_{i} / A_{i}\\]
             </p>
             
-            <p>This differs from the standard agricultural definition of yield (production per harvested hectare). We use effective yield so the decomposition can be computed consistently over the full historical period. As a result, changes in Y<sub>i</sub> reflect both agronomic productivity and changes in the harvested-to-seeded relationship.</p>
+            <p>This differs from the standard agricultural definition of yield (production per harvested hectare). We use effective yield so the decomposition can be computed consistently over the full historical period. As a result, changes in \\(Y_{i}\\) reflect both agronomic productivity and changes in the harvested-to-seeded relationship.</p>
             
             <p>This expression can be reorganised to separate <strong>how much land</strong> is farmed from <strong>how productive</strong> that land is on average:</p>
             
             <p style="text-align: center; font-size: 1.2em; margin: 1em 0;">
-              P<sub>total</sub> = A<sub>total</sub> × Ȳ
+              \\[P_{\\text{total}} = A_{\\text{total}} \\times \\bar{Y}\\]
             </p>
             
             <p>where:</p>
             
             <ul>
-              <li>A<sub>total</sub> = Σ<sub>i</sub> A<sub>i</sub> is total seeded area across major crops, and</li>
-              <li>Ȳ = Σ<sub>i</sub> s<sub>i</sub> Y<sub>i</sub> is the area-weighted average effective yield of the crop basket, with s<sub>i</sub> = A<sub>i</sub> / A<sub>total</sub> representing each crop's share of total area.</li>
+              <li>\\(A_{\\text{total}} = \\sum_{i} A_{i}\\) is total seeded area across major crops, and</li>
+              <li>\\(\\bar{Y} = \\sum_{i} s_{i} Y_{i}\\) is the area-weighted average effective yield of the crop basket, with \\(s_{i} = A_{i} / A_{\\text{total}}\\) representing each crop's share of total area.</li>
             </ul>
             
-            <p>The average effective yield Ȳ is not the simple average of effective yields across crops. It weights each crop's effective yield by its share of total area, so crops that occupy more land count more heavily.</p>
+            <p>The average effective yield \\(\\bar{Y}\\) is not the simple average of effective yields across crops. It weights each crop's effective yield by its share of total area, so crops that occupy more land count more heavily.</p>
             
             <h4>Decomposing changes over time</h4>
             
             <p>Taking logarithmic changes converts the multiplicative relationship into an additive one:</p>
             
             <p style="text-align: center; font-size: 1.2em; margin: 1em 0;">
-              Δln P<sub>total</sub> = Δln A<sub>total</sub> + Δln Ȳ
+              \\[\\Delta \\ln P_{\\text{total}} = \\Delta \\ln A_{\\text{total}} + \\Delta \\ln \\bar{Y}\\]
             </p>
             
             <p>Log differences approximate percentage changes (a 0.02 change in log is roughly a 2% change), and the components now add up exactly to total growth.</p>
@@ -632,13 +649,13 @@ export function GrainProductionPage() {
             <p>To separate these effects, we use a <strong>shift-share decomposition</strong> (also called a Laspeyres decomposition when using base-period weights). The within-crop effective yield effect is computed by holding crop shares fixed at their previous-year values and measuring only the effective yield changes:</p>
             
             <p style="text-align: center; font-size: 1.2em; margin: 1em 0;">
-              Within effect<sub>t</sub> = Σ<sub>i</sub> s<sub>i,t-1</sub> × Δln Y<sub>i,t</sub>
+              \\[\\text{Within effect}_{t} = \\sum_{i} s_{i,t-1} \\times \\Delta \\ln Y_{i,t}\\]
             </p>
             
-            <p>where s<sub>i,t-1</sub> is crop i's share of total area in the previous year and Δln Y<sub>i,t</sub> = ln Y<sub>i,t</sub> - ln Y<sub>i,t-1</sub> is the log change in that crop's effective yield. The crop mix effect is then the residual:</p>
+            <p>where \\(s_{i,t-1}\\) is crop i's share of total area in the previous year and \\(\\Delta \\ln Y_{i,t} = \\ln Y_{i,t} - \\ln Y_{i,t-1}\\) is the log change in that crop's effective yield. The crop mix effect is then the residual:</p>
             
             <p style="text-align: center; font-size: 1.2em; margin: 1em 0;">
-              Mix effect<sub>t</sub> = Δln Ȳ<sub>t</sub> - Within effect<sub>t</sub>
+              \\[\\text{Mix effect}_{t} = \\Delta \\ln \\bar{Y}_{t} - \\text{Within effect}_{t}\\]
             </p>
             
             <p>Whatever change in average effective yield is not captured by within-crop effective yield changes is assigned to the residual (crop mix) term.</p>
@@ -646,7 +663,7 @@ export function GrainProductionPage() {
             <p>Substituting the effective yield decomposition into the production identity gives the full three-way decomposition:</p>
             
             <p style="text-align: center; font-size: 1.2em; margin: 1em 0;">
-              Δln P<sub>total</sub> = Δln A<sub>total</sub> + Within effect + Mix effect
+              \\[\\Delta \\ln P_{\\text{total}} = \\Delta \\ln A_{\\text{total}} + \\text{Within effect} + \\text{Mix effect}\\]
             </p>
             
             <p style="text-align: center; font-style: italic; margin-top: -10px; margin-bottom: 10px; color: var(--text-muted);">The three-way decomposition</p>
@@ -665,7 +682,7 @@ export function GrainProductionPage() {
             
             <p><strong>Why does the cumulative log change differ from simple percent change?</strong></p>
             
-            <p>If production grew by a factor of X, simple percent change gives (X - 1) × 100, while cumulative log change gives ln(X) × 100. These are different metrics related by: exp(log change) = 1 + simple percent / 100.</p>
+            <p>If production grew by a factor of \\(X\\), simple percent change gives \\((X - 1) \\times 100\\), while cumulative log change gives \\(\\ln(X) \\times 100\\). These are different metrics related by: \\(\\exp(\\text{log change}) = 1 + \\text{simple percent} / 100\\).</p>
             
             <p>For small changes, they are nearly identical. For large cumulative changes over many decades, they diverge substantially.</p>
             
@@ -734,49 +751,139 @@ export function GrainProductionPage() {
         }
       });
       
-      // Load D3.js and statistics, then initialize charts
+      // Load MathJax, D3.js and statistics, then initialize charts
       // Use requestAnimationFrame to ensure DOM is fully ready
       requestAnimationFrame(() => {
-        loadD3().then(() => {
-          // Ensure D3 is actually available
-          if (typeof d3 === "undefined") {
-            console.error("D3.js failed to load");
-            return;
-          }
-          
-          loadStatistics().then(() => {
-            // Wait one more frame to ensure containers are in DOM
-            requestAnimationFrame(() => {
-              // Verify containers exist before importing
-              const allContainersExist = containers.every(id => {
-                const container = document.getElementById(id);
-                return container !== null;
+        loadMathJax().then(() => {
+          // Typeset math in the page element after MathJax loads
+          const typesetMath = () => {
+            if (window.MathJax && window.MathJax.typesetPromise) {
+              // Try to typeset the page element, fallback to whole document
+              const element = page.querySelector('.page-content') || page;
+              window.MathJax.typesetPromise([element]).catch((err) => {
+                console.error('MathJax typeset error:', err);
+                // Fallback: typeset entire document
+                if (window.MathJax.typesetPromise) {
+                  window.MathJax.typesetPromise().catch(() => {});
+                }
               });
-              
-              if (allContainersExist && typeof d3 !== "undefined") {
-                // Import chart module and call initialization function
-                import('/src/charts/grainProductionCharts.js').then(module => {
-                  if (module.initGrainProductionCharts) {
-                    module.initGrainProductionCharts();
-                  }
-                }).catch(err => {
-                  console.error('Failed to load charts:', err);
+            }
+          };
+          
+          // Wait a frame to ensure DOM is ready, then typeset
+          requestAnimationFrame(() => {
+            typesetMath();
+          });
+          
+          loadD3().then(() => {
+            // Ensure D3 is actually available
+            if (typeof d3 === "undefined") {
+              console.error("D3.js failed to load");
+              return;
+            }
+            
+            loadStatistics().then(() => {
+              // Wait one more frame to ensure containers are in DOM
+              requestAnimationFrame(() => {
+                // Verify containers exist before importing
+                const allContainersExist = containers.every(id => {
+                  const container = document.getElementById(id);
+                  return container !== null;
                 });
-              } else {
-                console.error('Containers or D3 not ready:', {
-                  containersExist: allContainersExist,
-                  d3Loaded: typeof d3 !== "undefined"
-                });
-              }
+                
+                if (allContainersExist && typeof d3 !== "undefined") {
+                  // Import chart module and call initialization function
+                  import('/src/charts/grainProductionCharts.js').then(module => {
+                    if (module.initGrainProductionCharts) {
+                      module.initGrainProductionCharts();
+                    }
+                  }).catch(err => {
+                    console.error('Failed to load charts:', err);
+                  });
+                } else {
+                  console.error('Containers or D3 not ready:', {
+                    containersExist: allContainersExist,
+                    d3Loaded: typeof d3 !== "undefined"
+                  });
+                }
+              });
             });
           });
         });
       });
+      
+      // Re-render MathJax when details section is opened
+      const detailsElement = page.querySelector('details.methodology-details');
+      if (detailsElement) {
+        detailsElement.addEventListener('toggle', () => {
+          if (detailsElement.open && window.MathJax) {
+            // Wait a bit for the content to be visible
+            setTimeout(() => {
+              window.MathJax.typesetPromise([detailsElement]).catch((err) => {
+                console.error('MathJax typeset error:', err);
+              });
+            }, 100);
+          }
+        });
+      }
     },
     destroy: () => {
       // Cleanup if needed
     }
   };
+}
+
+function loadMathJax() {
+  return new Promise((resolve) => {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      // MathJax already loaded, just resolve
+      resolve();
+      return;
+    }
+    
+    // Check if script is already being loaded
+    const existingScript = document.querySelector('script[src*="mathjax"]');
+    if (existingScript) {
+      // Wait for existing script to load
+      existingScript.addEventListener('load', resolve);
+      existingScript.addEventListener('error', resolve);
+      return;
+    }
+    
+    // Configure MathJax before loading
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+    script.async = true;
+    script.onload = () => {
+      // Wait for MathJax to be fully initialized
+      const checkMathJax = () => {
+        if (window.MathJax && window.MathJax.typesetPromise) {
+          resolve();
+        } else {
+          // Check again after a short delay
+          setTimeout(checkMathJax, 50);
+        }
+      };
+      checkMathJax();
+    };
+    script.onerror = () => {
+      console.error('MathJax failed to load');
+      resolve(); // Resolve anyway to not block page rendering
+    };
+    document.head.appendChild(script);
+  });
 }
 
 function loadD3() {
