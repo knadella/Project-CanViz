@@ -15,23 +15,106 @@ export function GrainProductionPage() {
           /* Page container */
           .grain-production-page {
             background: var(--bg-dark);
-            padding: 3rem 0 4rem;
+          }
+          
+          /* Hero Section */
+          .grain-production-hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            background: 
+              radial-gradient(ellipse at 20% 80%, rgba(139, 195, 74, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(255, 193, 7, 0.12) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 50%, rgba(141, 110, 99, 0.08) 0%, transparent 60%),
+              var(--bg-dark);
+          }
+          
+          .grain-production-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+              linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+          }
+          
+          .grain-production-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+          }
+          
+          .grain-production-hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, rgba(255, 193, 7, 0.9) 50%, rgba(139, 195, 74, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+          
+          .grain-production-hero .subtitle {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+          }
+          
+          .grain-production-scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: grain-float 2s ease-in-out infinite;
+          }
+          
+          .grain-production-scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: rgba(139, 195, 74, 0.8);
+          }
+          
+          @keyframes grain-float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
           }
           
           .grain-production-page .page-content {
             max-width: var(--maxWidth);
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 3rem 2rem 4rem;
           }
           
           @media (min-width: 768px) {
             .grain-production-page .page-content {
-              padding: 0 3rem;
+              padding: 3rem 3rem 4rem;
             }
           }
           
           /* Typography */
-          .grain-production-page h1 {
+          .grain-production-page .page-content h1 {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 600;
@@ -39,7 +122,7 @@ export function GrainProductionPage() {
             color: var(--text-primary);
           }
           
-          .grain-production-page .subtitle {
+          .grain-production-page .page-content .subtitle {
             font-size: 1.2rem;
             color: var(--text-secondary);
             margin-bottom: 3rem;
@@ -165,7 +248,21 @@ export function GrainProductionPage() {
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-teal), transparent);
+            background: linear-gradient(90deg, transparent, rgba(139, 195, 74, 0.8), transparent);
+          }
+          
+          .grain-production-page .chart-note {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: rgba(139, 195, 74, 0.08);
+            border-left: 3px solid rgba(139, 195, 74, 0.8);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+          }
+          
+          .grain-production-page .chart-note strong {
+            color: rgba(139, 195, 74, 0.9);
           }
           
           /* Chart styles - updated for dark theme */
@@ -538,10 +635,21 @@ export function GrainProductionPage() {
           }
         </style>
         
+        <!-- Hero Section -->
+        <section class="grain-production-hero">
+          <div class="grain-production-hero-content">
+            <h1>Grain Production</h1>
+            <p class="subtitle">Understanding how planted area, yield and crop mix have interacted in the history of Canadian grain production</p>
+          </div>
+          <div class="grain-production-scroll-indicator">
+            <span>Scroll to explore</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M19 12l-7 7-7-7"/>
+            </svg>
+          </div>
+        </section>
+        
         <div class="page-content">
-          <h1>Grain Production</h1>
-          <p class="subtitle">Understanding how seeded area, effective yield and crop mix have interacted in Canadian grain production</p>
-          
           <h2>History of production, seeded area and effective yield</h2>
         
         <p>The production of major crops in Canada has increased considerably over the last 120 years. Today farmers in Canada produce <span id="production-ratio">—</span> times more than they did in the early 1900s. In fact in <span id="last-year">—</span> production hit a record with <span id="production-2025-million">—</span> million tonnes produced. In the plot below we see total production from <span id="first-year">—</span> to <span id="last-year-2">—</span>. It shows how production has been increasing steadily with year-to-year variation.</p>
@@ -550,6 +658,9 @@ export function GrainProductionPage() {
         
         <div class="chart-container">
           <div id="plot-history-production-container"></div>
+          <div class="chart-note">
+            <strong>Tip:</strong> Hover below the production line in the chart to see production values for specific years.
+          </div>
         </div>
         
         <p>What accounts for the rise in production? Production is made up of the total area seeded and the amount of grain produced per seeded hectare. In this report we call this <strong>effective yield</strong>, defined as production divided by seeded area. This differs from the standard yield definition (production per harvested hectare), but harvested area is only available back to 1960 in our data. Using effective yield lets us build a single consistent series back to the early 1900s.</p>
@@ -595,7 +706,7 @@ export function GrainProductionPage() {
         </ul>
         
         <details class="methodology-details">
-          <summary>Click here to read details on the framework.</summary>
+          <summary>Click here to read details on the framework</summary>
           <div class="details-content">
             <p>Formally:</p>
             

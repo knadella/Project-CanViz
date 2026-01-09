@@ -137,7 +137,7 @@ function initProductionChart() {
       function showHover(event, d) {
         // Show tooltip with only production value
         tooltip.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
         
         tooltip.html(labelClean(d.value))
@@ -154,7 +154,7 @@ function initProductionChart() {
           .attr("y1", height)
           .attr("y2", yPos)
           .transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
         
         // Show year label on x-axis
@@ -162,7 +162,7 @@ function initProductionChart() {
           .attr("x", xPos)
           .text(String(d.year))
           .transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
         
         // Hide any always-visible year labels that are close to the hover year
@@ -172,7 +172,7 @@ function initProductionChart() {
           const tickLabel = d3.select(this);
           const tickYear = parseInt(tickLabel.text());
           if (Math.abs(d.year - tickYear) <= proximityThreshold) {
-            tickLabel.transition().duration(200).style("opacity", 0);
+            tickLabel.transition().duration(100).style("opacity", 0);
           }
         });
       }
@@ -181,23 +181,23 @@ function initProductionChart() {
       function hideHover() {
         // Hide tooltip
         tooltip.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 0)
           .attr("class", "plot-history-production-tooltip");
         
         // Hide vertical line
         hoverLine.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 0);
         
         // Hide year label on x-axis
         hoverYearLabel.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 0);
         
         // Show all always-visible year labels again
         xAxisTickLabels.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
       }
       
@@ -441,7 +441,7 @@ function initAreaChart() {
       function showHover(event, d) {
         // Show tooltip with only area value
         tooltip.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
         
         tooltip.html(labelClean(d.value))
@@ -458,7 +458,7 @@ function initAreaChart() {
           .attr("y1", height)
           .attr("y2", yPos)
           .transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
         
         // Show year label on x-axis
@@ -466,7 +466,7 @@ function initAreaChart() {
           .attr("x", xPos)
           .text(String(d.year))
           .transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
         
         // Hide any always-visible year labels that are close to the hover year
@@ -476,7 +476,7 @@ function initAreaChart() {
           const tickLabel = d3.select(this);
           const tickYear = parseInt(tickLabel.text());
           if (Math.abs(d.year - tickYear) <= proximityThreshold) {
-            tickLabel.transition().duration(200).style("opacity", 0);
+            tickLabel.transition().duration(100).style("opacity", 0);
           }
         });
       }
@@ -485,23 +485,23 @@ function initAreaChart() {
       function hideHover() {
         // Hide tooltip
         tooltip.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 0)
           .attr("class", "plot-history-area-tooltip");
         
         // Hide vertical line
         hoverLine.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 0);
         
         // Hide year label on x-axis
         hoverYearLabel.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 0);
         
         // Show all always-visible year labels again
         xAxisTickLabels.transition()
-          .duration(200)
+          .duration(100)
           .style("opacity", 1);
       }
       
