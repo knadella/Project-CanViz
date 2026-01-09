@@ -1010,7 +1010,331 @@ function initCropComponentsChart() {
             .duration(100)
             .style("opacity", 1);
         });
+        
+        // If a year is selected, restore it after hover ends
+        if (selectedYear !== null) {
+          setTimeout(() => {
+            showYearSelector(selectedYear);
+          }, 150);
+        }
       }
+      
+      // Year selector functionality
+      let selectedYear = null;
+      
+      // Function to show year across all panels for all crops
+      function showYearSelector(year) {
+        selectedYear = year;
+        
+        crops.forEach(crop => {
+          measures.forEach(measure => {
+            const ref = panelRefs[crop][measure];
+            if (!ref) return;
+            
+            // Find data point for this year
+            const dataPoint = ref.data.find(p => p.year === year);
+            if (!dataPoint) {
+              // Hide elements if no data for this year
+              ref.hoverValueLabel.style("opacity", 0);
+              ref.hoverYTick.style("opacity", 0);
+              ref.hoverLine.style("opacity", 0);
+              ref.hoverYearLabel.style("opacity", 0);
+              return;
+            }
+            
+            const xPos = ref.xScale(year);
+            const yPos = ref.yScale(dataPoint.value);
+            
+            // Show value label on y-axis
+            ref.hoverValueLabel
+              .attr("y", yPos)
+              .text(labelClean(dataPoint.value))
+              .transition()
+              .duration(100)
+              .style("opacity", 1);
+            
+            // Show tick mark on y-axis
+            ref.hoverYTick
+              .attr("y1", yPos)
+              .attr("y2", yPos)
+              .transition()
+              .duration(100)
+              .style("opacity", 1);
+            
+            // Show hover line from x-axis to point
+            ref.hoverLine
+              .attr("x1", xPos)
+              .attr("x2", xPos)
+              .attr("y1", panelHeight)
+              .attr("y2", yPos)
+              .transition()
+              .duration(100)
+              .style("opacity", 1);
+            
+            // Show year label below each panel
+            ref.hoverYearLabel
+              .attr("x", xPos)
+              .text(String(year))
+              .transition()
+              .duration(100)
+              .style("opacity", 1);
+            
+            // Hide nearby permanent x-axis labels (only exists on bottom row)
+            if (ref.xAxisTickLabels) {
+              const xProximityThreshold = 10;
+              ref.xAxisTickLabels.each(function() {
+                const tickLabel = d3.select(this);
+                const tickYear = parseInt(tickLabel.text());
+                if (Math.abs(year - tickYear) <= xProximityThreshold) {
+                  tickLabel.transition().duration(100).style("opacity", 0);
+                }
+              });
+            }
+            
+            // Hide nearby permanent y-axis labels
+            const yProximityThreshold = 15;
+            ref.yAxisTickLabels.each(function() {
+              const tickLabel = d3.select(this);
+              const tickTransform = d3.select(this.parentNode).attr("transform");
+              const tickY = parseFloat(tickTransform.match(/translate\(0,([^)]+)\)/)[1]);
+              if (Math.abs(yPos - tickY) <= yProximityThreshold) {
+                tickLabel.transition().duration(100).style("opacity", 0);
+              }
+            });
+          });
+        });
+      }
+      
+      // Function to hide year selector display
+      function hideYearSelector() {
+        selectedYear = null;
+        
+        crops.forEach(crop => {
+          measures.forEach(measure => {
+            const ref = panelRefs[crop][measure];
+            if (!ref) return;
+            
+            // Hide value label on y-axis
+            ref.hoverValueLabel
+              .transition()
+              .duration(100)
+              .style("opacity", 0);
+            
+            // Hide tick mark on y-axis
+            ref.hoverYTick
+              .transition()
+              .duration(100)
+              .style("opacity", 0);
+            
+            // Hide hover line
+            ref.hoverLine
+              .transition()
+              .duration(100)
+              .style("opacity", 0);
+            
+            // Hide year label below each panel
+            ref.hoverYearLabel
+              .transition()
+              .duration(100)
+              .style("opacity", 0);
+            
+            // Show all permanent x-axis labels again (only exists on bottom row)
+            if (ref.xAxisTickLabels) {
+              ref.xAxisTickLabels
+                .transition()
+                .duration(100)
+                .style("opacity", 1);
+            }
+            
+            // Show all permanent y-axis labels again
+            ref.yAxisTickLabels
+              .transition()
+              .duration(100)
+              .style("opacity", 1);
+          });
+        });
+      }
+      
+      // Create year selector UI
+      // Make the container position relative for absolute positioning
+      d3.select("#plot-history-by-crop-container")
+        .style("position", "relative");
+      
+      const yearSelectorContainer = d3.select("#plot-history-by-crop-container")
+        .append("div")
+        .attr("class", "year-selector-container")
+        .style("position", "absolute")
+        .style("top", "0")
+        .style("left", "0")
+        .style("width", "100%")
+        .style("height", "100%")
+        .style("pointer-events", "none")
+        .style("z-index", "10");
+      
+      // Button container for "Pick year" and "Clear" buttons
+      const buttonContainer = yearSelectorContainer
+        .append("div")
+        .style("position", "absolute")
+        .style("top", "10px")
+        .style("right", "10px")
+        .style("display", "flex")
+        .style("gap", "8px")
+        .style("pointer-events", "all");
+      
+      // "Pick year" button in top right (positioned relative to SVG top-right)
+      const pickYearButton = buttonContainer
+        .append("button")
+        .attr("class", "pick-year-button")
+        .style("padding", "6px 12px")
+        .style("background", "rgba(139, 195, 74, 0.1)")
+        .style("border", "1px solid rgba(139, 195, 74, 0.5)")
+        .style("border-radius", "4px")
+        .style("color", "var(--text-primary)")
+        .style("cursor", "pointer")
+        .style("font-size", "12px")
+        .style("font-family", "inherit")
+        .text("Pick year")
+        .on("click", function(event) {
+          event.stopPropagation();
+          const isVisible = yearSelectorWindow.style("display") !== "none";
+          yearSelectorWindow.style("display", isVisible ? "none" : "block");
+          if (!isVisible && selectedYear) {
+            yearInput.node().value = selectedYear;
+            yearSlider.property("value", selectedYear);
+          }
+        });
+      
+      // Clear button (X) next to Pick year button
+      const clearYearButton = buttonContainer
+        .append("button")
+        .attr("class", "clear-year-button")
+        .style("padding", "6px 10px")
+        .style("background", "rgba(139, 195, 74, 0.1)")
+        .style("border", "1px solid rgba(139, 195, 74, 0.5)")
+        .style("border-radius", "4px")
+        .style("color", "var(--text-primary)")
+        .style("cursor", "pointer")
+        .style("font-size", "14px")
+        .style("font-family", "inherit")
+        .style("line-height", "1")
+        .style("width", "28px")
+        .style("height", "28px")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("justify-content", "center")
+        .text("×")
+        .on("click", function(event) {
+          event.stopPropagation();
+          hideYearSelector();
+          yearInput.node().value = "";
+          yearSelectorWindow.style("display", "none");
+        });
+      
+      // Year selector window (positioned to the left of button)
+      const yearSelectorWindow = yearSelectorContainer
+        .append("div")
+        .attr("class", "year-selector-window")
+        .style("position", "absolute")
+        .style("top", "10px")
+        .style("right", "120px")
+        .style("background", "var(--bg-card)")
+        .style("border", "1px solid var(--border-subtle)")
+        .style("border-radius", "8px")
+        .style("padding", "15px")
+        .style("padding-top", "12px")
+        .style("min-width", "250px")
+        .style("box-shadow", "var(--shadow-card)")
+        .style("z-index", "1000")
+        .style("display", "none")
+        .style("pointer-events", "all");
+      
+      // Year slider (create first so input can reference it)
+      const sliderContainer = yearSelectorWindow
+        .append("div")
+        .style("margin-top", "0");
+      
+      const sliderLabels = sliderContainer
+        .append("div")
+        .style("display", "flex")
+        .style("justify-content", "space-between")
+        .style("margin-bottom", "5px")
+        .style("font-size", "11px")
+        .style("color", "var(--text-secondary)");
+      
+      sliderLabels.append("span").text(globalYearExtent[0]);
+      sliderLabels.append("span").text(globalYearExtent[1]);
+      
+      const yearSlider = sliderContainer
+        .append("input")
+        .attr("type", "range")
+        .attr("class", "year-slider")
+        .attr("min", globalYearExtent[0])
+        .attr("max", globalYearExtent[1])
+        .attr("step", "1")
+        .style("width", "100%")
+        .style("cursor", "pointer");
+      
+      // Input and slider container
+      const inputContainer = yearSelectorWindow
+        .append("div")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("gap", "10px")
+        .style("margin-bottom", "8px");
+      
+      // Year input field
+      const yearInput = inputContainer
+        .append("input")
+        .attr("type", "text")
+        .attr("class", "year-input")
+        .attr("placeholder", "____")
+        .style("flex", "1")
+        .style("padding", "6px 8px")
+        .style("background", "var(--bg-dark)")
+        .style("border", "1px solid var(--border-subtle)")
+        .style("border-radius", "4px")
+        .style("color", "var(--text-primary)")
+        .style("font-size", "14px")
+        .style("font-family", "inherit")
+        .style("text-align", "center")
+        .style("letter-spacing", "0.1em")
+        .on("input", function() {
+          const value = parseInt(this.value);
+          if (!isNaN(value) && value >= globalYearExtent[0] && value <= globalYearExtent[1]) {
+            yearSlider.property("value", value);
+            showYearSelector(value);
+          }
+        })
+        .on("blur", function() {
+          const value = parseInt(this.value);
+          if (isNaN(value) || value < globalYearExtent[0] || value > globalYearExtent[1]) {
+            if (selectedYear) {
+              this.value = selectedYear;
+            } else {
+              this.value = "";
+            }
+          }
+        });
+      
+      // Update input when year is selected via slider
+      yearSlider.on("input", function() {
+        const value = parseInt(this.value);
+        yearInput.node().value = value;
+        showYearSelector(value);
+      });
+      
+      
+      // Hide year selector when clicking outside
+      d3.select("body").on("click.year-selector", function(event) {
+        if (!yearSelectorContainer.node().contains(event.target)) {
+          yearSelectorWindow.style("display", "none");
+        }
+      });
+      
+      // Prevent closing when clicking inside the window
+      yearSelectorWindow.on("click", function(event) {
+        event.stopPropagation();
+      });
       
       // Caption
       svg.append("text")

@@ -439,6 +439,7 @@ export function GrainProductionPage() {
             background-color: transparent;
             max-width: 100%;
             height: auto;
+            position: relative;
           }
           
           #plot-history-by-crop-container svg {
@@ -615,6 +616,83 @@ export function GrainProductionPage() {
           
           #plot-history-by-crop-container .hover-y-tick {
             stroke: var(--text-primary);
+          }
+          
+          /* Year selector styling */
+          .year-selector-container {
+            position: relative;
+          }
+          
+          .pick-year-button {
+            transition: all 0.2s ease;
+          }
+          
+          .pick-year-button:hover {
+            background: rgba(139, 195, 74, 0.2) !important;
+            border-color: rgba(139, 195, 74, 0.8) !important;
+          }
+          
+          .year-selector-window {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+          }
+          
+          .year-input {
+            letter-spacing: 0.1em;
+          }
+          
+          .year-input:focus {
+            outline: none;
+            border-color: rgba(139, 195, 74, 0.8) !important;
+            box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.15);
+          }
+          
+          .year-input::placeholder {
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+          }
+          
+          .year-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            background: var(--border-subtle);
+            border-radius: 2px;
+            outline: none;
+          }
+          
+          .year-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: rgba(139, 195, 74, 0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+          }
+          
+          .year-slider::-webkit-slider-thumb:hover {
+            background: rgba(139, 195, 74, 1);
+            transform: scale(1.1);
+          }
+          
+          .year-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: rgba(139, 195, 74, 0.9);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+          }
+          
+          .year-slider::-moz-range-thumb:hover {
+            background: rgba(139, 195, 74, 1);
+            transform: scale(1.1);
+          }
+          
+          .close-year-selector:hover {
+            color: var(--text-primary) !important;
           }
           
           /* MathJax styling */
