@@ -208,15 +208,16 @@ export function InflationStoryPage() {
           }
           
           .big-stat {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: clamp(4rem, 12vw, 8rem);
             font-weight: 700;
             background: linear-gradient(135deg, var(--accent-coral) 0%, var(--accent-gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
           }
           
           .big-stat-label {
@@ -301,27 +302,6 @@ export function InflationStoryPage() {
             border-color: var(--accent-teal);
             color: var(--bg-dark);
             font-weight: 600;
-          }
-          
-          .date-display {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.25rem;
-            background: rgba(78, 205, 196, 0.08);
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-          }
-          
-          .date-display #dateRangeText {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-          }
-          
-          .date-display #periodLength {
-            font-size: 0.9rem;
-            color: var(--text-muted);
           }
           
           /* Summary Stats */
@@ -412,38 +392,40 @@ export function InflationStoryPage() {
           /* Tablets */
           @media (max-width: 768px) {
             .story-hero {
-              min-height: 60vh;
-              padding: 3rem 1.25rem;
+              min-height: 50vh;
+              padding: 2.5rem 1.25rem;
             }
             
             .story-hero h1 {
-              font-size: clamp(2rem, 10vw, 3.5rem);
+              font-size: clamp(2.25rem, 10vw, 3.5rem);
             }
             
             .story-hero .subtitle {
-              font-size: 1.1rem;
-              margin-bottom: 2rem;
+              font-size: 1.15rem;
+              margin-bottom: 1.5rem;
+              line-height: 1.5;
             }
             
             .scroll-indicator {
-              bottom: 2rem;
-              font-size: 0.75rem;
+              bottom: 1.5rem;
+              font-size: 0.7rem;
             }
             
             .story-section {
-              padding: 3rem 1rem;
+              padding: 2.5rem 1rem;
             }
             
             .section-header {
-              margin-bottom: 2rem;
+              margin-bottom: 1.5rem;
             }
             
             .story-section h2 {
-              font-size: clamp(1.5rem, 5vw, 2rem);
+              font-size: clamp(1.6rem, 5vw, 2.25rem);
             }
             
             .story-section .lead {
-              font-size: 1rem;
+              font-size: 1.1rem;
+              line-height: 1.6;
             }
             
             .chart-wrapper {
@@ -453,11 +435,11 @@ export function InflationStoryPage() {
             }
             
             .chart-title {
-              font-size: 1.25rem;
+              font-size: 1.35rem;
             }
             
             .chart-subtitle {
-              font-size: 0.85rem;
+              font-size: 0.95rem;
             }
             
             .controls {
@@ -470,10 +452,14 @@ export function InflationStoryPage() {
               width: 100%;
             }
             
+            .control-group label {
+              font-size: 0.8rem;
+            }
+            
             .control-group input,
             .control-group select {
               width: 100%;
-              padding: 0.75rem 1rem;
+              padding: 0.85rem 1rem;
               font-size: 16px; /* Prevents zoom on iOS */
             }
             
@@ -485,20 +471,10 @@ export function InflationStoryPage() {
             }
             
             .preset-btn {
-              padding: 0.75rem 0.5rem;
-              font-size: 0.8rem;
+              padding: 0.85rem 0.5rem;
+              font-size: 0.9rem;
               text-align: center;
-            }
-            
-            .date-display {
-              flex-direction: column;
-              align-items: flex-start;
-              gap: 0.5rem;
-              padding: 0.875rem 1rem;
-            }
-            
-            .date-display #dateRangeText {
-              font-size: 1rem;
+              font-weight: 500;
             }
             
             .summary-grid {
@@ -510,31 +486,43 @@ export function InflationStoryPage() {
               padding: 1rem;
             }
             
+            .stat-card .stat-label {
+              font-size: 0.8rem;
+            }
+            
             .stat-card .stat-value {
-              font-size: 1.5rem;
+              font-size: 1.6rem;
             }
             
             .transition-section {
-              padding: 5rem 1.25rem;
+              padding: 4rem 1.25rem;
             }
             
             .big-stat {
-              font-size: clamp(3rem, 15vw, 5rem);
+              font-size: clamp(3.5rem, 15vw, 5rem);
             }
             
             .big-stat-label {
-              font-size: 1rem;
+              font-size: 1.1rem;
               padding: 0 1rem;
+              line-height: 1.5;
             }
             
+            /* Compact chart notes - less space */
             .chart-note {
-              padding: 0.875rem 1rem;
-              font-size: 0.85rem;
+              padding: 0.65rem 0.85rem;
+              font-size: 0.8rem;
+              margin-top: 1rem;
+              line-height: 1.4;
+            }
+            
+            .chart-note strong {
+              display: inline;
             }
             
             /* Chart container mobile adjustments */
             .chart-container {
-              margin: 0 -0.5rem;
+              margin: 0;
               overflow-x: auto;
               -webkit-overflow-scrolling: touch;
             }
@@ -547,22 +535,22 @@ export function InflationStoryPage() {
           /* Small phones */
           @media (max-width: 480px) {
             .story-hero {
-              min-height: 55vh;
-              padding: 2.5rem 1rem;
+              min-height: 45vh;
+              padding: 2rem 1rem;
             }
             
             .story-hero h1 {
-              font-size: clamp(1.75rem, 12vw, 2.5rem);
-              margin-bottom: 1rem;
+              font-size: clamp(2rem, 12vw, 2.75rem);
+              margin-bottom: 0.75rem;
             }
             
             .story-hero .subtitle {
-              font-size: 1rem;
+              font-size: 1.05rem;
               line-height: 1.5;
             }
             
             .story-section {
-              padding: 2.5rem 0.875rem;
+              padding: 2rem 0.875rem;
             }
             
             .section-number {
@@ -570,13 +558,13 @@ export function InflationStoryPage() {
             }
             
             .story-section h2 {
-              font-size: 1.35rem;
-              margin-bottom: 1rem;
+              font-size: 1.5rem;
+              margin-bottom: 0.75rem;
             }
             
             .story-section .lead {
-              font-size: 0.95rem;
-              line-height: 1.6;
+              font-size: 1.05rem;
+              line-height: 1.55;
             }
             
             .chart-wrapper {
@@ -585,7 +573,11 @@ export function InflationStoryPage() {
             }
             
             .chart-title {
-              font-size: 1.1rem;
+              font-size: 1.2rem;
+            }
+            
+            .chart-subtitle {
+              font-size: 0.9rem;
             }
             
             .controls {
@@ -593,25 +585,27 @@ export function InflationStoryPage() {
               gap: 0.875rem;
             }
             
-            .preset-buttons {
-              grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .preset-btn {
-              padding: 0.625rem 0.375rem;
+            .control-group label {
               font-size: 0.75rem;
             }
             
-            .date-display #dateRangeText {
-              font-size: 0.9rem;
+            .preset-buttons {
+              grid-template-columns: repeat(3, 1fr);
             }
             
-            .date-display #periodLength {
+            .preset-btn {
+              padding: 0.7rem 0.35rem;
               font-size: 0.8rem;
+              font-weight: 500;
             }
             
             .summary-grid {
-              grid-template-columns: 1fr;
+              grid-template-columns: 1fr 1fr;
+              gap: 0.6rem;
+            }
+            
+            .stat-card {
+              padding: 0.85rem;
             }
             
             .stat-card .stat-label {
@@ -619,40 +613,65 @@ export function InflationStoryPage() {
             }
             
             .stat-card .stat-value {
-              font-size: 1.35rem;
+              font-size: 1.4rem;
             }
             
             .transition-section {
-              padding: 4rem 1rem;
+              padding: 3rem 1rem;
             }
             
             .big-stat {
-              font-size: clamp(2.5rem, 18vw, 4rem);
+              font-size: clamp(3rem, 18vw, 4.5rem);
             }
             
             .big-stat-label {
-              font-size: 0.9rem;
+              font-size: 1rem;
+              line-height: 1.5;
             }
             
+            /* Very compact chart notes */
             .chart-note {
-              font-size: 0.8rem;
-              padding: 0.75rem;
+              font-size: 0.75rem;
+              padding: 0.5rem 0.75rem;
+              margin-top: 0.75rem;
+              line-height: 1.35;
             }
           }
           
           /* Extra small phones */
           @media (max-width: 360px) {
             .story-hero h1 {
-              font-size: 1.65rem;
+              font-size: 1.85rem;
+            }
+            
+            .story-hero .subtitle {
+              font-size: 1rem;
+            }
+            
+            .story-section h2 {
+              font-size: 1.35rem;
+            }
+            
+            .story-section .lead {
+              font-size: 1rem;
             }
             
             .preset-buttons {
-              grid-template-columns: 1fr 1fr;
+              grid-template-columns: repeat(3, 1fr);
             }
             
             .preset-btn {
+              font-size: 0.75rem;
+              padding: 0.6rem 0.2rem;
+            }
+            
+            .chart-title {
+              font-size: 1.1rem;
+            }
+            
+            .chart-note {
               font-size: 0.7rem;
-              padding: 0.5rem 0.25rem;
+              padding: 0.45rem 0.65rem;
             }
           }
           
@@ -733,9 +752,6 @@ export function InflationStoryPage() {
               <svg id="cpi-chart"></svg>
             </div>
             
-            <div class="chart-note">
-              <strong>Tip:</strong> Move your cursor across the chart to re-index all series from that date. Watch how relative performance shifts depending on your starting point.
-            </div>
           </div>
         </section>
         
@@ -758,8 +774,8 @@ export function InflationStoryPage() {
             <p class="chart-subtitle">Percentage point contributions to overall CPI change</p>
             
             <div class="controls">
-              <div class="control-group" style="flex: 1; min-width: 100%;">
-                <label>Time Period Presets</label>
+              <div class="control-group" style="width: 100%;">
+                <label>Time Period</label>
                 <div class="preset-buttons">
                   <button class="preset-btn" data-preset="1y">1 Year</button>
                   <button class="preset-btn" data-preset="2y">2 Years</button>
@@ -769,20 +785,11 @@ export function InflationStoryPage() {
                   <button class="preset-btn" data-preset="ytd">YTD</button>
                 </div>
               </div>
-              <div class="control-group">
-                <label>Start Date</label>
-                <input type="month" id="startDate" value="2015-01" min="2015-01" max="2025-11">
-              </div>
-              <div class="control-group">
-                <label>End Date</label>
-                <input type="month" id="endDate" value="2025-11" min="2015-01" max="2025-11">
-              </div>
             </div>
+            <!-- Hidden inputs to maintain compatibility with chart code -->
+            <input type="hidden" id="startDate" value="2015-01">
+            <input type="hidden" id="endDate" value="2025-11">
             
-            <div class="date-display" id="dateRangeDisplay">
-              <span id="dateRangeText">January 2015 — November 2025</span>
-              <span id="periodLength">(10 years, 10 months)</span>
-            </div>
             
             <div class="loading" id="food-loading" style="display: none;">Calculating contributions...</div>
             <div class="error" id="food-error" style="display: none;"></div>
@@ -802,9 +809,6 @@ export function InflationStoryPage() {
               <svg id="food-chart"></svg>
             </div>
             
-            <div class="chart-note">
-              <strong>Drill Down:</strong> Click any category to explore its subcategories. For example: <span style="color: var(--accent-coral);">Food</span> → Stores → Meat → Beef. Click a parent to zoom back out.
-            </div>
           </div>
         </section>
         

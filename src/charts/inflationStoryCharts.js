@@ -148,16 +148,18 @@ function getChartDimensions(chartType = 'cpi') {
   if (chartType === 'cpi') {
     return {
       width: Math.min(containerWidth, 928),
-      height: isSmallMobile ? 350 : isMobile ? 420 : 520,
+      // Make charts much taller on mobile for better visibility
+      height: isSmallMobile ? 450 : isMobile ? 500 : 520,
       marginTop: 20,
       marginRight: isSmallMobile ? 10 : isMobile ? 60 : 120,
-      marginBottom: isSmallMobile ? 40 : 30,
-      marginLeft: isSmallMobile ? 40 : 50
+      marginBottom: isSmallMobile ? 50 : 30,
+      marginLeft: isSmallMobile ? 45 : 50
     };
   } else {
     return {
       width: Math.min(containerWidth, 928),
-      height: isSmallMobile ? 400 : isMobile ? 500 : 600
+      // Taller icicle chart on mobile
+      height: isSmallMobile ? 500 : isMobile ? 550 : 600
     };
   }
 }
@@ -241,13 +243,16 @@ export function initCpiChart() {
         .attr("style", "max-width: 100%; height: auto;")
         .attr("preserveAspectRatio", "xMidYMid meet");
       
+      // Responsive axis font size
+      const axisFontSize = isMobile ? "12px" : "11px";
+      
       // X-Axis
       svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
-        .call(d3.axisBottom(x).ticks(width / 80).tickSizeOuter(0))
+        .call(d3.axisBottom(x).ticks(isMobile ? 5 : width / 80).tickSizeOuter(0))
         .call(g => g.select(".domain").attr("stroke", "rgba(255,255,255,0.2)"))
         .call(g => g.selectAll(".tick line").attr("stroke", "rgba(255,255,255,0.1)"))
-        .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8"));
+        .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8").style("font-size", axisFontSize));
       
       // Y-Axis
       svg.append("g")
@@ -258,7 +263,7 @@ export function initCpiChart() {
           .attr("stroke", "rgba(255,255,255,0.2)")
           .attr("x2", width - marginLeft - marginRight))
         .call(g => g.select(".domain").remove())
-        .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8"));
+        .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8").style("font-size", axisFontSize));
       
       const rule = svg.append("g")
         .append("line")
@@ -270,9 +275,9 @@ export function initCpiChart() {
       const annotationGroup = svg.append("g").attr("class", "annotation-group");
       const annotationBg = annotationGroup.append("rect").attr("class", "annotation-bg").attr("rx", 6)
         .attr("fill", "#111827").attr("stroke", "#4ecdc4").attr("stroke-width", 1);
-      const annotationFontSize = isMobile ? "10px" : "12px";
+      const annotationFontSize = isMobile ? "11px" : "12px";
       const annotationText = annotationGroup.append("text").attr("class", "annotation-text")
-        .attr("fill", "#f8fafc").attr("font-size", annotationFontSize);
+        .attr("fill", "#f8fafc").attr("font-size", annotationFontSize).attr("font-weight", "500");
       
       const serie = svg.append("g")
         .style("font", "bold 10px sans-serif")
@@ -314,10 +319,10 @@ export function initCpiChart() {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          gap: 0.75rem 1.25rem;
-          margin-top: 1rem;
-          padding: 0.75rem;
-          background: rgba(255,255,255,0.03);
+          gap: 0.6rem 1rem;
+          margin-top: 0.75rem;
+          padding: 0.85rem;
+          background: rgba(255,255,255,0.04);
           border-radius: 8px;
         `;
         
@@ -327,16 +332,18 @@ export function initCpiChart() {
           item.style.cssText = `
             display: flex;
             align-items: center;
-            gap: 0.4rem;
-            font-size: 0.75rem;
-            color: #94a3b8;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #e2e8f0;
           `;
           const dot = document.createElement('span');
           dot.style.cssText = `
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: ${colors[cat] || '#666'};
+            flex-shrink: 0;
           `;
           item.appendChild(dot);
           item.appendChild(document.createTextNode(cat));
@@ -523,31 +530,14 @@ function applyPreset(preset) {
 }
 
 function updateDateDisplay() {
+  // Date display elements removed - this function now just validates dates
   const startDate = document.getElementById("startDate").value;
   const endDate = document.getElementById("endDate").value;
   
-  const formatDate = (dateStr) => {
-    const [year, month] = dateStr.split("-");
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"];
-    return `${monthNames[parseInt(month) - 1]} ${year}`;
-  };
-  
-  document.getElementById("dateRangeText").textContent = `${formatDate(startDate)} — ${formatDate(endDate)}`;
-  
-  const [sy, sm] = startDate.split("-").map(Number);
-  const [ey, em] = endDate.split("-").map(Number);
-  const totalMonths = (ey - sy) * 12 + (em - sm);
-  const years = Math.floor(totalMonths / 12);
-  const months = totalMonths % 12;
-  
-  let periodStr = "";
-  if (years > 0) periodStr += `${years} year${years > 1 ? "s" : ""}`;
-  if (years > 0 && months > 0) periodStr += ", ";
-  if (months > 0) periodStr += `${months} month${months > 1 ? "s" : ""}`;
-  if (!periodStr) periodStr = "Same month";
-  
-  document.getElementById("periodLength").textContent = `(${periodStr})`;
+  // Ensure start date is before end date
+  if (startDate > endDate) {
+    document.getElementById("endDate").value = startDate;
+  }
 }
 
 function calculateContributions() {
@@ -730,11 +720,11 @@ function drawIcicleChart(results) {
       hideTooltip(); 
     });
   
-  // Responsive font sizes for labels
-  const labelFontSize = isSmallMobile ? "9px" : isMobile ? "10px" : "11px";
-  const subLabelFontSize = isSmallMobile ? "8px" : isMobile ? "9px" : "10px";
-  const labelY = isSmallMobile ? 14 : 16;
-  const subLabelY = isSmallMobile ? 26 : 30;
+  // Responsive font sizes for labels - bigger on mobile for readability
+  const labelFontSize = isSmallMobile ? "11px" : isMobile ? "12px" : "11px";
+  const subLabelFontSize = isSmallMobile ? "10px" : isMobile ? "11px" : "10px";
+  const labelY = isSmallMobile ? 15 : 16;
+  const subLabelY = isSmallMobile ? 28 : 30;
   
   const text = cell.append("text")
     .style("user-select", "none")
@@ -845,13 +835,14 @@ function drawIcicleChart(results) {
       mobileInfoPanel.className = 'mobile-chart-info';
       mobileInfoPanel.style.cssText = `
         display: none;
-        padding: 0.75rem 1rem;
+        padding: 0.85rem 1rem;
         background: rgba(17, 24, 39, 0.95);
         border: 1px solid var(--border-subtle);
         border-radius: 8px;
         margin-top: 0.75rem;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
         color: var(--text-secondary);
+        line-height: 1.5;
       `;
       const chartContainer = document.querySelector('#food-chart').parentElement;
       chartContainer.appendChild(mobileInfoPanel);
@@ -861,7 +852,7 @@ function drawIcicleChart(results) {
     rect.on("touchstart", function(event, d) {
       event.preventDefault();
       const data = d.data;
-      let html = `<strong style="color: var(--accent-gold); display: block; margin-bottom: 0.5rem;">${data.name}</strong>`;
+      let html = `<strong style="color: var(--accent-gold); display: block; margin-bottom: 0.5rem; font-size: 1.05rem;">${data.name}</strong>`;
       if (data.contribution !== undefined && data.contribution !== null) {
         html += `<div>Contribution: ${data.contribution >= 0 ? '+' : ''}${data.contribution.toFixed(3)} pp</div>`;
       }
@@ -871,7 +862,7 @@ function drawIcicleChart(results) {
       if (data.percentageChange !== undefined && data.percentageChange !== null) {
         html += `<div>Price Change: ${data.percentageChange >= 0 ? '+' : ''}${data.percentageChange.toFixed(2)}%</div>`;
       }
-      if (d.children) html += `<div style="color: var(--accent-teal); margin-top: 0.5rem;">Tap again to drill down</div>`;
+      if (d.children) html += `<div style="color: var(--accent-teal); margin-top: 0.5rem; font-weight: 500;">Tap again to drill down →</div>`;
       mobileInfoPanel.innerHTML = html;
       mobileInfoPanel.style.display = 'block';
     });
