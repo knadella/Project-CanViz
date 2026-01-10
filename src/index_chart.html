@@ -23,165 +23,154 @@
         This section defines how the webpage looks - colors, fonts, spacing, etc.
         Think of it as the "design rules" for the page.
     -->
+    <!-- Financial Press Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* 
-            BODY STYLING
-            Sets the overall page appearance - background color, font, spacing.
-            The font-family uses system fonts (the default fonts on your computer)
-            for a clean, native look.
-        */
+        /* ============================================
+           Financial Press Design System
+           Inspired by The Economist & Financial Times
+           ============================================ */
+        
+        :root {
+            --bg-paper: #FFF8F0;
+            --bg-card: #FFFFFF;
+            --bg-dark: #1A1A1A;
+            --accent-primary: #C41E3A;
+            --accent-secondary: #0D3B66;
+            --accent-tertiary: #D4A574;
+            --text-primary: #1A1A1A;
+            --text-secondary: #4A4A4A;
+            --text-muted: #7A7A7A;
+            --text-inverse: #FFFAF5;
+            --border-subtle: rgba(26, 26, 26, 0.08);
+            --border-medium: rgba(26, 26, 26, 0.15);
+            --shadow-card: 0 2px 8px rgba(26, 26, 26, 0.06);
+            --radius: 4px;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            margin: 0;              /* Remove default browser margins */
-            padding: 20px;          /* Add 20px of space around the page */
-            background-color: #f5f5f5;  /* Light gray background */
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 24px;
+            background-color: var(--bg-paper);
+            color: var(--text-primary);
+            line-height: 1.65;
         }
         
-        /* 
-            CONTAINER STYLING
-            This is the white box that contains the chart.
-            It's centered on the page with a maximum width of 1400px.
-            The box-shadow creates a subtle shadow effect to make it stand out.
-        */
         .container {
-            max-width: 1400px;      /* Maximum width - prevents chart from being too wide on large screens */
-            margin: 0 auto;         /* Centers the container horizontally */
-            background-color: white; /* White background for the chart area */
-            padding: 30px;           /* Space inside the container */
-            border-radius: 8px;     /* Rounded corners */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* Subtle shadow for depth */
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-subtle);
+            border-left: 4px solid var(--accent-secondary);
         }
         
-        /* 
-            HEADING STYLING
-            Styles for the main title at the top of the page.
-        */
         h1 {
-            margin-top: 0;          /* Remove top margin */
-            color: #333;            /* Dark gray text color */
-            font-size: 28px;        /* Large font size for the title */
+            font-family: 'Libre Baskerville', Georgia, serif;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
         }
         
-        /* 
-            SUBTITLE STYLING
-            Styles for the descriptive text below the title.
-        */
+        h1::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-primary);
+            margin-top: 0.75rem;
+        }
+        
         .subtitle {
-            color: #666;            /* Medium gray text */
-            margin-bottom: 30px;    /* Space below the subtitle */
-            font-size: 14px;        /* Smaller font than the title */
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            font-style: italic;
         }
         
-        /* 
-            CHART CONTAINER
-            This is the area where the actual chart will be drawn.
-            overflow: visible ensures labels aren't cut off.
-        */
         .chart-container {
-            position: relative;      /* Allows positioning of child elements */
-            width: 100%;            /* Takes up full width of parent */
-            overflow: visible;       /* Don't hide content that extends beyond bounds */
+            position: relative;
+            width: 100%;
+            overflow: visible;
         }
         
-        /* 
-            SVG CHART ELEMENT
-            SVG (Scalable Vector Graphics) is the canvas where D3 draws the chart.
-            This styling centers it and makes it responsive.
-        */
         #chart {
-            display: block;         /* Display as a block element */
-            margin: 0 auto;         /* Center horizontally */
+            display: block;
+            margin: 0 auto;
         }
         
-        /* 
-            AXIS STYLING
-            Styles for the chart axes (the lines with numbers on the sides).
-        */
         .axis {
-            font-size: 12px;        /* Small font for axis labels */
-            color: #666;            /* Gray color for axis text */
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'IBM Plex Sans', sans-serif;
         }
         
-        /* 
-            AXIS LABEL STYLING
-            Styles for labels on the axes (like "Year" or "Index").
-        */
         .axis-label {
-            font-size: 14px;        /* Slightly larger than axis tick labels */
-            fill: #333;             /* Dark gray color */
+            font-size: 12px;
+            fill: var(--text-secondary);
+            font-weight: 500;
         }
         
-        /* 
-            LINE STYLING
-            These styles are for the data lines on the chart.
-            Note: These are defined but not all are used in the current implementation.
-        */
         .line {
-            fill: none;             /* Don't fill the area under the line */
-            stroke: #1f77b4;        /* Blue color for the line */
-            stroke-width: 2.5px;    /* Line thickness */
+            fill: none;
+            stroke: var(--accent-secondary);
+            stroke-width: 2px;
         }
         
         .area {
-            fill: #1f77b4;          /* Fill color (not used in current chart) */
-            opacity: 0.1;            /* Very transparent */
+            fill: var(--accent-secondary);
+            opacity: 0.08;
         }
         
         .grid-line {
-            stroke: #e0e0e0;        /* Light gray for grid lines */
-            stroke-width: 1;        /* Thin lines */
-            stroke-dasharray: 3,3;  /* Dashed line pattern */
+            stroke: var(--border-subtle);
+            stroke-width: 1;
         }
         
         .baseline {
-            stroke: #999;           /* Medium gray for baseline */
-            stroke-width: 1.5;      /* Slightly thicker */
-            stroke-dasharray: 5,5;  /* Dashed pattern */
+            stroke: var(--text-muted);
+            stroke-width: 1;
+            stroke-dasharray: 4,4;
         }
         
-        /* 
-            DOT STYLING
-            Styles for interactive dots on the chart (not currently used).
-        */
         .dot {
-            fill: #1f77b4;          /* Blue fill */
-            stroke: white;          /* White border */
-            stroke-width: 2;        /* Border thickness */
-            r: 4;                   /* Radius (size) of the dot */
+            fill: var(--accent-secondary);
+            stroke: var(--bg-card);
+            stroke-width: 2;
+            r: 4;
         }
         
         .dot:hover {
-            r: 6;                   /* Larger when mouse hovers */
-            cursor: pointer;        /* Show pointer cursor */
+            r: 6;
+            cursor: pointer;
         }
         
-        /* 
-            FOCUS LINE STYLING
-            The vertical line that appears when you hover over the chart.
-            It starts invisible (opacity: 0) and becomes visible on hover.
-        */
         .focus-line {
-            stroke: #333;           /* Dark gray/black color */
-            stroke-width: 1.5;      /* Medium thickness */
-            stroke-dasharray: 3,3;  /* Dashed line */
-            opacity: 0;              /* Initially invisible */
-            pointer-events: none;    /* Don't interfere with mouse events */
+            stroke: var(--text-primary);
+            stroke-width: 1;
+            stroke-dasharray: 3,3;
+            opacity: 0;
+            pointer-events: none;
         }
         
         .focus-line.visible {
-            opacity: 1;             /* Fully visible when class "visible" is added */
+            opacity: 0.6;
         }
         
-        /* 
-            FOCUS DOT STYLING
-            A dot that appears at the intersection of the focus line and data.
-            Not currently used in this implementation.
-        */
         .focus-dot {
-            fill: #1f77b4;
-            stroke: white;
-            stroke-width: 3;
-            r: 6;
+            fill: var(--accent-primary);
+            stroke: var(--bg-card);
+            stroke-width: 2;
+            r: 5;
             opacity: 0;
             pointer-events: none;
         }
@@ -190,91 +179,101 @@
             opacity: 1;
         }
         
-        /* 
-            TOOLTIP STYLING
-            The popup box that shows information when you hover over the chart.
-            It's positioned absolutely so it can appear anywhere on the page.
-        */
         .tooltip {
-            position: absolute;      /* Position relative to the page, not parent */
-            background-color: rgba(0, 0, 0, 0.85);  /* Semi-transparent black */
-            color: white;            /* White text */
-            padding: 10px 14px;     /* Space inside the tooltip */
-            border-radius: 6px;     /* Rounded corners */
-            font-size: 12px;        /* Small font */
-            pointer-events: none;    /* Don't block mouse events */
-            opacity: 0;              /* Initially invisible */
-            transition: opacity 0.2s;  /* Smooth fade in/out */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);  /* Shadow for depth */
-            min-width: 180px;       /* Minimum width so it doesn't look too narrow */
+            position: absolute;
+            background-color: var(--bg-dark);
+            color: var(--text-inverse);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius);
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 180px;
         }
         
         .tooltip.visible {
-            opacity: 1;             /* Fully visible when class "visible" is added */
+            opacity: 1;
         }
         
-        /* 
-            TOOLTIP CONTENT STYLING
-            Styles for the text inside the tooltip.
-        */
         .tooltip strong {
-            display: block;         /* Each strong element on its own line */
-            margin-bottom: 6px;      /* Space below */
-            font-size: 13px;        /* Slightly larger font */
-            border-bottom: 1px solid rgba(255,255,255,0.3);  /* Subtle line separator */
-            padding-bottom: 4px;    /* Space above the line */
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.85rem;
+            color: var(--accent-tertiary);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding-bottom: 0.35rem;
+            font-family: 'Libre Baskerville', Georgia, serif;
         }
         
         .tooltip .value-row {
-            margin: 4px 0;          /* Vertical spacing between rows */
+            margin: 0.25rem 0;
         }
         
         .tooltip .change {
-            color: #a0d8ff;         /* Light blue for change values */
-            font-size: 11px;        /* Smaller font */
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem;
         }
         
-        /* 
-            LEGEND STYLING
-            The note/explanation text below the chart.
-        */
         .legend {
-            margin-top: 20px;       /* Space above the legend */
-            font-size: 12px;        /* Small font */
-            color: #666;            /* Gray text */
+            margin-top: 1.5rem;
+            padding: 0.875rem 1rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: rgba(196, 30, 58, 0.06);
+            border-left: 3px solid var(--accent-primary);
+            border-radius: 0 var(--radius) var(--radius) 0;
         }
         
-        /* 
-            LOADING MESSAGE STYLING
-            Shown while the data is being loaded from the JSON file.
-        */
+        .legend strong {
+            color: var(--accent-primary);
+        }
+        
         .loading {
-            text-align: center;     /* Center the text */
-            padding: 40px;          /* Space around the message */
-            color: #666;            /* Gray text */
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-style: italic;
         }
         
-        /* 
-            ANNOTATION STYLING
-            Styles for the inflation increase annotation.
-        */
         .annotation-group {
-            pointer-events: none;   /* Don't interfere with mouse events */
+            pointer-events: none;
         }
         
         .annotation-bg {
-            fill: rgba(255, 255, 255, 0.95);  /* Semi-transparent white background */
-            stroke: #333;           /* Dark border */
-            stroke-width: 1.5;
-            rx: 6;                  /* Rounded corners */
-            ry: 6;
+            fill: var(--bg-card);
+            stroke: var(--border-medium);
+            stroke-width: 1;
+            rx: var(--radius);
+            ry: var(--radius);
         }
         
         .annotation-text {
-            font-family: Helvetica, Arial, sans-serif;  /* Helvetica font */
-            font-size: 12px;        /* Font size for annotation */
-            fill: #333;             /* Dark text */
-            font-weight: 500;       /* Medium weight */
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 11px;
+            fill: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+            
+            .container {
+                padding: 1.25rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .legend {
+                font-size: 0.75rem;
+                padding: 0.75rem;
+            }
         }
     </style>
 </head>
@@ -441,13 +440,14 @@
                 // Assign a unique color to each category so users can distinguish them.
                 // Each category gets a distinct, easily distinguishable color.
                 
+                // Financial Press color palette
                 const colors = {
-                    "Overall": "#1f77b4",    // Blue - for the overall CPI
-                    "Food": "#ff7f0e",        // Orange - for food prices
-                    "Shelter": "#2ca02c",     // Green - for shelter/housing costs
-                    "Transport": "#d62728",   // Red - for transportation
-                    "Goods": "#9467bd",       // Purple - for household goods
-                    "Services": "#8c564b"     // Brown - for recreation, education and reading
+                    "Overall": "#0D3B66",    // Deep navy - for the overall CPI
+                    "Food": "#C41E3A",        // Cardinal red - for food prices
+                    "Shelter": "#2E8B57",     // Sea green - for shelter/housing costs
+                    "Transport": "#E07B39",   // Burnt orange - for transportation
+                    "Goods": "#6B4C9A",       // Muted purple - for household goods
+                    "Services": "#D4A574"     // Warm tan - for recreation, education and reading
                 };
                 
                 // Function to get the color for a category

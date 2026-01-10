@@ -221,20 +221,21 @@ export function initCpiChart() {
         .domain([1 / k, k])
         .rangeRound([height - marginBottom, marginTop]);
       
+      // Financial press color palette
       const colors = {
-        "Overall": "#94a3b8",
-        "Food": "#ff6b6b",
-        "Shelter": "#4ecdc4",
-        "Transport": "#f9c74f",
-        "Goods": "#a78bfa",
-        "Services": "#fb923c"
+        "Overall": "#0D3B66",    // Deep navy
+        "Food": "#C41E3A",        // Cardinal red
+        "Shelter": "#2E8B57",     // Sea green
+        "Transport": "#E07B39",   // Burnt orange
+        "Goods": "#6B4C9A",       // Muted purple
+        "Services": "#D4A574"     // Warm tan
       };
       
       const z = (key) => colors[key] || "#666";
       const bisect = d3.bisector(d => d.Date).left;
       
-      // On mobile, don't add extra width for labels since they'll be in legend
-      const svgWidth = isMobile ? width : width + 80;
+      // Always include space for inline labels
+      const svgWidth = width + (isMobile ? 70 : 80);
       
       const svg = d3.select("#cpi-chart")
         .attr("width", svgWidth)
@@ -243,41 +244,45 @@ export function initCpiChart() {
         .attr("style", "max-width: 100%; height: auto;")
         .attr("preserveAspectRatio", "xMidYMid meet");
       
-      // Responsive axis font size
-      const axisFontSize = isMobile ? "12px" : "11px";
+      // Responsive axis font size - Financial press style
+      const axisFontSize = isMobile ? "11px" : "11px";
+      const axisColor = "var(--text-muted, #7A7A7A)";
+      const gridColor = "var(--border-subtle, rgba(26,26,26,0.08))";
       
       // X-Axis
       svg.append("g")
         .attr("transform", `translate(0,${height - marginBottom})`)
         .call(d3.axisBottom(x).ticks(isMobile ? 5 : width / 80).tickSizeOuter(0))
-        .call(g => g.select(".domain").attr("stroke", "rgba(255,255,255,0.2)"))
-        .call(g => g.selectAll(".tick line").attr("stroke", "rgba(255,255,255,0.1)"))
-        .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8").style("font-size", axisFontSize));
+        .call(g => g.select(".domain").attr("stroke", gridColor))
+        .call(g => g.selectAll(".tick line").attr("stroke", gridColor))
+        .call(g => g.selectAll(".tick text").attr("fill", axisColor).style("font-size", axisFontSize));
       
       // Y-Axis
       svg.append("g")
         .attr("transform", `translate(${marginLeft},0)`)
         .call(d3.axisLeft(y).ticks(null, x => +x.toFixed(6) + "×"))
         .call(g => g.selectAll(".tick line").clone()
-          .attr("stroke-opacity", d => d === 1 ? 0.3 : 0.1)
-          .attr("stroke", "rgba(255,255,255,0.2)")
+          .attr("stroke-opacity", d => d === 1 ? 0.4 : 0.15)
+          .attr("stroke", gridColor)
           .attr("x2", width - marginLeft - marginRight))
         .call(g => g.select(".domain").remove())
-        .call(g => g.selectAll(".tick text").attr("fill", "#94a3b8").style("font-size", axisFontSize));
+        .call(g => g.selectAll(".tick text").attr("fill", axisColor).style("font-size", axisFontSize));
       
       const rule = svg.append("g")
         .append("line")
         .attr("y1", height)
         .attr("y2", 0)
-        .attr("stroke", "rgba(255,255,255,0.5)")
+        .attr("stroke", "var(--text-primary, #1A1A1A)")
+        .attr("stroke-opacity", 0.3)
         .attr("stroke-dasharray", "3,3");
       
       const annotationGroup = svg.append("g").attr("class", "annotation-group");
-      const annotationBg = annotationGroup.append("rect").attr("class", "annotation-bg").attr("rx", 6)
-        .attr("fill", "#111827").attr("stroke", "#4ecdc4").attr("stroke-width", 1);
+      const annotationBg = annotationGroup.append("rect").attr("class", "annotation-bg").attr("rx", 4)
+        .attr("fill", "var(--bg-card, #fff)").attr("stroke", "var(--accent-primary, #C41E3A)").attr("stroke-width", 1);
       const annotationFontSize = isMobile ? "11px" : "12px";
       const annotationText = annotationGroup.append("text").attr("class", "annotation-text")
-        .attr("fill", "#f8fafc").attr("font-size", annotationFontSize).attr("font-weight", "500");
+        .attr("fill", "var(--text-primary, #1A1A1A)").attr("font-size", annotationFontSize).attr("font-weight", "500")
+        .style("font-family", "'IBM Plex Sans', sans-serif");
       
       const serie = svg.append("g")
         .style("font", "bold 10px sans-serif")
@@ -291,68 +296,27 @@ export function initCpiChart() {
       
       serie.append("path")
         .attr("fill", "none")
-        .attr("stroke-width", 2.5)
+        .attr("stroke-width", 2)
         .attr("stroke-linejoin", "round")
         .attr("stroke-linecap", "round")
         .attr("stroke", d => z(d.key))
         .attr("d", d => line(d.values));
       
-      // Add inline labels only on desktop, on mobile use a legend
-      if (!isMobile) {
-        serie.append("text")
-          .datum(d => ({key: d.key, value: d.values[d.values.length - 1].value}))
-          .attr("fill", d => z(d.key))
-          .attr("paint-order", "stroke")
-          .attr("stroke", "#111827")
-          .attr("stroke-width", 4)
-          .attr("x", x.range()[1] + 6)
-          .attr("y", d => y(d.value))
-          .attr("dy", "0.35em")
-          .style("font-size", "12px")
-          .style("font-weight", "500")
-          .text(d => d.key);
-      } else {
-        // Create a mobile-friendly legend below the chart
-        const legendContainer = document.createElement('div');
-        legendContainer.className = 'chart-legend-mobile';
-        legendContainer.style.cssText = `
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 0.6rem 1rem;
-          margin-top: 0.75rem;
-          padding: 0.85rem;
-          background: rgba(255,255,255,0.04);
-          border-radius: 8px;
-        `;
-        
-        const categories = ["Overall", "Food", "Shelter", "Transport", "Goods", "Services"];
-        categories.forEach(cat => {
-          const item = document.createElement('div');
-          item.style.cssText = `
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #e2e8f0;
-          `;
-          const dot = document.createElement('span');
-          dot.style.cssText = `
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: ${colors[cat] || '#666'};
-            flex-shrink: 0;
-          `;
-          item.appendChild(dot);
-          item.appendChild(document.createTextNode(cat));
-          legendContainer.appendChild(item);
-        });
-        
-        const chartContainer = document.querySelector('#cpi-chart').parentElement;
-        chartContainer.appendChild(legendContainer);
-      }
+      // Always use inline labels at the end of each line (no legend)
+      const labelFontSize = isMobile ? "10px" : "12px";
+      serie.append("text")
+        .datum(d => ({key: d.key, value: d.values[d.values.length - 1].value}))
+        .attr("fill", d => z(d.key))
+        .attr("paint-order", "stroke")
+        .attr("stroke", "var(--bg-card, #fff)")
+        .attr("stroke-width", 3)
+        .attr("x", x.range()[1] + 6)
+        .attr("y", d => y(d.value))
+        .attr("dy", "0.35em")
+        .style("font-size", labelFontSize)
+        .style("font-weight", "600")
+        .style("font-family", "'IBM Plex Sans', sans-serif")
+        .text(d => d.key);
       
       function update(date) {
         date = d3.utcMonth.round(date);
@@ -802,7 +766,7 @@ function drawIcicleChart(results) {
     if (data.percentageChange !== undefined && data.percentageChange !== null) {
       html += `<div class="value-row">Price Change: ${data.percentageChange >= 0 ? '+' : ''}${data.percentageChange.toFixed(2)}%</div>`;
     }
-    if (d.children) html += `<div class="value-row" style="color: #4ecdc4; margin-top: 4px;">Click to drill down →</div>`;
+    if (d.children) html += `<div class="value-row" style="color: var(--accent-primary, #C41E3A); margin-top: 4px;">Click to drill down →</div>`;
     tooltip.html(html).classed("visible", true);
   }
   
@@ -836,12 +800,13 @@ function drawIcicleChart(results) {
       mobileInfoPanel.style.cssText = `
         display: none;
         padding: 0.85rem 1rem;
-        background: rgba(17, 24, 39, 0.95);
+        background: var(--bg-elevated, #FEF6EC);
         border: 1px solid var(--border-subtle);
-        border-radius: 8px;
+        border-left: 3px solid var(--accent-primary, #C41E3A);
+        border-radius: 0 4px 4px 0;
         margin-top: 0.75rem;
-        font-size: 0.95rem;
-        color: var(--text-secondary);
+        font-size: 0.9rem;
+        color: var(--text-secondary, #4A4A4A);
         line-height: 1.5;
       `;
       const chartContainer = document.querySelector('#food-chart').parentElement;
@@ -852,7 +817,7 @@ function drawIcicleChart(results) {
     rect.on("touchstart", function(event, d) {
       event.preventDefault();
       const data = d.data;
-      let html = `<strong style="color: var(--accent-gold); display: block; margin-bottom: 0.5rem; font-size: 1.05rem;">${data.name}</strong>`;
+      let html = `<strong style="color: var(--accent-secondary, #0D3B66); display: block; margin-bottom: 0.5rem; font-size: 1rem;">${data.name}</strong>`;
       if (data.contribution !== undefined && data.contribution !== null) {
         html += `<div>Contribution: ${data.contribution >= 0 ? '+' : ''}${data.contribution.toFixed(3)} pp</div>`;
       }
@@ -862,7 +827,7 @@ function drawIcicleChart(results) {
       if (data.percentageChange !== undefined && data.percentageChange !== null) {
         html += `<div>Price Change: ${data.percentageChange >= 0 ? '+' : ''}${data.percentageChange.toFixed(2)}%</div>`;
       }
-      if (d.children) html += `<div style="color: var(--accent-teal); margin-top: 0.5rem; font-weight: 500;">Tap again to drill down →</div>`;
+      if (d.children) html += `<div style="color: var(--accent-primary, #C41E3A); margin-top: 0.5rem; font-weight: 500;">Tap again to drill down →</div>`;
       mobileInfoPanel.innerHTML = html;
       mobileInfoPanel.style.display = 'block';
     });
