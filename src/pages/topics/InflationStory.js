@@ -390,12 +390,315 @@ export function InflationStoryPage() {
             color: var(--text-secondary);
           }
           
-          /* Responsive */
+          /* ============================================
+             RESPONSIVE STYLES - Mobile Optimization
+             ============================================ */
+          
+          /* Large tablets and small desktops */
+          @media (max-width: 1024px) {
+            .story-section {
+              padding: 5rem 1.5rem;
+            }
+            
+            .chart-wrapper {
+              padding: 1.5rem;
+            }
+            
+            .summary-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+          }
+          
+          /* Tablets */
           @media (max-width: 768px) {
-            .story-section { padding: 4rem 1.25rem; }
-            .chart-wrapper { padding: 1.25rem; }
-            .controls { flex-direction: column; }
-            .control-group { width: 100%; }
+            .story-hero {
+              min-height: 60vh;
+              padding: 3rem 1.25rem;
+            }
+            
+            .story-hero h1 {
+              font-size: clamp(2rem, 10vw, 3.5rem);
+            }
+            
+            .story-hero .subtitle {
+              font-size: 1.1rem;
+              margin-bottom: 2rem;
+            }
+            
+            .scroll-indicator {
+              bottom: 2rem;
+              font-size: 0.75rem;
+            }
+            
+            .story-section {
+              padding: 3rem 1rem;
+            }
+            
+            .section-header {
+              margin-bottom: 2rem;
+            }
+            
+            .story-section h2 {
+              font-size: clamp(1.5rem, 5vw, 2rem);
+            }
+            
+            .story-section .lead {
+              font-size: 1rem;
+            }
+            
+            .chart-wrapper {
+              padding: 1rem;
+              border-radius: 12px;
+              margin: 1rem 0;
+            }
+            
+            .chart-title {
+              font-size: 1.25rem;
+            }
+            
+            .chart-subtitle {
+              font-size: 0.85rem;
+            }
+            
+            .controls {
+              flex-direction: column;
+              gap: 1rem;
+              padding: 1rem;
+            }
+            
+            .control-group {
+              width: 100%;
+            }
+            
+            .control-group input,
+            .control-group select {
+              width: 100%;
+              padding: 0.75rem 1rem;
+              font-size: 16px; /* Prevents zoom on iOS */
+            }
+            
+            .preset-buttons {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 0.5rem;
+              width: 100%;
+            }
+            
+            .preset-btn {
+              padding: 0.75rem 0.5rem;
+              font-size: 0.8rem;
+              text-align: center;
+            }
+            
+            .date-display {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 0.5rem;
+              padding: 0.875rem 1rem;
+            }
+            
+            .date-display #dateRangeText {
+              font-size: 1rem;
+            }
+            
+            .summary-grid {
+              grid-template-columns: 1fr 1fr;
+              gap: 0.75rem;
+            }
+            
+            .stat-card {
+              padding: 1rem;
+            }
+            
+            .stat-card .stat-value {
+              font-size: 1.5rem;
+            }
+            
+            .transition-section {
+              padding: 5rem 1.25rem;
+            }
+            
+            .big-stat {
+              font-size: clamp(3rem, 15vw, 5rem);
+            }
+            
+            .big-stat-label {
+              font-size: 1rem;
+              padding: 0 1rem;
+            }
+            
+            .chart-note {
+              padding: 0.875rem 1rem;
+              font-size: 0.85rem;
+            }
+            
+            /* Chart container mobile adjustments */
+            .chart-container {
+              margin: 0 -0.5rem;
+              overflow-x: auto;
+              -webkit-overflow-scrolling: touch;
+            }
+            
+            #cpi-chart, #food-chart {
+              min-width: 100%;
+            }
+          }
+          
+          /* Small phones */
+          @media (max-width: 480px) {
+            .story-hero {
+              min-height: 55vh;
+              padding: 2.5rem 1rem;
+            }
+            
+            .story-hero h1 {
+              font-size: clamp(1.75rem, 12vw, 2.5rem);
+              margin-bottom: 1rem;
+            }
+            
+            .story-hero .subtitle {
+              font-size: 1rem;
+              line-height: 1.5;
+            }
+            
+            .story-section {
+              padding: 2.5rem 0.875rem;
+            }
+            
+            .section-number {
+              font-size: 0.8rem;
+            }
+            
+            .story-section h2 {
+              font-size: 1.35rem;
+              margin-bottom: 1rem;
+            }
+            
+            .story-section .lead {
+              font-size: 0.95rem;
+              line-height: 1.6;
+            }
+            
+            .chart-wrapper {
+              padding: 0.875rem;
+              border-radius: 10px;
+            }
+            
+            .chart-title {
+              font-size: 1.1rem;
+            }
+            
+            .controls {
+              padding: 0.875rem;
+              gap: 0.875rem;
+            }
+            
+            .preset-buttons {
+              grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .preset-btn {
+              padding: 0.625rem 0.375rem;
+              font-size: 0.75rem;
+            }
+            
+            .date-display #dateRangeText {
+              font-size: 0.9rem;
+            }
+            
+            .date-display #periodLength {
+              font-size: 0.8rem;
+            }
+            
+            .summary-grid {
+              grid-template-columns: 1fr;
+            }
+            
+            .stat-card .stat-label {
+              font-size: 0.7rem;
+            }
+            
+            .stat-card .stat-value {
+              font-size: 1.35rem;
+            }
+            
+            .transition-section {
+              padding: 4rem 1rem;
+            }
+            
+            .big-stat {
+              font-size: clamp(2.5rem, 18vw, 4rem);
+            }
+            
+            .big-stat-label {
+              font-size: 0.9rem;
+            }
+            
+            .chart-note {
+              font-size: 0.8rem;
+              padding: 0.75rem;
+            }
+          }
+          
+          /* Extra small phones */
+          @media (max-width: 360px) {
+            .story-hero h1 {
+              font-size: 1.65rem;
+            }
+            
+            .preset-buttons {
+              grid-template-columns: 1fr 1fr;
+            }
+            
+            .preset-btn {
+              font-size: 0.7rem;
+              padding: 0.5rem 0.25rem;
+            }
+          }
+          
+          /* Touch-friendly tooltip */
+          @media (hover: none) and (pointer: coarse) {
+            .tooltip {
+              display: none !important;
+            }
+            
+            .chart-container {
+              touch-action: pan-x pan-y;
+            }
+          }
+          
+          /* Landscape phone optimization */
+          @media (max-height: 500px) and (orientation: landscape) {
+            .story-hero {
+              min-height: auto;
+              padding: 2rem 1.5rem;
+            }
+            
+            .scroll-indicator {
+              display: none;
+            }
+            
+            .transition-section {
+              padding: 3rem 1.5rem;
+            }
+          }
+          
+          /* High DPI display adjustments */
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .chart-wrapper {
+              border-width: 0.5px;
+            }
+          }
+          
+          /* Reduce motion for accessibility */
+          @media (prefers-reduced-motion: reduce) {
+            .scroll-indicator {
+              animation: none;
+            }
+            
+            * {
+              transition-duration: 0.01ms !important;
+            }
           }
         </style>
         

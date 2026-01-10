@@ -21,10 +21,27 @@ export function NavBar() {
   const dropdown = document.createElement("div");
   dropdown.className = "topicsDropdown";
   dropdown.hidden = true;
+  
+  // Mobile backdrop for dropdown
+  const backdrop = document.createElement("div");
+  backdrop.className = "dropdownBackdrop";
+  backdrop.hidden = true;
 
   function closeDropdown() {
     dropdown.hidden = true;
+    backdrop.hidden = true;
     topicsButton.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+  
+  function openDropdown() {
+    dropdown.hidden = false;
+    backdrop.hidden = false;
+    topicsButton.setAttribute("aria-expanded", "true");
+    // Prevent body scroll on mobile when dropdown is open
+    if (window.innerWidth <= 640) {
+      document.body.style.overflow = "hidden";
+    }
   }
 
   for (const topic of topics) {
@@ -40,8 +57,15 @@ export function NavBar() {
 
   topicsButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    dropdown.hidden = !dropdown.hidden;
-    topicsButton.setAttribute("aria-expanded", String(!dropdown.hidden));
+    if (dropdown.hidden) {
+      openDropdown();
+    } else {
+      closeDropdown();
+    }
+  });
+  
+  backdrop.addEventListener("click", () => {
+    closeDropdown();
   });
 
   document.addEventListener("click", () => {
@@ -55,8 +79,16 @@ export function NavBar() {
   window.addEventListener("hashchange", () => {
     closeDropdown();
   });
+  
+  // Close dropdown on window resize (e.g., rotating device)
+  window.addEventListener("resize", () => {
+    if (!dropdown.hidden && window.innerWidth > 640) {
+      document.body.style.overflow = "";
+    }
+  });
 
   navContainer.appendChild(topicsButton);
+  navContainer.appendChild(backdrop);
   navContainer.appendChild(dropdown);
   wrap.appendChild(brand);
   wrap.appendChild(navContainer);

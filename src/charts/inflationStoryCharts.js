@@ -135,6 +135,33 @@ const WEIGHT_MAP = {
   "Liquor Stores": "Alcoholic beverages purchased from stores", "Tobacco": "Tobacco products and smokers' supplies"
 };
 
+// Helper function to get responsive chart dimensions
+function getChartDimensions(chartType = 'cpi') {
+  const container = chartType === 'cpi' 
+    ? document.querySelector('#cpi-chart')?.parentElement 
+    : document.querySelector('#food-chart')?.parentElement;
+  
+  const containerWidth = container ? container.clientWidth : 928;
+  const isMobile = window.innerWidth <= 768;
+  const isSmallMobile = window.innerWidth <= 480;
+  
+  if (chartType === 'cpi') {
+    return {
+      width: Math.min(containerWidth, 928),
+      height: isSmallMobile ? 350 : isMobile ? 420 : 520,
+      marginTop: 20,
+      marginRight: isSmallMobile ? 10 : isMobile ? 60 : 120,
+      marginBottom: isSmallMobile ? 40 : 30,
+      marginLeft: isSmallMobile ? 40 : 50
+    };
+  } else {
+    return {
+      width: Math.min(containerWidth, 928),
+      height: isSmallMobile ? 400 : isMobile ? 500 : 600
+    };
+  }
+}
+
 export function initCpiChart() {
   const d3 = window.d3;
   
@@ -169,12 +196,15 @@ export function initCpiChart() {
       const overallSeries = series.find(s => s.key === "Overall");
       const allDates = normalizedSeries.flatMap(s => s.values.map(d => d.Date));
       
-      const width = 928;
-      const height = 520;
-      const marginTop = 20;
-      const marginRight = 120;
-      const marginBottom = 30;
-      const marginLeft = 50;
+      // Get responsive dimensions
+      const dims = getChartDimensions('cpi');
+      const width = dims.width;
+      const height = dims.height;
+      const marginTop = dims.marginTop;
+      const marginRight = dims.marginRight;
+      const marginBottom = dims.marginBottom;
+      const marginLeft = dims.marginLeft;
+      const isMobile = window.innerWidth <= 768;
       
       const x = d3.scaleUtc()
         .domain(d3.extent(allDates))
@@ -201,13 +231,15 @@ export function initCpiChart() {
       const z = (key) => colors[key] || "#666";
       const bisect = d3.bisector(d => d.Date).left;
       
-      const svgWidth = width + 80;
+      // On mobile, don't add extra width for labels since they'll be in legend
+      const svgWidth = isMobile ? width : width + 80;
       
       const svg = d3.select("#cpi-chart")
         .attr("width", svgWidth)
         .attr("height", height)
         .attr("viewBox", [0, 0, svgWidth, height])
-        .attr("style", "max-width: 100%; height: auto;");
+        .attr("style", "max-width: 100%; height: auto;")
+        .attr("preserveAspectRatio", "xMidYMid meet");
       
       // X-Axis
       svg.append("g")
@@ -238,8 +270,9 @@ export function initCpiChart() {
       const annotationGroup = svg.append("g").attr("class", "annotation-group");
       const annotationBg = annotationGroup.append("rect").attr("class", "annotation-bg").attr("rx", 6)
         .attr("fill", "#111827").attr("stroke", "#4ecdc4").attr("stroke-width", 1);
+      const annotationFontSize = isMobile ? "10px" : "12px";
       const annotationText = annotationGroup.append("text").attr("class", "annotation-text")
-        .attr("fill", "#f8fafc").attr("font-size", "12px");
+        .attr("fill", "#f8fafc").attr("font-size", annotationFontSize);
       
       const serie = svg.append("g")
         .style("font", "bold 10px sans-serif")
@@ -259,18 +292,60 @@ export function initCpiChart() {
         .attr("stroke", d => z(d.key))
         .attr("d", d => line(d.values));
       
-      serie.append("text")
-        .datum(d => ({key: d.key, value: d.values[d.values.length - 1].value}))
-        .attr("fill", d => z(d.key))
-        .attr("paint-order", "stroke")
-        .attr("stroke", "#111827")
-        .attr("stroke-width", 4)
-        .attr("x", x.range()[1] + 6)
-        .attr("y", d => y(d.value))
-        .attr("dy", "0.35em")
-        .style("font-size", "12px")
-        .style("font-weight", "500")
-        .text(d => d.key);
+      // Add inline labels only on desktop, on mobile use a legend
+      if (!isMobile) {
+        serie.append("text")
+          .datum(d => ({key: d.key, value: d.values[d.values.length - 1].value}))
+          .attr("fill", d => z(d.key))
+          .attr("paint-order", "stroke")
+          .attr("stroke", "#111827")
+          .attr("stroke-width", 4)
+          .attr("x", x.range()[1] + 6)
+          .attr("y", d => y(d.value))
+          .attr("dy", "0.35em")
+          .style("font-size", "12px")
+          .style("font-weight", "500")
+          .text(d => d.key);
+      } else {
+        // Create a mobile-friendly legend below the chart
+        const legendContainer = document.createElement('div');
+        legendContainer.className = 'chart-legend-mobile';
+        legendContainer.style.cssText = `
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.75rem 1.25rem;
+          margin-top: 1rem;
+          padding: 0.75rem;
+          background: rgba(255,255,255,0.03);
+          border-radius: 8px;
+        `;
+        
+        const categories = ["Overall", "Food", "Shelter", "Transport", "Goods", "Services"];
+        categories.forEach(cat => {
+          const item = document.createElement('div');
+          item.style.cssText = `
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            color: #94a3b8;
+          `;
+          const dot = document.createElement('span');
+          dot.style.cssText = `
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: ${colors[cat] || '#666'};
+          `;
+          item.appendChild(dot);
+          item.appendChild(document.createTextNode(cat));
+          legendContainer.appendChild(item);
+        });
+        
+        const chartContainer = document.querySelector('#cpi-chart').parentElement;
+        chartContainer.appendChild(legendContainer);
+      }
       
       function update(date) {
         date = d3.utcMonth.round(date);
@@ -336,14 +411,36 @@ export function initCpiChart() {
           return t => update(i(t));
         });
       
-      svg.on("mousemove touchmove", function(event) {
-        const [mouseX] = d3.pointer(event, this);
+      // Touch and mouse event handling
+      let lastTouchTime = 0;
+      
+      function handleInteraction(event) {
+        const [mouseX] = d3.pointer(event, svg.node());
         update(x.invert(mouseX));
-        if (event.preventDefault) event.preventDefault();
+      }
+      
+      svg.on("mousemove", handleInteraction);
+      
+      // Touch events for mobile
+      svg.on("touchstart touchmove", function(event) {
+        event.preventDefault();
+        const touch = event.touches[0];
+        const [touchX] = d3.pointer(touch, this);
+        update(x.invert(touchX));
+        lastTouchTime = Date.now();
       });
       
       svg.on("mouseleave", function() {
         update(x.domain()[0]);
+      });
+      
+      svg.on("touchend", function() {
+        // Keep the last touched position for a moment on mobile
+        setTimeout(() => {
+          if (Date.now() - lastTouchTime > 1000) {
+            update(x.domain()[0]);
+          }
+        }, 1500);
       });
     })
     .catch(error => {
@@ -561,8 +658,13 @@ function displayResults(results) {
 
 function drawIcicleChart(results) {
   const d3 = window.d3;
-  const width = 928;
-  const height = 600;
+  
+  // Get responsive dimensions
+  const dims = getChartDimensions('icicle');
+  const width = dims.width;
+  const height = dims.height;
+  const isMobile = window.innerWidth <= 768;
+  const isSmallMobile = window.innerWidth <= 480;
   
   const data = { name: "CPI Basket", contribution: results.totalContribution, children: results.contributions };
   
@@ -628,25 +730,38 @@ function drawIcicleChart(results) {
       hideTooltip(); 
     });
   
+  // Responsive font sizes for labels
+  const labelFontSize = isSmallMobile ? "9px" : isMobile ? "10px" : "11px";
+  const subLabelFontSize = isSmallMobile ? "8px" : isMobile ? "9px" : "10px";
+  const labelY = isSmallMobile ? 14 : 16;
+  const subLabelY = isSmallMobile ? 26 : 30;
+  
   const text = cell.append("text")
     .style("user-select", "none")
     .attr("pointer-events", "none")
     .attr("x", 6)
-    .attr("y", 16)
+    .attr("y", labelY)
     .attr("fill", "white")
     .attr("fill-opacity", d => +labelVisible(d))
-    .style("font-size", "11px")
+    .style("font-size", labelFontSize)
     .style("font-weight", "500")
     .style("text-shadow", "0 1px 2px rgba(0,0,0,0.5)");
   
-  text.append("tspan").text(d => d.data.name);
+  text.append("tspan").text(d => {
+    // Truncate long names on mobile
+    const name = d.data.name;
+    if (isMobile && name.length > 12) {
+      return name.substring(0, 10) + '…';
+    }
+    return name;
+  });
   
   const format = d3.format(".2f");
   const tspan = text.append("tspan")
     .attr("fill-opacity", d => labelVisible(d) * 0.8)
     .attr("x", 6)
-    .attr("y", 30)
-    .style("font-size", "10px")
+    .attr("y", subLabelY)
+    .style("font-size", subLabelFontSize)
     .text(d => {
       if (d.data.contribution !== undefined && d.data.contribution !== null) {
         const sign = d.data.contribution >= 0 ? '+' : '';
@@ -680,8 +795,12 @@ function drawIcicleChart(results) {
   function labelVisible(d) { return d.y1 <= width && d.y0 >= 0 && d.x1 - d.x0 > 24; }
   
   const tooltip = d3.select("#tooltip");
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   
   function showTooltip(event, d) {
+    // Don't show tooltip on touch devices (info is shown on tap)
+    if (isTouchDevice) return;
+    
     const data = d.data;
     let html = `<strong>${data.name}</strong>`;
     if (data.contribution !== undefined && data.contribution !== null) {
@@ -698,9 +817,64 @@ function drawIcicleChart(results) {
   }
   
   function moveTooltip(event) {
-    tooltip.style("left", (event.pageX + 15) + "px").style("top", (event.pageY - 10) + "px");
+    // Position tooltip within viewport
+    const tooltipWidth = 200;
+    const tooltipHeight = 100;
+    let left = event.pageX + 15;
+    let top = event.pageY - 10;
+    
+    // Keep tooltip within viewport
+    if (left + tooltipWidth > window.innerWidth) {
+      left = event.pageX - tooltipWidth - 15;
+    }
+    if (top + tooltipHeight > window.innerHeight + window.scrollY) {
+      top = event.pageY - tooltipHeight - 10;
+    }
+    
+    tooltip.style("left", left + "px").style("top", top + "px");
   }
   
   function hideTooltip() { tooltip.classed("visible", false); }
+  
+  // Add mobile-specific info display
+  if (isMobile) {
+    // Create a mobile info panel
+    let mobileInfoPanel = document.querySelector('.mobile-chart-info');
+    if (!mobileInfoPanel) {
+      mobileInfoPanel = document.createElement('div');
+      mobileInfoPanel.className = 'mobile-chart-info';
+      mobileInfoPanel.style.cssText = `
+        display: none;
+        padding: 0.75rem 1rem;
+        background: rgba(17, 24, 39, 0.95);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        margin-top: 0.75rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+      `;
+      const chartContainer = document.querySelector('#food-chart').parentElement;
+      chartContainer.appendChild(mobileInfoPanel);
+    }
+    
+    // Update click handler for mobile to also show info
+    rect.on("touchstart", function(event, d) {
+      event.preventDefault();
+      const data = d.data;
+      let html = `<strong style="color: var(--accent-gold); display: block; margin-bottom: 0.5rem;">${data.name}</strong>`;
+      if (data.contribution !== undefined && data.contribution !== null) {
+        html += `<div>Contribution: ${data.contribution >= 0 ? '+' : ''}${data.contribution.toFixed(3)} pp</div>`;
+      }
+      if (data.weight !== undefined && data.weight > 0) {
+        html += `<div>Weight: ${(data.weight * 100).toFixed(2)}%</div>`;
+      }
+      if (data.percentageChange !== undefined && data.percentageChange !== null) {
+        html += `<div>Price Change: ${data.percentageChange >= 0 ? '+' : ''}${data.percentageChange.toFixed(2)}%</div>`;
+      }
+      if (d.children) html += `<div style="color: var(--accent-teal); margin-top: 0.5rem;">Tap again to drill down</div>`;
+      mobileInfoPanel.innerHTML = html;
+      mobileInfoPanel.style.display = 'block';
+    });
+  }
 }
 
