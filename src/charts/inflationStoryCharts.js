@@ -725,8 +725,6 @@ function drawIcicleChart(results) {
     });
   
   let focus = root;
-  let lastTappedNode = null; // Track for mobile double-tap drill-down
-  let lastTapTime = 0;
   
   function clicked(event, p) {
     if (!p.children) return;
@@ -746,9 +744,6 @@ function drawIcicleChart(results) {
     rect.transition(t).attr("height", d => rectHeight(d.target));
     text.transition(t).attr("fill-opacity", d => +labelVisible(d.target));
     tspan.transition(t).attr("fill-opacity", d => labelVisible(d.target) * 0.8);
-    
-    // Reset tap tracking after navigation
-    lastTappedNode = null;
   }
   
   function rectHeight(d) { return d.x1 - d.x0 - Math.min(1, (d.x1 - d.x0) / 2); }
@@ -824,34 +819,22 @@ function drawIcicleChart(results) {
     // Remove click handler on touch devices - we'll handle everything via touch
     rect.on("click", null);
     
-    // Touch handler with tap-to-select, tap-again-to-drill-down
+    // Single tap to drill down (or show info for leaf nodes)
     rect.on("touchend", function(event, d) {
       event.preventDefault();
       event.stopPropagation();
       
-      const now = Date.now();
-      const timeSinceLastTap = now - lastTapTime;
-      
-      // Reset all rect highlights
-      rect.attr("stroke", "rgba(0,0,0,0.2)").attr("stroke-width", 0.5);
-      
-      // If same node tapped within 400ms, treat as double-tap → drill down
-      if (lastTappedNode === d && timeSinceLastTap < 400 && d.children) {
+      // If has children, drill down immediately
+      if (d.children) {
         clicked(event, d);
         mobileInfoPanel.style.display = 'none';
-        lastTappedNode = null;
-        lastTapTime = 0;
         return;
       }
       
-      // First tap or different node - show info and highlight
-      lastTappedNode = d;
-      lastTapTime = now;
-      
-      // Highlight tapped rect
+      // Leaf node - show info panel since can't drill down
+      rect.attr("stroke", "rgba(0,0,0,0.2)").attr("stroke-width", 0.5);
       d3.select(this).attr("stroke", "#fff").attr("stroke-width", 2);
       
-      // Show info panel
       const data = d.data;
       let html = `<strong style="color: var(--accent-secondary, #0D3B66); display: block; margin-bottom: 0.5rem; font-size: 1rem;">${data.name}</strong>`;
       if (data.contribution !== undefined && data.contribution !== null) {
@@ -863,18 +846,14 @@ function drawIcicleChart(results) {
       if (data.percentageChange !== undefined && data.percentageChange !== null) {
         html += `<div>Price Change: ${data.percentageChange >= 0 ? '+' : ''}${data.percentageChange.toFixed(2)}%</div>`;
       }
-      if (d.children) {
-        html += `<div style="color: var(--accent-primary, #C41E3A); margin-top: 0.5rem; font-weight: 500;">Tap again to drill down →</div>`;
-      }
       mobileInfoPanel.innerHTML = html;
       mobileInfoPanel.style.display = 'block';
     });
     
-    // Allow tapping outside to deselect
+    // Tapping outside hides info panel
     svg.on("touchend", function(event) {
       if (event.target === this) {
         rect.attr("stroke", "rgba(0,0,0,0.2)").attr("stroke-width", 0.5);
-        lastTappedNode = null;
         mobileInfoPanel.style.display = 'none';
       }
     });
