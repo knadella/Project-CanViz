@@ -399,7 +399,7 @@ def process_grain_data(csv_content: str, output_dir: Path):
         
         production_2025 = last_production
         production_2025_million = round(production_2025 / 1000000, 1)
-        production_ratio = round(production_2025 / first_production, 1) if first_production > 0 else 0
+        production_ratio = round(production_2025 / first_production, 0) if first_production > 0 else 0
         production_multiplier = production_2025 / first_production if first_production > 0 else 0
     else:
         first_year = last_year = 1908
