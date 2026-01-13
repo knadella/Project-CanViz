@@ -55,7 +55,7 @@ function initProductionChart() {
       }
       
       // Set dimensions and margins - make responsive
-      const margin = {top: 40, right: 20, bottom: 50, left: 80};
+      const margin = {top: 20, right: 20, bottom: 50, left: 80};
       const containerWidth = container.clientWidth || 960;
       const maxWidth = 960;
       const width = Math.min(containerWidth - margin.left - margin.right, maxWidth - margin.left - margin.right);
@@ -65,6 +65,7 @@ function initProductionChart() {
       const svg = d3.select("#plot-history-production-container")
         .append("svg")
         .attr("id", "plot-history-production")
+        .attr("class", "grain-chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
@@ -265,14 +266,6 @@ function initProductionChart() {
         .attr("class", "axis")
         .call(yAxis);
       
-      // Title
-      g.append("text")
-        .attr("class", "title")
-        .attr("x", 0)
-        .attr("y", -20)
-        .attr("text-anchor", "start")
-        .text("Total Major Crop Production in Canada");
-      
       // X axis label
       g.append("text")
         .attr("class", "axis-label")
@@ -356,7 +349,7 @@ function initAreaChart() {
       }
       
       // Set dimensions and margins - make responsive
-      const margin = {top: 40, right: 20, bottom: 50, left: 80};
+      const margin = {top: 20, right: 20, bottom: 50, left: 80};
       const containerWidth = container.clientWidth || 960;
       const maxWidth = 960;
       const width = Math.min(containerWidth - margin.left - margin.right, maxWidth - margin.left - margin.right);
@@ -366,6 +359,7 @@ function initAreaChart() {
       const svg = d3.select("#plot-history-area-container")
         .append("svg")
         .attr("id", "plot-history-area")
+        .attr("class", "grain-chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
@@ -569,14 +563,6 @@ function initAreaChart() {
         .attr("class", "axis")
         .call(yAxis);
       
-      // Title
-      g.append("text")
-        .attr("class", "title")
-        .attr("x", 0)
-        .attr("y", -20)
-        .attr("text-anchor", "start")
-        .text("Total Seeded Area for Major Crops in Canada");
-      
       // X axis label
       g.append("text")
         .attr("class", "axis-label")
@@ -665,7 +651,7 @@ function initCropComponentsChart() {
       const globalYearExtent = d3.extent(rawData, d => d.year);
       
       // Dimensions - fixed layout based on panel sizes
-      const margin = {top: 100, right: 20, bottom: 50, left: 10};
+      const margin = {top: 60, right: 20, bottom: 50, left: 10};
       const panelWidth = 250;
       const panelHeight = 120;
       const panelGapX = 40;
@@ -681,6 +667,7 @@ function initCropComponentsChart() {
       // Create SVG - use fixed width to maintain aspect ratio
       const svg = d3.select("#plot-history-by-crop-container")
         .append("svg")
+        .attr("class", "grain-chart")
         .attr("width", requiredWidth)
         .attr("height", totalHeight)
         .attr("viewBox", `0 0 ${requiredWidth} ${totalHeight}`)
@@ -688,19 +675,6 @@ function initCropComponentsChart() {
         .style("max-width", "100%")
         .style("height", "auto")
         .style("background-color", "transparent");
-      
-      // Title and subtitle
-      svg.append("text")
-        .attr("class", "main-title")
-        .attr("x", margin.left + yAxisWidth)
-        .attr("y", 25)
-        .text("Production Components by Crop");
-      
-      svg.append("text")
-        .attr("class", "subtitle")
-        .attr("x", margin.left + yAxisWidth)
-        .attr("y", 42)
-        .text("Production, seeded area, and effective yield for each major crop");
       
       // Store panel references for linked hover
       const panelRefs = {};
@@ -718,8 +692,8 @@ function initCropComponentsChart() {
           .attr("x", rowRightX)
           .attr("y", rowY - 20)
           .attr("text-anchor", "end")
-          .style("font-size", "11px")
-          .style("font-weight", "bold")
+          .style("font-size", "12px")
+          .style("font-weight", "600")
           .text(crop);
         
         measures.forEach((measure, measureIndex) => {
@@ -760,12 +734,14 @@ function initCropComponentsChart() {
             .attr("y2", d => yScale(d));
           
           // Measure label above plot, left-aligned with plot edge, grey text
-          panel.append("text")
-            .attr("class", "panel-title")
-            .attr("x", 0)
-            .attr("y", -8)
-            .attr("text-anchor", "start")
-            .text(measure);
+          if (cropIndex === 0) {
+            panel.append("text")
+              .attr("class", "panel-title")
+              .attr("x", 0)
+              .attr("y", -8)
+              .attr("text-anchor", "start")
+              .text(measure);
+          }
           
           // Line generator
           const line = d3.line()
@@ -837,7 +813,7 @@ function initCropComponentsChart() {
             .attr("y", panelHeight + 5)
             .attr("dy", "0.71em")
             .attr("text-anchor", "middle")
-            .style("font-size", "9px")
+            .style("font-size", "11px")
             .style("opacity", 0);
           
           // Hover value label on y-axis (shows the data value)
@@ -848,7 +824,7 @@ function initCropComponentsChart() {
             .attr("y", 0)
             .attr("dy", "0.32em")
             .attr("text-anchor", "end")
-            .style("font-size", "9px")
+            .style("font-size", "11px")
             .style("opacity", 0);
           
           // Hover tick mark on y-axis (centered on the axis line)
@@ -1081,6 +1057,10 @@ function initCropComponentsChart() {
             
             // Hide nearby permanent x-axis labels (only exists on bottom row)
             if (ref.xAxisTickLabels) {
+              ref.xAxisTickLabels
+                .transition()
+                .duration(0)
+                .style("opacity", 1);
               const xProximityThreshold = 10;
               ref.xAxisTickLabels.each(function() {
                 const tickLabel = d3.select(this);
@@ -1092,6 +1072,10 @@ function initCropComponentsChart() {
             }
             
             // Hide nearby permanent y-axis labels
+            ref.yAxisTickLabels
+              .transition()
+              .duration(0)
+              .style("opacity", 1);
             const yProximityThreshold = 15;
             ref.yAxisTickLabels.each(function() {
               const tickLabel = d3.select(this);
@@ -1156,38 +1140,34 @@ function initCropComponentsChart() {
       }
       
       // Create year selector UI
-      // Make the container position relative for absolute positioning
-      d3.select("#plot-history-by-crop-container")
-        .style("position", "relative");
-      
       const yearSelectorContainer = d3.select("#plot-history-by-crop-container")
-        .append("div")
+        .insert("div", ":first-child")
         .attr("class", "year-selector-container")
-        .style("position", "absolute")
-        .style("top", "0")
-        .style("left", "0")
+        .style("position", "relative")
+        .style("display", "flex")
+        .style("align-items", "center")
+        .style("justify-content", "flex-end")
+        .style("gap", "8px")
         .style("width", "100%")
-        .style("height", "100%")
-        .style("pointer-events", "none")
-        .style("z-index", "10");
+        .style("max-width", `${requiredWidth}px`)
+        .style("margin", "0 0 10px")
+        .style("pointer-events", "all");
       
       // Button container for "Pick year" and "Clear" buttons
       const buttonContainer = yearSelectorContainer
         .append("div")
-        .style("position", "absolute")
-        .style("top", "10px")
-        .style("right", "10px")
+        .style("position", "relative")
         .style("display", "flex")
-        .style("gap", "8px")
-        .style("pointer-events", "all");
+        .style("gap", "8px");
       
       // "Pick year" button in top right (positioned relative to SVG top-right)
       const pickYearButton = buttonContainer
         .append("button")
         .attr("class", "pick-year-button")
-        .style("padding", "6px 12px")
-        .style("background", "rgba(139, 195, 74, 0.1)")
-        .style("border", "1px solid rgba(139, 195, 74, 0.5)")
+        .style("height", "32px")
+        .style("padding", "0 12px")
+        .style("background", "var(--bg-card)")
+        .style("border", "1px solid var(--border-medium)")
         .style("border-radius", "4px")
         .style("color", "var(--text-primary)")
         .style("cursor", "pointer")
@@ -1208,17 +1188,17 @@ function initCropComponentsChart() {
       const clearYearButton = buttonContainer
         .append("button")
         .attr("class", "clear-year-button")
-        .style("padding", "6px 10px")
-        .style("background", "rgba(139, 195, 74, 0.1)")
-        .style("border", "1px solid rgba(139, 195, 74, 0.5)")
+        .style("height", "32px")
+        .style("padding", "0")
+        .style("background", "var(--bg-card)")
+        .style("border", "1px solid var(--border-medium)")
         .style("border-radius", "4px")
         .style("color", "var(--text-primary)")
         .style("cursor", "pointer")
         .style("font-size", "14px")
         .style("font-family", "inherit")
         .style("line-height", "1")
-        .style("width", "28px")
-        .style("height", "28px")
+        .style("width", "32px")
         .style("display", "flex")
         .style("align-items", "center")
         .style("justify-content", "center")
@@ -1231,73 +1211,71 @@ function initCropComponentsChart() {
         });
       
       // Year selector window (positioned to the left of button)
-      const yearSelectorWindow = yearSelectorContainer
+      const yearSelectorWindow = buttonContainer
         .append("div")
         .attr("class", "year-selector-window")
         .style("position", "absolute")
-        .style("top", "10px")
-        .style("right", "120px")
+        .style("top", "0")
+        .style("right", "calc(100% + 8px)")
         .style("background", "var(--bg-card)")
         .style("border", "1px solid var(--border-subtle)")
         .style("border-radius", "8px")
-        .style("padding", "15px")
-        .style("padding-top", "12px")
-        .style("min-width", "250px")
+        .style("height", "32px")
+        .style("padding", "0 10px")
+        .style("min-width", "320px")
         .style("box-shadow", "var(--shadow-card)")
         .style("z-index", "1000")
         .style("display", "none")
-        .style("pointer-events", "all");
+        .style("pointer-events", "all")
+        .style("transform-origin", "right top");
       
-      // Year slider (create first so input can reference it)
-      const sliderContainer = yearSelectorWindow
-        .append("div")
-        .style("margin-top", "0");
-      
-      const sliderLabels = sliderContainer
+      const yearSelectorRow = yearSelectorWindow
         .append("div")
         .style("display", "flex")
-        .style("justify-content", "space-between")
-        .style("margin-bottom", "5px")
+        .style("height", "100%")
+        .style("align-items", "center")
+        .style("gap", "10px");
+      
+      yearSelectorRow
+        .append("span")
         .style("font-size", "11px")
-        .style("color", "var(--text-secondary)");
+        .style("color", "var(--text-secondary)")
+        .text(globalYearExtent[0]);
       
-      sliderLabels.append("span").text(globalYearExtent[0]);
-      sliderLabels.append("span").text(globalYearExtent[1]);
-      
-      const yearSlider = sliderContainer
+      // Year slider (create first so input can reference it)
+      const yearSlider = yearSelectorRow
         .append("input")
         .attr("type", "range")
         .attr("class", "year-slider")
         .attr("min", globalYearExtent[0])
         .attr("max", globalYearExtent[1])
         .attr("step", "1")
-        .style("width", "100%")
+        .style("flex", "1")
         .style("cursor", "pointer");
       
-      // Input and slider container
-      const inputContainer = yearSelectorWindow
-        .append("div")
-        .style("display", "flex")
-        .style("align-items", "center")
-        .style("gap", "10px")
-        .style("margin-bottom", "8px");
+      yearSelectorRow
+        .append("span")
+        .style("font-size", "11px")
+        .style("color", "var(--text-secondary)")
+        .text(globalYearExtent[1]);
       
       // Year input field
-      const yearInput = inputContainer
+      const yearInput = yearSelectorRow
         .append("input")
         .attr("type", "text")
         .attr("class", "year-input")
         .attr("placeholder", "____")
-        .style("flex", "1")
-        .style("padding", "6px 8px")
-        .style("background", "var(--bg-dark)")
-        .style("border", "1px solid var(--border-subtle)")
+        .style("width", "70px")
+        .style("height", "24px")
+        .style("padding", "4px 6px")
+        .style("background", "var(--bg-card)")
+        .style("border", "1px solid var(--border-medium)")
         .style("border-radius", "4px")
         .style("color", "var(--text-primary)")
-        .style("font-size", "14px")
+        .style("font-size", "12px")
         .style("font-family", "inherit")
         .style("text-align", "center")
-        .style("letter-spacing", "0.1em")
+        .style("letter-spacing", "0.08em")
         .on("input", function() {
           const value = parseInt(this.value);
           if (!isNaN(value) && value >= globalYearExtent[0] && value <= globalYearExtent[1]) {
@@ -1345,12 +1323,14 @@ function initCropComponentsChart() {
         .text("Data from Statistics Canada, Table 32-10-0359");
       
       // X-axis label
+      const bottomRowY = margin.top + (numCrops - 1) * (panelHeight + panelGapY) + panelHeight;
+      
       svg.append("text")
         .attr("class", "axis-label")
         .attr("x", margin.left + yAxisWidth + (3 * panelWidth + 2 * panelGapX) / 2)
-        .attr("y", totalHeight - 15)
+        .attr("y", bottomRowY + 28)
         .attr("text-anchor", "middle")
-        .style("font-size", "11px")
+        .style("font-size", "12px")
         .text("Year");
     })
     .catch(function(error) {
@@ -1500,14 +1480,6 @@ function initCumulativeChart() {
       const yAxisGroup = svg.append("g")
         .attr("class", "axis y-axis")
         .call(yAxis);
-      
-      // Add title
-      svg.append("text")
-        .attr("class", "title")
-        .attr("x", width / 2)
-        .attr("y", -35)
-        .attr("text-anchor", "middle")
-        .text("Cumulative Production Change Decomposition");
       
       // Add legend
       const legendItems = ["Seeded Area", "Within-Crop Effective Yield", "Crop Mix"];

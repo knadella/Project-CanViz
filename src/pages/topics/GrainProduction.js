@@ -99,12 +99,6 @@ export function GrainProductionPage() {
             stroke: var(--border-medium);
           }
           
-          .grain-chart .title {
-            font-size: 14px;
-            font-weight: bold;
-            fill: var(--text-primary);
-          }
-          
           .grain-chart .caption {
             font-size: 10px;
             fill: var(--text-muted);
@@ -207,25 +201,14 @@ export function GrainProductionPage() {
             height: auto;
           }
           
-          #plot-history-by-crop-container .main-title {
-            font-size: 16px;
-            font-weight: bold;
-            fill: var(--text-primary);
-          }
-          
-          #plot-history-by-crop-container .subtitle {
-            font-size: 12px;
-            fill: var(--text-muted);
-          }
-          
           #plot-history-by-crop-container .panel-title {
-            font-size: 9px;
-            font-weight: normal;
+            font-size: 11px;
+            font-weight: 500;
             fill: var(--text-secondary);
           }
           
           #plot-history-by-crop-container .axis {
-            font-size: 9px;
+            font-size: 11px;
             fill: var(--text-secondary);
           }
           
@@ -254,6 +237,16 @@ export function GrainProductionPage() {
             fill: var(--text-primary);
           }
           
+          #plot-history-by-crop-container .hover-year-label,
+          #plot-history-by-crop-container .hover-value-label {
+            font-size: 11px;
+          }
+          
+          #plot-history-by-crop-container .crop-name {
+            font-size: 12px;
+            font-weight: 600;
+          }
+          
           #plot-history-by-crop-container .hover-y-tick {
             stroke: var(--text-primary);
           }
@@ -279,12 +272,6 @@ export function GrainProductionPage() {
           
           #plot-cumulative-container .axis line {
             stroke: var(--border-medium);
-          }
-          
-          #plot-cumulative-container .title {
-            font-size: 14px;
-            font-weight: bold;
-            fill: var(--text-primary);
           }
           
           #plot-cumulative-container .axis-label {
@@ -436,7 +423,7 @@ export function GrainProductionPage() {
         <section class="story-hero">
           <div class="story-hero-content">
             <h1>Grain Production</h1>
-            <p class="subtitle">Understanding how planted area, yield and crop mix have interacted in the history of Canadian grain production</p>
+            <p class="subtitle">Understanding how seeded area, yield and crop mix have interacted in the history of Canadian grain production</p>
           </div>
           <div class="scroll-indicator">
             <span>Scroll to explore</span>
@@ -451,11 +438,11 @@ export function GrainProductionPage() {
           <div class="section-header">
             <div class="section-number">Part One</div>
             <h2>History of Production</h2>
-            <p class="lead">The production of major crops in Canada has increased considerably over the last 120 years. Today farmers in Canada produce <span id="production-ratio">—</span> times more than they did in the early 1900s.</p>
+            <p class="lead">Farmers in Canada produce <span id="production-ratio">—</span> more grain now than they did 120 years ago. Despite setbacks in some years, the trend is unmistakable: farmers are producing more grain today than at any point in the historical record.</p>
           </div>
           
           <div class="chart-wrapper">
-            <h3 class="chart-title">Total Grain Production</h3>
+            <h3 class="chart-title">Grain Production</h3>
             <p class="chart-subtitle">Annual production from <span id="first-year">—</span> to <span id="last-year">—</span> — In <span id="last-year-2">—</span> production hit a record with <span id="production-2025-million">—</span> million tonnes</p>
             
             <div class="chart-container">
@@ -553,7 +540,7 @@ export function GrainProductionPage() {
               
               <p class="math-block">\\[\\Delta \\ln P_{\\text{total}} = \\Delta \\ln A_{\\text{total}} + \\Delta \\ln \\bar{Y}\\]</p>
               
-              <p>Changes in the average effective yield Ȳ can arise from two distinct sources:</p>
+              <p>Changes in the average effective yield \\(\\bar{Y}\\) can arise from two distinct sources:</p>
               
               <ol>
                 <li><strong>Within-crop effective yield changes</strong>: output per seeded hectare rises or falls within a given crop</li>

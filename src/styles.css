@@ -707,6 +707,13 @@ code {
   overflow: visible;
 }
 
+.chart-container .axis,
+.chart-container .axis text,
+.chart-container .hover-year-label,
+.chart-container .hover-value-label {
+  font-size: 11px;
+}
+
 .chart-note {
   margin-top: 1.25rem;
   padding: 0.875rem 1rem;
