@@ -9,6 +9,7 @@ This repository contains interactive data visualisations and web products built 
 ## Technologies
 
 - **D3.js** - Data-driven documents for creating interactive visualisations
+- **MathJax (CDN)** - LaTeX rendering for mathematical notation on select pages
 - **HTML/CSS/JavaScript** - Core web technologies
 - **Public Canadian Data Sources** - Various open data portals and APIs
 
@@ -133,11 +134,9 @@ npm run build
 ```
 
 Deployment uses GitHub Actions in `.github/workflows/deploy.yml`:
-- Work normally on the `main` branch.
-- When you are ready to publish, merge or push changes to the `production` branch.
-- A push to `production` triggers the workflow, which builds the site and deploys it to GitHub Pages.
+- Work on the `main` branch.
+- A push to `main` triggers the workflow, which builds the site and deploys it to GitHub Pages.
 
 ## License
 
 This project is open source. Please ensure any data used complies with the terms of use from the respective data sources.
-
